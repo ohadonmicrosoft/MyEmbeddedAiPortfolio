@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home - Real-Time Embedded & AI Portfolio</title>
+
+  <!-- Font Awesome (icons) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHq6w3UZd6feIbo56jnWd5OIOyjrM4K2Cw7DwWGb11X8dG4ftN4SLqzZdXGnuImygtv6z1hQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- Google Fonts -->
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" 
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --color-bg: #1f1f2f;
+      --color-primary: #ffcc00;
+      --color-secondary: #ff4d4d;
+      --color-dark: #111;
+      --color-text: #fff;
+      --transition-speed: 0.4s;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Rubik', sans-serif;
+    }
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.4;
+    }
+    header {
+      width: 100%;
+      padding: 1rem 2rem;
+      background-color: rgba(31, 31, 47, 0.8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav ul li a {
+      color: var(--color-text);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      background: url("https://source.unsplash.com/1600x900/?technology,ai") center/cover no-repeat;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+    .hero-content {
+      z-index: 1;
+      max-width: 800px;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--color-primary);
+    }
+    .typing {
+      display: inline-block;
+      border-right: 2px solid var(--color-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 4s steps(35, end) 1s 1 normal both, blink 0.8s infinite;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 24ch; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .cta-btn {
+      background-color: var(--color-primary);
+      color: var(--color-dark);
+      padding: 0.8rem 1.4rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color var(--transition-speed);
+    }
+    .cta-btn:hover {
+      background-color: var(--color-secondary);
+      color: #fff;
+    }
+    footer {
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      margin-top: 2rem;
+    }
+    footer a {
+      color: var(--color-primary);
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="home.html" class="logo">MyEmbeddedAI</a>
+    <nav>
+      <ul>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="ai-bots.html">AI Bots</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Real-Time Embedded, C++ & AI</h1>
+      <div class="typing">Welcome to my portfolio!</div>
+      <p>
+        Hi there! I'm a senior software engineer specializing in Real-Time Embedded systems,  
+        C++ development, and cutting-edge AI projects. Explore my portfolio to see some of  
+        my favorite creations, including AI bots, embedded robotics, and more.
+      </p>
+      <a href="projects.html" class="cta-btn">View My Projects</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
+    <p>
+      <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank"><i class="fab fa-github"></i> GitHub</a> |
+      <a href="https://www.linkedin.com/in/YOUR_LINKEDIN/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </p>
+  </footer>
+
+  <script>
+    // The CSS animation handles the main typing effect. 
+    // If you prefer typed text via JS, you can implement it here.
+  </script>
+</body>
+</html>
