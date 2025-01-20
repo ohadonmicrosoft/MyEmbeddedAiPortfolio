@@ -1,248 +1,248 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Home - Advanced Embedded & AI Portfolio</title>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Home - Advanced Embedded & AI Portfolio</title>
 
-  <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    integrity="sha512-Fo3rlrZj/k7ujTnHq6w3UZd6feIbo56jnWd5OIOyjrM4K2Cw7DwWGb11X8dG4ftN4SLqzZdXGnuImygtv6z1hQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHq6w3UZd6feIbo56jnWd5OIOyjrM4K2Cw7DwWGb11X8dG4ftN4SLqzZdXGnuImygtv6z1hQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-  <!-- Google Fonts -->
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" 
-    rel="stylesheet"
-  >
+    <!-- Google Fonts -->
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" 
+      rel="stylesheet"
+    >
 
-  <!-- GSAP for animations -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
 
-  <style>
-    :root {
-      --color-bg-1: #1f1f2f;
-      --color-bg-2: #29293d;
-      --color-bg: linear-gradient(135deg, var(--color-bg-1) 0%, var(--color-bg-2) 100%);
-      --color-primary: #ffcc00;
-      --color-secondary: #ff4d4d;
-      --color-dark: #111;
-      --color-text: #fff;
-      --transition-speed: 0.4s;
-    }
-    /* Light theme */
-    :root.light {
-      --color-bg-1: #eeeeee;
-      --color-bg-2: #cccccc;
-      --color-bg: linear-gradient(135deg, var(--color-bg-1) 0%, var(--color-bg-2) 100%);
-      --color-text: #111;
-      --color-dark: #fff;
-    }
+    <style>
+      :root {
+        --color-bg-1: #1f1f2f;
+        --color-bg-2: #29293d;
+        --color-bg: linear-gradient(135deg, var(--color-bg-1) 0%, var(--color-bg-2) 100%);
+        --color-primary: #ffcc00;
+        --color-secondary: #ff4d4d;
+        --color-dark: #111;
+        --color-text: #fff;
+        --transition-speed: 0.4s;
+      }
+      /* Light theme */
+      :root.light {
+        --color-bg-1: #eeeeee;
+        --color-bg-2: #cccccc;
+        --color-bg: linear-gradient(135deg, var(--color-bg-1) 0%, var(--color-bg-2) 100%);
+        --color-text: #111;
+        --color-dark: #fff;
+      }
 
-    * {
-      margin: 0; padding: 0;
-      box-sizing: border-box;
-      font-family: 'Rubik', sans-serif;
-    }
-    body {
-      background: var(--color-bg);
-      color: var(--color-text);
-      line-height: 1.4;
-      overflow-x: hidden;
-      transition: background var(--transition-speed), color var(--transition-speed);
-    }
+      * {
+        margin: 0; padding: 0;
+        box-sizing: border-box;
+        font-family: 'Rubik', sans-serif;
+      }
+      body {
+        background: var(--color-bg);
+        color: var(--color-text);
+        line-height: 1.4;
+        overflow-x: hidden;
+        transition: background var(--transition-speed), color var(--transition-speed);
+      }
 
-    /* HEADER */
-    header {
-      width: 100%;
-      padding: 1rem 2rem;
-      position: fixed;
-      top: 0; left: 0;
-      z-index: 999;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: rgba(31, 31, 47, 0.8);
-      backdrop-filter: blur(6px);
-    }
-    .logo {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--color-primary);
-      text-decoration: none;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-    nav ul li a {
-      color: var(--color-text);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color var(--transition-speed);
-    }
-    nav ul li a:hover {
-      color: var(--color-primary);
-    }
-    .theme-toggle {
-      cursor: pointer;
-      font-size: 1.2rem;
-      color: var(--color-primary);
-      background: none;
-      border: none;
-      margin-left: 1rem;
-    }
+      /* HEADER */
+      header {
+        width: 100%;
+        padding: 1rem 2rem;
+        position: fixed;
+        top: 0; left: 0;
+        z-index: 999;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(31, 31, 47, 0.8);
+        backdrop-filter: blur(6px);
+      }
+      .logo {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+      }
+      nav ul li a {
+        color: var(--color-text);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color var(--transition-speed);
+      }
+      nav ul li a:hover {
+        color: var(--color-primary);
+      }
+      .theme-toggle {
+        cursor: pointer;
+        font-size: 1.2rem;
+        color: var(--color-primary);
+        background: none;
+        border: none;
+        margin-left: 1rem;
+      }
 
-    /* HERO SECTION */
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      margin-top: 80px; /* offset for fixed header */
-      overflow: hidden;
-    }
+      /* HERO SECTION */
+      .hero {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        margin-top: 80px; /* offset for fixed header */
+        overflow: hidden;
+      }
 
-    /* Background slideshow */
-    .bg-slideshow {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: -1;
-      animation: slideShow 15s infinite;
-      background-size: cover;
-      background-position: center;
-    }
-    @keyframes slideShow {
-      0%   { background-image: url("https://source.unsplash.com/1600x900/?technology,ai"); }
-      33%  { background-image: url("https://source.unsplash.com/1600x900/?robotics,code"); }
-      66%  { background-image: url("https://source.unsplash.com/1600x900/?embedded,tech"); }
-      100% { background-image: url("https://source.unsplash.com/1600x900/?technology,ai"); }
-    }
+      /* Background slideshow */
+      .bg-slideshow {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: -1;
+        animation: slideShow 15s infinite;
+        background-size: cover;
+        background-position: center;
+      }
+      @keyframes slideShow {
+        0%   { background-image: url("assets/images/embedded1.jpg"); }
+        33%  { background-image: url("assets/images/embedded2.jpg"); }
+        66%  { background-image: url("assets/images/embedded3.jpg"); }
+        100% { background-image: url("assets/images/embedded1.jpg"); }
+      }
 
-    .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-      color: var(--color-primary);
-      opacity: 0; /* for GSAP fade-in */
-    }
-    .typing {
-      display: inline-block;
-      border-right: 2px solid var(--color-primary);
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0;
-      animation: typing 4s steps(35, end) 1s 1 normal both, blink 0.8s infinite;
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: #fff;
-      opacity: 0; /* we'll reveal with GSAP */
-    }
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 24ch; }
-    }
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
+      .hero h1 {
+        font-size: 2.8rem;
+        margin-bottom: 1rem;
+        color: var(--color-primary);
+        opacity: 0; /* for GSAP fade-in */
+      }
+      .typing {
+        display: inline-block;
+        border-right: 2px solid var(--color-primary);
+        white-space: nowrap;
+        overflow: hidden;
+        width: 0;
+        animation: typing 4s steps(35, end) 1s 1 normal both, blink 0.8s infinite;
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: #fff;
+        opacity: 0; /* we'll reveal with GSAP */
+      }
+      @keyframes typing {
+        from { width: 0; }
+        to { width: 24ch; }
+      }
+      @keyframes blink {
+        50% { border-color: transparent; }
+      }
 
-    .hero p {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      line-height: 1.6;
-      max-width: 700px;
-      opacity: 0;
-    }
-    .cta-btn {
-      display: inline-block;
-      background-color: var(--color-primary);
-      color: var(--color-dark);
-      padding: 0.8rem 1.4rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background-color var(--transition-speed);
-      opacity: 0;
-    }
-    .cta-btn:hover {
-      background-color: var(--color-secondary);
-      color: #fff;
-    }
+      .hero p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+        max-width: 700px;
+        opacity: 0;
+      }
+      .cta-btn {
+        display: inline-block;
+        background-color: var(--color-primary);
+        color: var(--color-dark);
+        padding: 0.8rem 1.4rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color var(--transition-speed);
+        opacity: 0;
+      }
+      .cta-btn:hover {
+        background-color: var(--color-secondary);
+        color: #fff;
+      }
 
-    /* FOOTER */
-    footer {
-      background-color: #111;
-      color: #fff;
-      text-align: center;
-      padding: 1.5rem 1rem;
-      margin-top: 2rem;
-    }
-    footer a {
-      color: var(--color-primary);
-      text-decoration: none;
-      margin: 0 0.5rem;
-    }
-  </style>
-</head>
-<body>
+      /* FOOTER */
+      footer {
+        background-color: #111;
+        color: #fff;
+        text-align: center;
+        padding: 1.5rem 1rem;
+        margin-top: 2rem;
+      }
+      footer a {
+        color: var(--color-primary);
+        text-decoration: none;
+        margin: 0 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
 
-  <!-- HEADER -->
-  <header>
-    <a href="index.html" class="logo">MyEmbeddedAI</a>
-    <nav>
-      <ul>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="ai-bots.html">AI Bots</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <button class="theme-toggle" id="themeToggleBtn"><i class="fas fa-adjust"></i></button>
-  </header>
+    <!-- HEADER -->
+    <header>
+      <a href="index.html" class="logo">MyEmbeddedAI</a>
+      <nav>
+        <ul>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="ai-bots.html">AI Bots</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" id="themeToggleBtn"><i class="fas fa-adjust"></i></button>
+    </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="bg-slideshow"></div>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="bg-slideshow"></div>
 
-    <h1 id="heroTitle">Real-Time Embedded, C++ & AI</h1>
-    <div class="typing" id="typingEffect">Welcome to my advanced portfolio!</div>
-    <p id="heroDesc">
-      Experience a robust showcase of real-time embedded projects, C++ mastery,
-      and AI-driven innovations. From cutting-edge robotics to intelligent chatbots,
-      explore the future of technology right here.
-    </p>
-    <a href="projects.html" class="cta-btn" id="ctaBtn">View My Projects</a>
-  </section>
+      <h1 id="heroTitle">Real-Time Embedded, C++ & AI</h1>
+      <div class="typing" id="typingEffect">Welcome to my advanced portfolio!</div>
+      <p id="heroDesc">
+        Experience a robust showcase of real-time embedded projects, C++ mastery,
+        and AI-driven innovations. From cutting-edge robotics to intelligent chatbots,
+        explore the future of technology right here.
+      </p>
+      <a href="projects.html" class="cta-btn" id="ctaBtn">View My Projects</a>
+    </section>
 
-  <footer>
-    <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
-    <p>
-      <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank"><i class="fab fa-github"></i> GitHub</a> |
-      <a href="https://www.linkedin.com/in/YOUR_LINKEDIN/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    </p>
-  </footer>
+    <footer>
+      <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
+      <p>
+        <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank"><i class="fab fa-github"></i> GitHub</a> |
+        <a href="https://www.linkedin.com/in/YOUR_LINKEDIN/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      </p>
+    </footer>
 
-  <script>
-    // GSAP Fade-In
-    window.addEventListener("DOMContentLoaded", () => {
-      gsap.to("#heroTitle", { duration: 1, opacity: 1, y: -10 });
-      gsap.to("#typingEffect", { duration: 1, opacity: 1, delay: 1 });
-      gsap.to("#heroDesc", { duration: 1, opacity: 1, delay: 2, y: -5 });
-      gsap.to("#ctaBtn", { duration: 1, opacity: 1, delay: 3, y: -5 });
-    });
+    <script>
+      // GSAP Fade-In
+      window.addEventListener("DOMContentLoaded", () => {
+        gsap.to("#heroTitle", { duration: 1, opacity: 1, y: -10 });
+        gsap.to("#typingEffect", { duration: 1, opacity: 1, delay: 1 });
+        gsap.to("#heroDesc", { duration: 1, opacity: 1, delay: 2, y: -5 });
+        gsap.to("#ctaBtn", { duration: 1, opacity: 1, delay: 3, y: -5 });
+      });
 
-    // Theme Toggle
-    const themeToggleBtn = document.getElementById("themeToggleBtn");
-    themeToggleBtn.addEventListener("click", () => {
-      document.documentElement.classList.toggle("light");
-    });
-  </script>
-</body>
+      // Theme Toggle
+      const themeToggleBtn = document.getElementById("themeToggleBtn");
+      themeToggleBtn.addEventListener("click", () => {
+        document.documentElement.classList.toggle("light");
+      });
+    </script>
+  </body>
 </html>

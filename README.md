@@ -2,6 +2,15 @@
 
 A multi-page static website showcasing Real-Time Embedded, C++, and AI projects.
 
+## Table of Contents
+1. [File Structure](#file-structure)
+2. [Pages](#pages)
+3. [Usage](#usage)
+4. [Deploy on GitHub Pages](#deploy-on-github-pages)
+5. [Custom Domain](#custom-domain)
+6. [Further Customization](#further-customization)
+7. [License](#license)
+
 ## File Structure
 
 MyEmbeddedAiPortfolio/
@@ -13,7 +22,6 @@ MyEmbeddedAiPortfolio/
 ├─ about.html
 ├─ contact.html
 └─ .gitignore        (optional, if you want to ignore certain files)
-
 
 ## Pages
 

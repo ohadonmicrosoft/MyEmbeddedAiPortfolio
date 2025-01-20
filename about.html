@@ -1,195 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About - Advanced Embedded & AI Portfolio</title>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>About - Advanced Embedded & AI Portfolio</title>
 
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  >
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
-    rel="stylesheet"
-  >
-  <!-- GSAP for animations -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-
-  <style>
-    :root {
-      --color-bg: #1f1f2f;
-      --color-primary: #ffcc00;
-      --color-secondary: #ff4d4d;
-      --color-text: #fff;
-    }
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: 'Rubik', sans-serif;
-    }
-    body {
-      background-color: var(--color-bg);
-      color: var(--color-text);
-      line-height: 1.4;
-      overflow-x: hidden;
-    }
-    header {
-      width: 100%;
-      padding: 1rem 2rem;
-      background-color: rgba(31,31,47,0.8);
-      backdrop-filter: blur(6px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      top: 0; left: 0;
-      z-index: 999;
-      width: 100%;
-    }
-    .logo {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--color-primary);
-      text-decoration: none;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-    nav ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .about-container {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-      margin-top: 80px; /* offset for header */
-    }
-    .about-container img {
-      width: 300px; height: 300px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      opacity: 0; /* for GSAP */
-    }
-    .about-text {
-      flex: 1;
-      min-width: 280px;
-      color: #ddd;
-      opacity: 0; /* for GSAP */
-    }
-    .about-text h2 {
-      font-size: 2rem;
-      color: var(--color-primary);
-      margin-bottom: 1rem;
-    }
-    .about-text p {
-      margin-bottom: 1rem;
-      line-height: 1.5;
-    }
-
-    .skills-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
-      color: #ddd;
-    }
-    .skills-container h2 {
-      font-size: 2rem;
-      color: var(--color-primary);
-      margin-bottom: 1rem;
-    }
-    .skills-container ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    .skills-container ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    footer {
-      background-color: #111;
-      color: #fff;
-      text-align: center;
-      padding: 1.5rem 1rem;
-      margin-top: 2rem;
-    }
-    footer a {
-      color: var(--color-primary);
-      text-decoration: none;
-      margin: 0 0.5rem;
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <a href="index.html" class="logo">MyEmbeddedAI</a>
-    <nav>
-      <ul>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="ai-bots.html">AI Bots</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <section class="about-container">
-    <img
-      id="profilePic"
-      src="https://source.unsplash.com/300x300/?profile,person"
-      alt="My Profile Photo"
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     >
-    <div class="about-text" id="aboutText">
-      <h2>About Me</h2>
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
+      rel="stylesheet"
+    >
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+
+    <style>
+      :root {
+        --color-bg: #1f1f2f;
+        --color-primary: #ffcc00;
+        --color-secondary: #ff4d4d;
+        --color-text: #fff;
+      }
+      * {
+        margin: 0; padding: 0; box-sizing: border-box;
+        font-family: 'Rubik', sans-serif;
+      }
+      body {
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        line-height: 1.4;
+        overflow-x: hidden;
+      }
+      header {
+        width: 100%;
+        padding: 1rem 2rem;
+        background-color: rgba(31,31,47,0.8);
+        backdrop-filter: blur(6px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0; left: 0;
+        z-index: 999;
+        width: 100%;
+      }
+      .logo {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+      }
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .about-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+        margin-top: 80px; /* offset for header */
+      }
+      .about-container img {
+        width: 300px; height: 300px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        opacity: 0; /* for GSAP */
+      }
+      .about-text {
+        flex: 1;
+        min-width: 280px;
+        color: #ddd;
+        opacity: 0; /* for GSAP */
+      }
+      .about-text h2 {
+        font-size: 2rem;
+        color: var(--color-primary);
+        margin-bottom: 1rem;
+      }
+      .about-text p {
+        margin-bottom: 1rem;
+        line-height: 1.5;
+      }
+
+      footer {
+        background-color: #111;
+        color: #fff;
+        text-align: center;
+        padding: 1.5rem 1rem;
+        margin-top: 2rem;
+      }
+      footer a {
+        color: var(--color-primary);
+        text-decoration: none;
+        margin: 0 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <a href="index.html" class="logo">MyEmbeddedAI</a>
+      <nav>
+        <ul>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="ai-bots.html">AI Bots</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="about-container">
+      <img
+        id="profilePic"
+        src="https://source.unsplash.com/300x300/?profile,person"
+        alt="My Profile Photo"
+      >
+      <div class="about-text" id="aboutText">
+        <h2>About Me</h2>
+        <p>
+          I'm a senior software engineer specializing in Real-Time Embedded systems and C++.  
+          I build high-performance industrial solutions and advanced AI applications 
+          that utilize large language models for real-time analytics.
+        </p>
+        <p>
+          I enjoy contributing to open-source projects, sharing insights, and collaborating  
+          with fellow tech enthusiasts. My passion lies in bridging advanced AI with robust  
+          embedded platforms to create innovative solutions.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
       <p>
-        I'm a senior software engineer specializing in Real-Time Embedded systems and C++.  
-        I build high-performance industrial solutions and advanced AI applications 
-        that utilize large language models for real-time analytics.
+        <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank"><i class="fab fa-github"></i> GitHub</a> |
+        <a href="https://www.linkedin.com/in/YOUR_LINKEDIN/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
       </p>
-      <p>
-        I enjoy contributing to open-source projects, sharing insights, and collaborating  
-        with fellow tech enthusiasts. My passion lies in bridging advanced AI with robust  
-        embedded platforms to create innovative solutions.
-      </p>
-    </div>
-  </section>
+    </footer>
 
-  <section class="skills-container">
-    <h2>Skills</h2>
-    <ul>
-      <li>Real-Time Embedded Systems</li>
-      <li>C++ Programming</li>
-      <li>AI and Machine Learning</li>
-      <li>Open-Source Contributions</li>
-      <li>Collaborative Development</li>
-    </ul>
-  </section>
-
-  <footer>
-    <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
-    <p>
-      <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank"><i class="fab fa-github"></i> GitHub</a> |
-      <a href="https://www.linkedin.com/in/YOUR_LINKEDIN/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    </p>
-  </footer>
-
-  <script>
-    // GSAP fade in for image & text
-    window.addEventListener("load", () => {
-      gsap.to("#profilePic", { duration: 1, opacity: 1, x: 0 });
-      gsap.to("#aboutText", { duration: 1.2, opacity: 1, delay: 0.5, x: 0 });
-    });
-  </script>
-</body>
+    <script>
+      // GSAP fade in for image & text
+      window.addEventListener("load", () => {
+        gsap.to("#profilePic", { duration: 1, opacity: 1, x: 0 });
+        gsap.to("#aboutText", { duration: 1.2, opacity: 1, delay: 0.5, x: 0 });
+      });
+    </script>
+  </body>
 </html>
