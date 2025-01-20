@@ -1,0 +1,22 @@
+# macOS related
+.DS_Store
+
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+package-lock.json
+yarn.lock
+
+# Logs
+logs
+*.log
+*.log.*
+
+# Build output (if you use a build tool)
+dist/
+build/
+
+# Editor-specific or OS-specific
+.vscode/
+.idea/
+Thumbs.db
