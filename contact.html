@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact - Real-Time Embedded & AI Portfolio</title>
+  <title>Contact - Advanced Embedded & AI Portfolio</title>
+
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    integrity="sha512-Fo3rlrZj/k7ujTnHq6w3UZd6feIbo56jnWd5OIOyjrM4K2Cw7DwWGb11X8dG4ftN4SLqzZdXGnuImygtv6z1hQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+  >
   <link 
-    href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" 
+    href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
     rel="stylesheet"
   >
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+
   <style>
     :root {
-      --color-bg: #1f1f2f;
+      --color-bg-1: #1f1f2f;
+      --color-bg-2: #29293d;
+      --color-bg: linear-gradient(135deg, var(--color-bg-1) 0%, var(--color-bg-2) 100%);
       --color-primary: #ffcc00;
       --color-secondary: #ff4d4d; 
       --color-text: #fff;
@@ -27,17 +30,23 @@
       font-family: 'Rubik', sans-serif;
     }
     body {
-      background: linear-gradient(135deg, #1f1f2f 0%, #29293d 100%);
+      background: var(--color-bg);
       color: var(--color-text);
       line-height: 1.4;
+      overflow-x: hidden;
     }
     header {
       width: 100%;
       padding: 1rem 2rem;
-      background-color: rgba(31, 31, 47, 0.8);
+      background-color: rgba(31,31,47,0.8);
+      backdrop-filter: blur(6px);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 999;
+      width: 100%;
     }
     .logo {
       font-size: 1.6rem;
@@ -55,21 +64,26 @@
       text-decoration: none;
       font-weight: 500;
     }
-    #contact {
+
+    #contactSection {
       padding: 4rem 2rem;
       max-width: 600px;
       margin: 0 auto;
+      margin-top: 80px; /* offset */
     }
-    #contact h2 {
+    #contactSection h2 {
       text-align: center;
       font-size: 2rem;
       color: var(--color-primary);
       margin-bottom: 1.5rem;
+      opacity: 0; /* for GSAP */
     }
+
     .contact-form {
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      opacity: 0; /* for GSAP */
     }
     .contact-form label {
       font-weight: 600;
@@ -99,6 +113,7 @@
       background-color: var(--color-secondary);
       color: #fff;
     }
+
     footer {
       background-color: #111;
       color: #fff;
@@ -114,8 +129,9 @@
   </style>
 </head>
 <body>
+
   <header>
-    <a href="home.html" class="logo">MyEmbeddedAI</a>
+    <a href="index.html" class="logo">MyEmbeddedAI</a>
     <nav>
       <ul>
         <li><a href="projects.html">Projects</a></li>
@@ -126,7 +142,7 @@
     </nav>
   </header>
 
-  <section id="contact">
+  <section id="contactSection">
     <h2>Contact</h2>
     <form class="contact-form" onsubmit="return handleFormSubmit(event)">
       <label for="name">Name:</label>
@@ -151,6 +167,12 @@
   </footer>
 
   <script>
+    // GSAP: Fade/slide in the Contact heading and form
+    window.addEventListener("load", () => {
+      gsap.to("#contactSection h2", { duration: 1, opacity: 1, y: -10 });
+      gsap.to(".contact-form", { duration: 1, opacity: 1, delay: 0.5, y: -10 });
+    });
+
     function handleFormSubmit(e) {
       e.preventDefault();
       const name = document.getElementById('name').value.trim();

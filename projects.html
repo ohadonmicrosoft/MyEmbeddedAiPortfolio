@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Projects - Real-Time Embedded & AI Portfolio</title>
+  <title>Projects - Advanced Embedded & AI Portfolio</title>
+
+  <!-- Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    integrity="sha512-Fo3rlrZj/k7ujTnHq6w3UZd6feIbo56jnWd5OIOyjrM4K2Cw7DwWGb11X8dG4ftN4SLqzZdXGnuImygtv6z1hQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
   />
+
+  <!-- Google Fonts -->
   <link 
-    href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" 
+    href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
     rel="stylesheet"
   >
+
+  <!-- AOS Library -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+  />
+
   <style>
     :root {
-      --color-bg: #1f1f2f;
+      --color-bg: linear-gradient(135deg, #29293d 0%, #1f1f2f 100%);
       --color-primary: #ffcc00;
-      --color-secondary: #ff4d4d; 
+      --color-secondary: #ff4d4d;
       --color-dark: #111;
       --color-text: #fff;
     }
@@ -29,17 +37,24 @@
       font-family: 'Rubik', sans-serif;
     }
     body {
-      background: linear-gradient(135deg, #29293d 0%, #1f1f2f 100%);
+      background: var(--color-bg);
       color: var(--color-text);
       line-height: 1.4;
+      overflow-x: hidden;
     }
+
+    /* HEADER */
     header {
       width: 100%;
       padding: 1rem 2rem;
       background-color: rgba(31, 31, 47, 0.8);
+      backdrop-filter: blur(6px);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 999;
     }
     .logo {
       font-size: 1.6rem;
@@ -53,16 +68,23 @@
       gap: 1.5rem;
     }
     nav ul li a {
-      color: #fff;
+      color: var(--color-text);
       text-decoration: none;
       font-weight: 500;
     }
-    h2 {
+
+    .page-header {
+      padding-top: 80px; /* offset for header */
       text-align: center;
+      margin-bottom: 2rem;
+    }
+    .page-header h2 {
       font-size: 2rem;
       color: var(--color-primary);
-      margin: 2rem 0;
+      margin-top: 1rem;
     }
+
+    /* PROJECTS GRID */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -107,11 +129,13 @@
     .project-content a:hover {
       text-decoration: underline;
     }
+
     footer {
       background-color: #111;
       color: #fff;
       text-align: center;
       padding: 1.5rem 1rem;
+      position: relative;
     }
     footer a {
       color: var(--color-primary);
@@ -120,9 +144,10 @@
     }
   </style>
 </head>
-<body>
+<body onload="AOS.init()">
+
   <header>
-    <a href="home.html" class="logo">MyEmbeddedAI</a>
+    <a href="index.html" class="logo">MyEmbeddedAI</a>
     <nav>
       <ul>
         <li><a href="projects.html">Projects</a></li>
@@ -133,10 +158,13 @@
     </nav>
   </header>
 
-  <h2>My Projects</h2>
+  <div class="page-header">
+    <h2 data-aos="zoom-in" data-aos-duration="1000">My Projects</h2>
+  </div>
+
   <div class="projects-grid">
     <!-- Project Card 1 -->
-    <div class="project-card">
+    <div class="project-card" data-aos="fade-up" data-aos-duration="1000">
       <div class="project-inner">
         <img
           class="project-img"
@@ -148,13 +176,15 @@
           <p>
             A real-time C++ controller for an autonomous robot, featuring advanced motion planning.
           </p>
-          <a href="https://github.com/YOUR_GITHUB_USERNAME/embedded-robot" target="_blank">GitHub Code</a>
+          <a href="https://github.com/YOUR_GITHUB_USERNAME/embedded-robot" target="_blank">
+            GitHub Code
+          </a>
         </div>
       </div>
     </div>
 
     <!-- Project Card 2 -->
-    <div class="project-card">
+    <div class="project-card" data-aos="fade-up" data-aos-duration="1000">
       <div class="project-inner">
         <img
           class="project-img"
@@ -164,15 +194,17 @@
         <div class="project-content">
           <h3>AI Chatbot</h3>
           <p>
-            A chatbot powered by a large language model to handle natural language queries and dialogues.
+            A chatbot powered by a large language model for natural language queries and dialogues.
           </p>
-          <a href="https://github.com/YOUR_GITHUB_USERNAME/ai-chatbot" target="_blank">GitHub Code</a>
+          <a href="https://github.com/YOUR_GITHUB_USERNAME/ai-chatbot" target="_blank">
+            GitHub Code
+          </a>
         </div>
       </div>
     </div>
 
     <!-- Project Card 3 -->
-    <div class="project-card">
+    <div class="project-card" data-aos="fade-up" data-aos-duration="1000">
       <div class="project-inner">
         <img
           class="project-img"
@@ -184,7 +216,9 @@
           <p>
             A real-time OS monitoring and analytics tool, displaying CPU usage, tasks, and system metrics.
           </p>
-          <a href="https://github.com/YOUR_GITHUB_USERNAME/rtos-monitor" target="_blank">GitHub Code</a>
+          <a href="https://github.com/YOUR_GITHUB_USERNAME/rtos-monitor" target="_blank">
+            GitHub Code
+          </a>
         </div>
       </div>
     </div>
@@ -198,5 +232,7 @@
     </p>
   </footer>
 
+  <!-- AOS JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 </body>
 </html>

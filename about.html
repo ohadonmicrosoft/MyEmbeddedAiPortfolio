@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About - Real-Time Embedded & AI Portfolio</title>
+  <title>About - Advanced Embedded & AI Portfolio</title>
+
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    integrity="sha512-Fo3rlrZj/k7ujTnHq6w3UZd6feIbo56jnWd5OIOyjrM4K2Cw7DwWGb11X8dG4ftN4SLqzZdXGnuImygtv6z1hQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+  >
   <link 
-    href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" 
+    href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
     rel="stylesheet"
   >
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+
   <style>
     :root {
       --color-bg: #1f1f2f;
       --color-primary: #ffcc00;
-      --color-secondary: #ff4d4d; 
+      --color-secondary: #ff4d4d;
       --color-text: #fff;
     }
     * {
@@ -30,14 +31,20 @@
       background-color: var(--color-bg);
       color: var(--color-text);
       line-height: 1.4;
+      overflow-x: hidden;
     }
     header {
       width: 100%;
       padding: 1rem 2rem;
-      background-color: rgba(31, 31, 47, 0.8);
+      background-color: rgba(31,31,47,0.8);
+      backdrop-filter: blur(6px);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 999;
+      width: 100%;
     }
     .logo {
       font-size: 1.6rem;
@@ -55,6 +62,7 @@
       text-decoration: none;
       font-weight: 500;
     }
+
     .about-container {
       display: flex;
       flex-wrap: wrap;
@@ -64,18 +72,20 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 4rem 2rem;
+      margin-top: 80px; /* offset for header */
     }
     .about-container img {
-      width: 300px;
-      height: 300px;
+      width: 300px; height: 300px;
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      opacity: 0; /* for GSAP */
     }
     .about-text {
       flex: 1;
       min-width: 280px;
       color: #ddd;
+      opacity: 0; /* for GSAP */
     }
     .about-text h2 {
       font-size: 2rem;
@@ -86,11 +96,13 @@
       margin-bottom: 1rem;
       line-height: 1.5;
     }
+
     footer {
       background-color: #111;
       color: #fff;
       text-align: center;
       padding: 1.5rem 1rem;
+      margin-top: 2rem;
     }
     footer a {
       color: var(--color-primary);
@@ -100,8 +112,9 @@
   </style>
 </head>
 <body>
+
   <header>
-    <a href="home.html" class="logo">MyEmbeddedAI</a>
+    <a href="index.html" class="logo">MyEmbeddedAI</a>
     <nav>
       <ul>
         <li><a href="projects.html">Projects</a></li>
@@ -113,18 +126,22 @@
   </header>
 
   <section class="about-container">
-    <img src="https://source.unsplash.com/300x300/?profile,person" alt="My Profile Photo">
-    <div class="about-text">
+    <img
+      id="profilePic"
+      src="https://source.unsplash.com/300x300/?profile,person"
+      alt="My Profile Photo"
+    >
+    <div class="about-text" id="aboutText">
       <h2>About Me</h2>
       <p>
-        I'm a senior software engineer with deep expertise in Real-Time Embedded systems and C++.  
-        I develop high-performance industrial solutions, as well as advanced AI applications  
-        that utilize large language models to power chatbots and real-time analytics.
+        I'm a senior software engineer specializing in Real-Time Embedded systems and C++.  
+        I build high-performance industrial solutions and advanced AI applications 
+        that utilize large language models for real-time analytics.
       </p>
       <p>
-        I enjoy contributing to open-source projects on GitHub, sharing insights, and collaborating  
-        with fellow tech enthusiasts. My passion lies in bridging cutting-edge AI with robust  
-        embedded platforms.
+        I enjoy contributing to open-source projects, sharing insights, and collaborating  
+        with fellow tech enthusiasts. My passion lies in bridging advanced AI with robust  
+        embedded platforms to create innovative solutions.
       </p>
     </div>
   </section>
@@ -136,5 +153,13 @@
       <a href="https://www.linkedin.com/in/YOUR_LINKEDIN/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
     </p>
   </footer>
+
+  <script>
+    // GSAP fade in for image & text
+    window.addEventListener("load", () => {
+      gsap.to("#profilePic", { duration: 1, opacity: 1, x: 0 });
+      gsap.to("#aboutText", { duration: 1.2, opacity: 1, delay: 0.5, x: 0 });
+    });
+  </script>
 </body>
 </html>
