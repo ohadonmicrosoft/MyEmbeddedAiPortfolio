@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects - Real-Time Embedded & AI Portfolio</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHq6w3UZd6feIbo56jnWd5OIOyjrM4K2Cw7DwWGb11X8dG4ftN4SLqzZdXGnuImygtv6z1hQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" 
+    rel="stylesheet"
+  >
+  <style>
+    :root {
+      --color-bg: #1f1f2f;
+      --color-primary: #ffcc00;
+      --color-secondary: #ff4d4d; 
+      --color-dark: #111;
+      --color-text: #fff;
+    }
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: 'Rubik', sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #29293d 0%, #1f1f2f 100%);
+      color: var(--color-text);
+      line-height: 1.4;
+    }
+    header {
+      width: 100%;
+      padding: 1rem 2rem;
+      background-color: rgba(31, 31, 47, 0.8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--color-primary);
+      margin: 2rem 0;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+    .project-card {
+      background-color: #2c2c3d;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: transform 0.4s;
+      perspective: 1000px;
+    }
+    .project-card:hover .project-inner {
+      transform: rotateY(8deg);
+    }
+    .project-inner {
+      transition: transform 0.4s;
+      transform-style: preserve-3d;
+    }
+    .project-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .project-content {
+      padding: 1rem;
+      color: #ccc;
+    }
+    .project-content h3 {
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+    .project-content a {
+      color: var(--color-secondary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .project-content a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem 1rem;
+    }
+    footer a {
+      color: var(--color-primary);
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="home.html" class="logo">MyEmbeddedAI</a>
+    <nav>
+      <ul>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="ai-bots.html">AI Bots</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h2>My Projects</h2>
+  <div class="projects-grid">
+    <!-- Project Card 1 -->
+    <div class="project-card">
+      <div class="project-inner">
+        <img
+          class="project-img"
+          src="https://source.unsplash.com/400x200/?robot,embedded"
+          alt="Embedded Robot Project"
+        >
+        <div class="project-content">
+          <h3>Embedded Robot Controller</h3>
+          <p>
+            A real-time C++ controller for an autonomous robot, featuring advanced motion planning.
+          </p>
+          <a href="https://github.com/YOUR_GITHUB_USERNAME/embedded-robot" target="_blank">GitHub Code</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Card 2 -->
+    <div class="project-card">
+      <div class="project-inner">
+        <img
+          class="project-img"
+          src="https://source.unsplash.com/400x200/?artificial-intelligence"
+          alt="AI Chatbot"
+        >
+        <div class="project-content">
+          <h3>AI Chatbot</h3>
+          <p>
+            A chatbot powered by a large language model to handle natural language queries and dialogues.
+          </p>
+          <a href="https://github.com/YOUR_GITHUB_USERNAME/ai-chatbot" target="_blank">GitHub Code</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Card 3 -->
+    <div class="project-card">
+      <div class="project-inner">
+        <img
+          class="project-img"
+          src="https://source.unsplash.com/400x200/?cplusplus"
+          alt="RTOS Monitoring Tool"
+        >
+        <div class="project-content">
+          <h3>RTOS Monitoring Tool</h3>
+          <p>
+            A real-time OS monitoring and analytics tool, displaying CPU usage, tasks, and system metrics.
+          </p>
+          <a href="https://github.com/YOUR_GITHUB_USERNAME/rtos-monitor" target="_blank">GitHub Code</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
+    <p>
+      <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank"><i class="fab fa-github"></i> GitHub</a> |
+      <a href="https://www.linkedin.com/in/YOUR_LINKEDIN/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </p>
+  </footer>
+
+</body>
+</html>
