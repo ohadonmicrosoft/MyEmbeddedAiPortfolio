@@ -16,17 +16,27 @@ A multi-page static website showcasing Real-Time Embedded, C++, and AI projects.
 MyEmbeddedAiPortfolio/
 │
 ├─ README.md
-├─ home.html
+├─ index.html
 ├─ projects.html
 ├─ ai-bots.html
 ├─ about.html
 ├─ contact.html
+├─ assets/
+│  ├─ images/
+│  │  ├─ embedded1.jpg
+│  │  ├─ embedded_robot.jpg
+│  │  ├─ ai_chatbot.jpg
+│  │  ├─ rtos_monitor.jpg
+│  │  ├─ machine_learning.jpg
+│  │  ├─ iot_home_automation.jpg
+│  │  └─ embedded3.jpg
+│  └─ ...
 └─ .gitignore        (optional, if you want to ignore certain files)
 
 ## Pages
 
 1. **Home**  
-   - `home.html`: Hero section with a typing effect, introducing the portfolio.
+   - `index.html`: Hero section with a typing effect, introducing the portfolio.
 2. **Projects**  
    - `projects.html`: Displays various embedded and AI projects with GitHub links.
 3. **AI Bots**  
@@ -42,12 +52,11 @@ To view locally, you can simply open these `.html` files in your web browser, or
 
 ## Deploy on GitHub Pages
 
-1. **Rename** `home.html` to `index.html` (optional if you want it to load automatically at the root).
+1. **Ensure** `index.html` is present at the root for automatic loading.
 2. Commit and push your changes to the `main` (or `master`) branch of GitHub.
 3. Go to your **repo settings** → **Pages** (on the sidebar).
 4. Under "Source," select `main` branch, and the root folder.
 5. Save. GitHub Pages will provide a URL such as `https://your-username.github.io/MyEmbeddedAiPortfolio/`.
-6. **If you didn't rename `home.html` to `index.html`,** you'd access your home page via `https://your-username.github.io/MyEmbeddedAiPortfolio/home.html`.
 
 ## Custom Domain
 
@@ -55,7 +64,7 @@ If you have a custom domain, you can set it up under the same **GitHub Pages** s
 
 ## Further Customization
 
-- **Change images**: The images are pulled from `source.unsplash.com` with keywords. Feel free to replace with your own assets or direct links.
+- **Change images**: The images are stored in the `assets/images/` directory. Feel free to replace with your own assets.
 - **Styling**: The CSS is inline in each file for simplicity. You could refactor into an external `.css` if you prefer.
 - **Form Handling**: The contact form uses a simple JS alert (demo mode). Integrate with a serverless function or third-party service (Netlify forms, Formspree, etc.) for real submissions.
 
@@ -81,6 +90,3 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER 
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
----
