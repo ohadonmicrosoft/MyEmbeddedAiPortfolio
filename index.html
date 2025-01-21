@@ -1,292 +1,250 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Advanced Embedded & AI Portfolio</title>
 
     <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
+    <link 
+      rel="stylesheet" 
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      integrity="sha512-Fo3rlrZj/k7ujTnHq6w3UZd6feIbo56jnWd5OIOyjrM4K2Cw7DwWGb11X8dG4ftN4SLqzZdXGnuImygtv6z1hQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-
+    >
     <!-- Google Fonts -->
     <link 
-      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" 
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" 
       rel="stylesheet"
     >
-
-    <!-- GSAP for animations -->
+    <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <!-- AOS Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
     <style>
       :root {
-        --color-bg-1: #1f1f2f;
-        --color-bg-2: #29293d;
-        --color-bg: linear-gradient(135deg, var(--color-bg-1) 0%, var(--color-bg-2) 100%);
-        --color-primary: #ffcc00;
-        --color-secondary: #ff4d4d;
-        --color-dark: #111;
-        --color-text: #fff;
-        --transition-speed: 0.4s;
-      }
-      /* Light theme */
-      :root.light {
-        --color-bg-1: #eeeeee;
-        --color-bg-2: #cccccc;
-        --color-bg: linear-gradient(135deg, var(--color-bg-1) 0%, var(--color-bg-2) 100%);
-        --color-text: #111;
-        --color-dark: #fff;
+        --primary-color: #ffcc00;
+        --secondary-color: #ff4d4d;
+        --dark-bg: #1f1f2f;
+        --light-text: #fff;
+        --dark-text: #000;
       }
 
-      * {
-        margin: 0; padding: 0;
-        box-sizing: border-box;
-        font-family: 'Rubik', sans-serif;
-      }
       body {
-        background: var(--color-bg);
-        color: var(--color-text);
-        line-height: 1.4;
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: var(--dark-bg);
+        color: var(--light-text);
         overflow-x: hidden;
-        transition: background var(--transition-speed), color var(--transition-speed);
       }
 
-      /* HEADER */
       header {
-        width: 100%;
-        padding: 1rem 2rem;
         position: fixed;
-        top: 0; left: 0;
-        z-index: 999;
+        top: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: rgba(31, 31, 47, 0.8);
-        backdrop-filter: blur(6px);
+        padding: 1rem 2rem;
+        color: var(--light-text);
       }
+
       .logo {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         font-weight: 700;
-        color: var(--color-primary);
+        color: var(--primary-color);
         text-decoration: none;
       }
+
       nav ul {
         list-style: none;
         display: flex;
-        gap: 1.5rem;
-      }
-      nav ul li a {
-        color: var(--color-text);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color var(--transition-speed);
-      }
-      nav ul li a:hover {
-        color: var(--color-primary);
-      }
-      .theme-toggle {
-        cursor: pointer;
-        font-size: 1.2rem;
-        color: var(--color-primary);
-        background: none;
-        border: none;
-        margin-left: 1rem;
+        gap: 1rem;
       }
 
-      /* HERO SECTION */
+      nav ul li a {
+        text-decoration: none;
+        color: var(--light-text);
+        font-size: 1rem;
+        transition: color 0.3s;
+      }
+
+      nav ul li a:hover {
+        color: var(--primary-color);
+      }
+
       .hero {
         height: 100vh;
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
+        align-items: center;
         text-align: center;
-        position: relative;
-        margin-top: 80px; /* offset for fixed header */
-        overflow: hidden;
-      }
-
-      /* Background image */
-      .bg-slideshow {
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        z-index: -1;
-        background-image: url("assets/images/embedded1.jpg");
+        background-image: url('assets/images/embedded1.jpg');
         background-size: cover;
         background-position: center;
-        animation: bgAnimation 20s infinite alternate;
-      }
-
-      @keyframes bgAnimation {
-        0% { transform: scale(1); }
-        100% { transform: scale(1.05); } /* Reduced scale to improve clarity */
+        color: var(--light-text);
+        padding: 0 2rem;
       }
 
       .hero h1 {
-        font-size: 2.8rem;
-        margin-bottom: 1rem;
-        color: var(--color-primary);
-        opacity: 0; /* for GSAP fade-in */
-      }
-      .typing {
-        display: inline-block;
-        border-right: 2px solid var(--color-primary);
-        white-space: nowrap;
-        overflow: hidden;
-        width: 0;
-        animation: typing 4s steps(35, end) 1s 1 normal both, blink 0.8s infinite;
-        font-size: 1.5rem;
-        font-weight: 400;
-        color: #fff;
-        opacity: 0; /* we'll reveal with GSAP */
-      }
-      @keyframes typing {
-        from { width: 0; }
-        to { width: 24ch; }
-      }
-      @keyframes blink {
-        50% { border-color: transparent; }
+        font-size: 3rem;
+        animation: fadeIn 1s ease-in-out;
       }
 
       .hero p {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-        line-height: 1.6;
-        max-width: 700px;
-        opacity: 0;
-      }
-      .cta-btn {
-        display: inline-block;
-        background-color: var(--color-primary);
-        color: var(--color-dark);
-        padding: 0.8rem 1.4rem;
-        border-radius: 4px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: background-color var(--transition-speed), transform var(--transition-speed);
-        opacity: 0;
-      }
-      .cta-btn:hover {
-        background-color: var(--color-secondary);
-        color: #fff;
-        transform: scale(1.05);
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 1rem auto 2rem;
+        animation: fadeIn 2s ease-in-out;
       }
 
-      /* FOOTER */
-      footer {
-        background-color: #111;
-        color: #fff;
-        text-align: center;
-        padding: 1.5rem 1rem;
-        margin-top: 2rem;
+      .cta-btn {
+        padding: 1rem 2rem;
+        background-color: var(--primary-color);
+        border: none;
+        color: var(--dark-text);
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        animation: fadeIn 3s ease-in-out;
       }
+
+      .cta-btn:hover {
+        transform: scale(1.1);
+        background-color: var(--secondary-color);
+        color: var(--light-text);
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .skills-section {
+        background-color: var(--dark-bg);
+        padding: 50px 20px;
+        text-align: center;
+      }
+
+      .skills-section h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+      }
+
+      .skills-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+
+      .skill-card {
+        background: #29293d;
+        border-radius: 8px;
+        padding: 20px;
+        color: var(--light-text);
+        width: 250px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, background-color 0.3s ease;
+      }
+
+      .skill-card:hover {
+        transform: translateY(-10px);
+        background-color: var(--secondary-color);
+        color: var(--light-text);
+      }
+
+      .skill-card h3 {
+        margin: 0.5rem 0;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem;
+        color: var(--light-text);
+        background-color: var(--dark-bg);
+        font-size: 0.9rem;
+      }
+
       footer a {
-        color: var(--color-primary);
+        color: var(--primary-color);
         text-decoration: none;
         margin: 0 0.5rem;
       }
 
-      /* Back to Top Button */
-      .back-to-top {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        background-color: var(--color-primary);
-        color: var(--color-dark);
-        padding: 0.8rem;
-        border-radius: 50%;
-        cursor: pointer;
-        display: none;
-        z-index: 1000;
-        transition: transform var(--transition-speed);
-      }
-      .back-to-top:hover {
-        background-color: var(--color-secondary);
-        color: #fff;
-        transform: scale(1.1);
+      footer a:hover {
+        color: var(--secondary-color);
       }
     </style>
-  </head>
-  <body>
-
-    <!-- HEADER -->
+</head>
+<body>
     <header>
-      <a href="index.html" class="logo">MyEmbeddedAI</a>
-      <nav>
-        <ul>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="ai-bots.html">AI Bots</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <button class="theme-toggle" id="themeToggleBtn"><i class="fas fa-adjust"></i></button>
+        <a href="index.html" class="logo">MyEmbeddedAI</a>
+        <nav>
+            <ul>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="ai-bots.html">AI Bots</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- HERO -->
     <section class="hero">
-      <div class="bg-slideshow"></div>
-
-      <h1 id="heroTitle">Real-Time Embedded, C++ & AI</h1>
-      <div class="typing" id="typingEffect">Welcome to my advanced portfolio!</div>
-      <p id="heroDesc">
-        Experience a robust showcase of real-time embedded projects, C++ mastery,
-        and AI-driven innovations. From cutting-edge robotics to intelligent chatbots,
-        explore the future of technology right here.
-      </p>
-      <a href="projects.html" class="cta-btn" id="ctaBtn">View My Projects</a>
+        <h1>Welcome to My Embedded & AI Portfolio</h1>
+        <p>
+            Explore cutting-edge projects in real-time embedded systems, advanced C++, and AI-powered applications.
+        </p>
+        <button class="cta-btn" onclick="window.location.href='projects.html';">Explore Projects</button>
     </section>
 
-    <button class="back-to-top" id="backToTopBtn"><i class="fas fa-arrow-up"></i></button>
+    <section class="skills-section" data-aos="fade-up">
+        <h2>Skills</h2>
+        <div class="skills-container">
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>Real-Time Systems</h3>
+                <p>Experience in RTOS and low-latency solutions.</p>
+            </div>
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>C++ Expertise</h3>
+                <p>Advanced C++ knowledge for high-performance applications.</p>
+            </div>
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>AI Integration</h3>
+                <p>Designing AI-driven solutions for embedded platforms.</p>
+            </div>
+        </div>
+    </section>
 
     <footer>
-      <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
-      <p>
-        <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank"><i class="fab fa-github"></i> GitHub</a> |
-        <a href="https://www.linkedin.com/in/YOUR_LINKEDIN/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      </p>
+        <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
+        <p>
+          <a href="https://github.com/YOUR_GITHUB" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          |
+          <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </p>
     </footer>
 
     <script>
-      // GSAP Fade-In
+      // GSAP Animation
       window.addEventListener("DOMContentLoaded", () => {
-        gsap.to("#heroTitle", { duration: 1, opacity: 1, y: -10 });
-        gsap.to("#typingEffect", { duration: 1, opacity: 1, delay: 1 });
-        gsap.to("#heroDesc", { duration: 1, opacity: 1, delay: 2, y: -5 });
-        gsap.to("#ctaBtn", { duration: 1, opacity: 1, delay: 3, y: -5 });
+        gsap.fromTo(".hero h1", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 1 });
+        gsap.fromTo(".hero p", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.5 });
+        gsap.fromTo(".cta-btn", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 2 });
       });
 
-      // Theme Toggle
-      const themeToggleBtn = document.getElementById("themeToggleBtn");
-      themeToggleBtn.addEventListener("click", () => {
-        document.documentElement.classList.toggle("light");
-        localStorage.setItem('theme', document.documentElement.classList.contains('light') ? 'light' : 'dark');
-      });
-
-      // Load theme from localStorage
-      window.addEventListener('load', () => {
-        if (localStorage.getItem('theme') === 'light') {
-          document.documentElement.classList.add('light');
-        }
-      });
-
-      // Back to Top Button
-      const backToTopBtn = document.getElementById("backToTopBtn");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 300) {
-          backToTopBtn.style.display = "block";
-        } else {
-          backToTopBtn.style.display = "none";
-        }
-      });
-      backToTopBtn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+      // AOS Initialization
+      AOS.init();
     </script>
-  </body>
+</body>
 </html>

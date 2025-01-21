@@ -1,233 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Advanced Embedded & AI Portfolio</title>
 
-    <link
-      rel="stylesheet"
+    <!-- Font Awesome -->
+    <link 
+      rel="stylesheet" 
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     >
+    <!-- Google Fonts -->
     <link 
-      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" 
       rel="stylesheet"
     >
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <!-- AOS Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
     <style>
       :root {
-        --color-bg-1: #1f1f2f;
-        --color-bg-2: #29293d;
-        --color-bg: linear-gradient(135deg, var(--color-bg-1) 0%, var(--color-bg-2) 100%);
-        --color-primary: #ffcc00;
-        --color-secondary: #ff4d4d; 
-        --color-text: #fff;
-      }
-      * {
-        margin: 0; padding: 0; box-sizing: border-box;
-        font-family: 'Rubik', sans-serif;
-      }
-      body {
-        background: var(--color-bg);
-        color: var(--color-text);
-        line-height: 1.4;
-        overflow-x: hidden;
-        scroll-behavior: smooth;
-        animation: bgFadeIn 2s ease-in-out;
+        --primary-color: #ffcc00;
+        --secondary-color: #ff4d4d;
+        --dark-bg: #1f1f2f;
+        --light-text: #fff;
+        --dark-text: #000;
       }
 
-      @keyframes bgFadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+      body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: var(--dark-bg);
+        color: var(--light-text);
+        overflow-x: hidden;
       }
 
       header {
+        position: fixed;
+        top: 0;
         width: 100%;
-        padding: 1rem 2rem;
-        background-color: rgba(31,31,47,0.8);
-        backdrop-filter: blur(6px);
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        position: fixed;
-        top: 0; left: 0;
-        z-index: 999;
-        width: 100%;
+        padding: 1rem 2rem;
+        color: var(--light-text);
       }
+
       .logo {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         font-weight: 700;
-        color: var(--color-primary);
+        color: var(--primary-color);
         text-decoration: none;
       }
+
       nav ul {
         list-style: none;
         display: flex;
-        gap: 1.5rem;
-      }
-      nav ul li a {
-        color: #fff;
-        text-decoration: none;
-        font-weight: 500;
+        gap: 1rem;
       }
 
-      #contactSection {
-        padding: 4rem 2rem;
+      nav ul li a {
+        text-decoration: none;
+        color: var(--light-text);
+        font-size: 1rem;
+        transition: color 0.3s;
+      }
+
+      nav ul li a:hover {
+        color: var(--primary-color);
+      }
+
+      .contact-section {
+        padding: 100px 20px;
         max-width: 600px;
         margin: 0 auto;
-        margin-top: 80px; /* offset */
-      }
-      #contactSection h2 {
         text-align: center;
-        font-size: 2rem;
-        color: var(--color-primary);
-        margin-bottom: 1.5rem;
-        opacity: 0; /* for GSAP */
       }
 
-      .contact-form {
+      .contact-section h1 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .contact-section form {
+        margin-top: 2rem;
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        opacity: 0; /* for GSAP */
       }
-      .contact-form label {
-        font-weight: 600;
-        color: #ccc;
-      }
-      .contact-form input,
-      .contact-form textarea {
+
+      .contact-section input,
+      .contact-section textarea {
+        width: 100%;
         padding: 0.8rem;
-        border: 1px solid #444;
-        border-radius: 4px;
-        background-color: #2c2c3d;
-        color: #fff;
-        font-family: inherit;
-      }
-      .contact-form button {
-        background-color: var(--color-primary);
-        color: #111;
-        padding: 0.8rem;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
         font-size: 1rem;
-        font-weight: 600;
-        transition: background-color 0.4s, color 0.4s, transform 0.4s;
+        border: 1px solid #444;
+        border-radius: 5px;
+        background: #2c2c3d;
+        color: var(--light-text);
       }
-      .contact-form button:hover {
-        background-color: var(--color-secondary);
-        color: #fff;
+
+      .contact-section button {
+        padding: 0.8rem;
+        font-size: 1rem;
+        background-color: var(--primary-color);
+        color: var(--dark-text);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+      }
+
+      .contact-section button:hover {
         transform: scale(1.05);
+        background-color: var(--secondary-color);
+        color: var(--light-text);
       }
 
       footer {
-        background-color: #111;
-        color: #fff;
         text-align: center;
-        padding: 1.5rem 1rem;
-        margin-top: 2rem;
+        padding: 2rem;
+        color: var(--light-text);
+        background-color: var(--dark-bg);
+        font-size: 0.9rem;
       }
+
       footer a {
-        color: var(--color-primary);
+        color: var(--primary-color);
         text-decoration: none;
         margin: 0 0.5rem;
       }
 
-      .back-to-top {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        background-color: var(--color-primary);
-        color: var(--color-dark);
-        padding: 0.8rem;
-        border-radius: 50%;
-        cursor: pointer;
-        display: none;
-        z-index: 1000;
-        transition: transform 0.4s;
-      }
-      .back-to-top:hover {
-        background-color: var(--color-secondary);
-        color: #fff;
-        transform: scale(1.1);
+      footer a:hover {
+        color: var(--secondary-color);
       }
     </style>
-  </head>
-  <body>
-
+</head>
+<body>
     <header>
-      <a href="index.html" class="logo">MyEmbeddedAI</a>
-      <nav>
-        <ul>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="ai-bots.html">AI Bots</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+        <a href="index.html" class="logo">MyEmbeddedAI</a>
+        <nav>
+            <ul>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="ai-bots.html">AI Bots</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section id="contactSection">
-      <h2>Contact</h2>
-      <form class="contact-form" onsubmit="return handleFormSubmit(event)">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="Enter your name..." required>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="name@example.com" required>
-
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="5" placeholder="How can I help?" required></textarea>
-
-        <button type="submit">Send</button>
-      </form>
+    <section class="contact-section" data-aos="fade-up">
+        <h1>Contact Me</h1>
+        <form id="contactForm" onsubmit="return handleFormSubmit(event)">
+            <input type="text" name="name" id="name" placeholder="Your Name" required>
+            <input type="email" name="email" id="email" placeholder="Your Email" required>
+            <textarea name="message" id="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
     </section>
 
-    <button class="back-to-top" id="backToTopBtn"><i class="fas fa-arrow-up"></i></button>
-
     <footer>
-      <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
-      <p>
-        <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank"><i class="fab fa-github"></i> GitHub</a> |
-        <a href="https://www.linkedin.com/in/YOUR_LINKEDIN/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      </p>
+        <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
+        <p>
+          <a href="https://github.com/YOUR_GITHUB" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          |
+          <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </p>
     </footer>
 
     <script>
-      // GSAP: Fade/slide in the Contact heading and form
-      window.addEventListener("load", () => {
-        gsap.to("#contactSection h2", { duration: 1, opacity: 1, y: -10 });
-        gsap.to(".contact-form", { duration: 1, opacity: 1, delay: 0.5, y: -10 });
-      });
+      // Handle Form Submission
+      function handleFormSubmit(event) {
+        event.preventDefault();
 
-      function handleFormSubmit(e) {
-        e.preventDefault();
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const message = document.getElementById('message').value.trim();
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
 
         if (name && email && message) {
-          alert(`Thank you, ${name}!\nYour message was sent (demo mode).`);
-          e.target.reset();
+          alert(`Thank you, ${name}!\nYour message has been sent.`);
+          document.getElementById("contactForm").reset();
+        } else {
+          alert("Please fill out all fields.");
         }
-        return false;
       }
 
-      // Back to Top Button
-      const backToTopBtn = document.getElementById("backToTopBtn");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 300) {
-          backToTopBtn.style.display = "block";
-        } else {
-          backToTopBtn.style.display = "none";
-        }
-      });
-      backToTopBtn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+      // GSAP Animation
+      gsap.from(".contact-section h1", { opacity: 0, y: -50, duration: 1 });
+      gsap.from(".contact-section form", { opacity: 0, y: 50, duration: 1, delay: 0.5 });
+
+      // AOS Initialization
+      AOS.init();
     </script>
-  </body>
+</body>
 </html>

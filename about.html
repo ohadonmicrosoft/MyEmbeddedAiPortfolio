@@ -1,199 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Advanced Embedded & AI Portfolio</title>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    >
-    <link 
-      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
-      rel="stylesheet"
-    >
-    <!-- GSAP for animations -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <!-- AOS Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
     <style>
       :root {
-        --color-bg: #1f1f2f;
-        --color-primary: #ffcc00;
-        --color-secondary: #ff4d4d;
-        --color-text: #fff;
+        --primary-color: #ffcc00;
+        --secondary-color: #ff4d4d;
+        --dark-bg: #1f1f2f;
+        --light-text: #fff;
       }
-      * {
-        margin: 0; padding: 0; box-sizing: border-box;
-        font-family: 'Rubik', sans-serif;
-      }
+
       body {
-        background-color: var(--color-bg);
-        color: var(--color-text);
-        line-height: 1.4;
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: var(--dark-bg);
+        color: var(--light-text);
         overflow-x: hidden;
       }
+
       header {
+        position: fixed;
+        top: 0;
         width: 100%;
-        padding: 1rem 2rem;
-        background-color: rgba(31,31,47,0.8);
-        backdrop-filter: blur(6px);
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        position: fixed;
-        top: 0; left: 0;
-        z-index: 999;
-        width: 100%;
+        padding: 1rem 2rem;
+        color: var(--light-text);
       }
+
       .logo {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         font-weight: 700;
-        color: var(--color-primary);
+        color: var(--primary-color);
         text-decoration: none;
       }
+
       nav ul {
         list-style: none;
         display: flex;
-        gap: 1.5rem;
-      }
-      nav ul li a {
-        color: #fff;
-        text-decoration: none;
-        font-weight: 500;
+        gap: 1rem;
       }
 
-      .about-container {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-        max-width: 1200px;
+      nav ul li a {
+        text-decoration: none;
+        color: var(--light-text);
+        font-size: 1rem;
+        transition: color 0.3s;
+      }
+
+      nav ul li a:hover {
+        color: var(--primary-color);
+      }
+
+      .about-section {
+        padding: 100px 20px;
+        max-width: 900px;
         margin: 0 auto;
-        padding: 4rem 2rem;
-        margin-top: 80px; /* offset for header */
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        backdrop-filter: blur(10px);
+        text-align: center;
       }
-      .about-container img {
-        width: 300px; height: 300px;
+
+      .about-section img {
+        width: 200px;
+        height: 200px;
         border-radius: 50%;
-        object-fit: cover;
-        box-shadow: 0 0 10px rgba(0,0,0,0.5);
-        opacity: 0; /* for GSAP */
-        transition: transform 0.3s ease-in-out;
+        margin-bottom: 1rem;
+        transition: transform 0.3s ease;
       }
-      .about-container img:hover {
+
+      .about-section img:hover {
         transform: scale(1.1);
       }
-      .about-text {
-        flex: 1;
-        min-width: 280px;
-        color: #ddd;
-        opacity: 0; /* for GSAP */
-        transform: translateY(20px);
+
+      .about-section h1 {
+        font-size: 2rem;
+        color: var(--primary-color);
       }
-      .about-text h2 {
-        font-size: 2.5rem;
-        color: var(--color-primary);
-        margin-bottom: 1rem;
-        position: relative;
+
+      .about-section p {
+        line-height: 1.8;
+        font-size: 1rem;
+        margin: 1rem 0;
       }
-      .about-text h2::after {
-        content: '';
-        width: 50px;
-        height: 4px;
-        background: var(--color-secondary);
-        position: absolute;
-        left: 0;
-        bottom: -10px;
+
+      .timeline {
+        margin: 2rem 0;
+        border-left: 2px solid var(--primary-color);
+        padding-left: 2rem;
       }
-      .about-text p {
-        margin-bottom: 1rem;
-        line-height: 1.5;
-        text-align: justify;
+
+      .timeline-event {
+        margin: 1.5rem 0;
       }
-      .about-text p::first-letter {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: var(--color-secondary);
+
+      .timeline-event h3 {
+        margin: 0.5rem 0;
+        color: var(--secondary-color);
       }
-      .about-text p:last-child {
-        margin-bottom: 0;
+
+      .timeline-event p {
+        margin: 0;
+        font-size: 0.9rem;
       }
 
       footer {
-        background-color: #111;
-        color: #fff;
         text-align: center;
-        padding: 1.5rem 1rem;
-        margin-top: 2rem;
-        border-top: 2px solid var(--color-primary);
+        padding: 2rem;
+        color: var(--light-text);
+        background-color: var(--dark-bg);
+        font-size: 0.9rem;
       }
+
       footer a {
-        color: var(--color-primary);
+        color: var(--primary-color);
         text-decoration: none;
         margin: 0 0.5rem;
-        transition: color 0.3s;
       }
+
       footer a:hover {
-        color: var(--color-secondary);
+        color: var(--secondary-color);
       }
     </style>
-  </head>
-  <body>
-
+</head>
+<body>
     <header>
-      <a href="index.html" class="logo">MyEmbeddedAI</a>
-      <nav>
-        <ul>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="ai-bots.html">AI Bots</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+        <a href="index.html" class="logo">MyEmbeddedAI</a>
+        <nav>
+            <ul>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="ai-bots.html">AI Bots</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section class="about-container">
-      <img
-      id="profilePic"
-      class="project-img"
-      src="assets/images/embedded3.jpg"
-      alt="Embedded Robot Project"
-      >
-      <div class="about-text" id="aboutText">
-        <h2>About Me</h2>
+    <section class="about-section" data-aos="fade-up">
+        <img src="assets/images/profile.jpg" alt="Profile Picture">
+        <h1>About Me</h1>
         <p>
-          I'm a senior software engineer specializing in Real-Time Embedded systems and C++.  
-          I build high-performance industrial solutions and advanced AI applications 
-          that utilize large language models for real-time analytics.
+            I am a senior software engineer specializing in real-time embedded systems, advanced C++ programming, and AI integrations.
+            My passion lies in building innovative solutions that merge high-performance computing with cutting-edge AI technologies.
         </p>
-        <p>
-          I enjoy contributing to open-source projects, sharing insights, and collaborating  
-          with fellow tech enthusiasts. My passion lies in bridging advanced AI with robust  
-          embedded platforms to create innovative solutions.
-        </p>
-      </div>
+    </section>
+
+    <section class="timeline" data-aos="fade-up">
+        <div class="timeline-event" data-aos="fade-right" data-aos-delay="100">
+            <h3>2015 - Began Career</h3>
+            <p>Started as a junior developer, focusing on embedded systems and robotics projects.</p>
+        </div>
+        <div class="timeline-event" data-aos="fade-right" data-aos-delay="200">
+            <h3>2018 - AI Integration</h3>
+            <p>Developed my first AI-powered project, integrating natural language processing with embedded platforms.</p>
+        </div>
+        <div class="timeline-event" data-aos="fade-right" data-aos-delay="300">
+            <h3>2022 - Senior Engineer</h3>
+            <p>Led multiple large-scale projects in the AI and embedded domain, mentoring junior developers.</p>
+        </div>
     </section>
 
     <footer>
-      <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
-      <p>
-        <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank"><i class="fab fa-github"></i> GitHub</a> |
-        <a href="https://www.linkedin.com/in/YOUR_LINKEDIN/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      </p>
+        <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
+        <p>
+          <a href="https://github.com/YOUR_GITHUB" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          |
+          <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </p>
     </footer>
 
     <script>
-      // GSAP fade in for image & text
-      window.addEventListener("load", () => {
-        gsap.to("#profilePic", { duration: 1, opacity: 1, x: 0 });
-        gsap.to("#aboutText", { duration: 1.2, opacity: 1, delay: 0.5, y: 0 });
-      });
+      // GSAP Animation
+      gsap.from(".about-section img", { opacity: 0, scale: 0.5, duration: 1, ease: "bounce" });
+      gsap.from(".about-section h1", { opacity: 0, y: -50, duration: 1.5, delay: 0.5 });
+      gsap.from(".about-section p", { opacity: 0, y: 50, duration: 1, delay: 1 });
+
+      // AOS Initialization
+      AOS.init();
     </script>
-  </body>
+</body>
 </html>
