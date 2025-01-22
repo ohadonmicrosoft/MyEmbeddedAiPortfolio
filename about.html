@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>About - Advanced Embedded & AI Portfolio</title>
+  <title>About - MyEmbeddedAI Portfolio</title>
 
   <!-- Font Awesome -->
-  <link 
-    rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  >
-  <!-- Google Fonts -->
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" 
+  <link
     rel="stylesheet"
-  >
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-  <!-- AOS Library -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- AOS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+  />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
   <style>
@@ -27,131 +28,150 @@
       --secondary-color: #ff4d4d;
       --dark-bg: #1f1f2f;
       --light-text: #fff;
+      --menu-width: 230px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
     }
     body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
       background: var(--dark-bg);
       color: var(--light-text);
       overflow-x: hidden;
-      padding-top: 70px; 
+      margin: 0;
+      padding: 0;
     }
 
-    /* ===== HEADER / NAVBAR ===== */
-    header {
+    /* SIDEBAR */
+    .sidebar {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      background: linear-gradient(135deg, #2a2a3b 0%, #3e3e5a 100%);
+      top: 0;
+      left: 0;
+      width: var(--menu-width);
+      height: 100vh;
+      background: linear-gradient(135deg, #2a2a3b, #3e3e5a);
+      padding: 1rem;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
       z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transform: translateX(0);
+      transition: transform 0.4s ease;
     }
-    .logo {
-      font-size: 1.7rem;
+    .sidebar .logo {
+      display: block;
+      color: var(--primary-color);
+      font-size: 1.8rem;
       font-weight: 700;
-      color: var(--primary-color);
       text-decoration: none;
-      transition: transform 0.3s;
-    }
-    .logo:hover {
-      transform: scale(1.1);
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0; padding: 0;
-    }
-    nav ul li a {
-      position: relative;
-      text-decoration: none;
-      color: var(--light-text);
-      font-size: 1.1rem;
-      padding-bottom: 4px;
-      transition: color 0.3s, transform 0.3s;
-    }
-    nav ul li a:hover,
-    nav ul li a:focus {
-      color: var(--primary-color);
-      transform: scale(1.05);
-      outline: none;
-    }
-
-    /* ===== ABOUT SECTION ===== */
-    .about-section {
-      padding: 80px 20px;
-      max-width: 900px;
-      margin: 0 auto;
+      margin-bottom: 2rem;
       text-align: center;
     }
-    .about-section picture {
-      display: inline-block;
-      margin-bottom: 1.5rem;
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
-    .about-section picture img {
+    .sidebar ul li {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .sidebar ul li a {
+      color: var(--light-text);
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .sidebar ul li a:hover {
+      color: var(--primary-color);
+      transform: scale(1.05);
+    }
+
+    .toggle-btn {
+      display: none;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1100;
+    }
+
+    .main-content {
+      margin-left: var(--menu-width);
+      transition: margin-left 0.4s ease;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    /* ABOUT SECTION + CV SUMMARY */
+    .about-profile {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .about-profile img {
       width: 200px;
       height: 200px;
       object-fit: cover;
       border-radius: 50%;
-      transition: transform 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
     }
-    .about-section picture img:hover {
-      transform: scale(1.08);
+    .about-profile img:hover {
+      transform: scale(1.05);
     }
-    .about-section h1 {
-      font-size: 2.3rem;
+    .about-title {
+      font-size: 2rem;
       color: var(--primary-color);
+      margin-top: 1rem;
       margin-bottom: 1rem;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+      text-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
-    .about-section p {
+    .about-text {
+      max-width: 700px;
+      margin: 0 auto;
       line-height: 1.8;
-      font-size: 1.05rem;
-      margin: 1rem auto;
-      max-width: 700px;
+      font-size: 1rem;
       color: #f0f0f0;
-    }
-
-    .timeline {
-      margin: 2rem auto;
-      border-left: 3px dashed var(--primary-color);
-      padding-left: 2rem;
-      max-width: 700px;
-      text-align: left;
-      position: relative;
-    }
-    .timeline-event {
-      margin: 1.5rem 0;
-      padding-left: 1rem;
-      border-left: 2px solid var(--secondary-color);
-    }
-    .timeline-event h3 {
-      margin: 0.5rem 0;
-      color: var(--secondary-color);
-      font-size: 1.2rem;
-    }
-    .timeline-event p {
-      margin: 0;
-      font-size: 0.95rem;
-      color: #e0e0e0;
-    }
-
-    /* ===== VIDEO SECTION ===== */
-    .video-section {
-      max-width: 800px;
-      margin: 2rem auto;
+      margin-bottom: 2rem;
       text-align: center;
     }
-    .video-section h2 {
-      color: var(--primary-color);
+
+    .cv-summary {
+      background: #2c2c4f;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      margin-bottom: 2rem;
+      max-width: 800px;
+      margin: 0 auto 2rem auto;
+    }
+    .cv-summary h3 {
+      color: var(--secondary-color);
       margin-bottom: 1rem;
-      font-size: 1.6rem;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+      font-size: 1.3rem;
+      text-align: center;
+    }
+    .cv-summary p {
+      margin-bottom: 0.8rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* VIDEO SECTION */
+    .video-section {
+      text-align: center;
+      max-width: 800px;
+      margin: 2rem auto;
+    }
+    .video-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      text-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
     .video-wrapper {
       position: relative;
@@ -160,7 +180,8 @@
     }
     .video-wrapper iframe {
       position: absolute;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       border: none;
@@ -171,9 +192,10 @@
       text-align: center;
       padding: 2rem;
       color: var(--light-text);
-      background: linear-gradient(135deg, #1b1b2b 0%, #1f1f2f 100%);
+      background: linear-gradient(135deg, #1b1b2b, #1f1f2f);
       font-size: 0.95rem;
-      box-shadow: 0 -4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.4);
+      margin-top: 2rem;
     }
     footer a {
       color: var(--primary-color);
@@ -188,86 +210,123 @@
       transform: scale(1.1);
       outline: none;
     }
+
+    /* MEDIA QUERIES */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+      .sidebar.show {
+        transform: translateX(0);
+      }
+      .main-content {
+        margin-left: 0;
+      }
+      .toggle-btn {
+        display: block;
+      }
+
+      .about-title {
+        font-size: 1.6rem;
+      }
+      .video-section h2 {
+        font-size: 1.4rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <header>
+  <button class="toggle-btn" id="toggleBtn">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <aside class="sidebar" id="sidebar">
     <a class="logo" href="index.html">MyEmbeddedAI</a>
-    <nav role="navigation" aria-label="Main navigation">
-      <ul>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="ai-bots.html">AI Bots</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <ul>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="ai-bots.html">AI Bots</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </aside>
 
-  <section class="about-section" data-aos="fade-up">
-    <picture>
-      <!-- Local image reference -->
-      <img 
-        src="assets/images/profile.jpg" 
-        alt="Profile Picture" 
-        loading="lazy"
-      >
-    </picture>
-    <h1>About Me</h1>
-    <p>
-      I am a senior software engineer specializing in real-time embedded systems, 
-      advanced C++ programming, and AI integrations. My passion lies in building 
-      innovative solutions that merge high-performance computing with cutting-edge 
-      AI technologies.
-    </p>
-  </section>
+  <div class="main-content" id="mainContent">
+    <section class="about-profile" data-aos="fade-up">
+      <img src="assets/images/profile.jpg" alt="Profile Picture" />
+      <h1 class="about-title">About Me</h1>
+      <p class="about-text">
+        I am a senior software engineer specializing in real-time embedded systems,
+        advanced C++ programming, and AI integrations. My passion lies in building
+        innovative solutions that merge high-performance computing with cutting-edge
+        AI technologies.
+      </p>
+    </section>
 
-  <section class="timeline" data-aos="fade-up">
-    <div class="timeline-event" data-aos="fade-right" data-aos-delay="100">
-      <h3>2015 - Began Career</h3>
-      <p>Started as a junior developer, focusing on embedded systems and robotics projects.</p>
-    </div>
-    <div class="timeline-event" data-aos="fade-right" data-aos-delay="200">
-      <h3>2018 - AI Integration</h3>
-      <p>Developed my first AI-powered project, integrating natural language processing with embedded platforms.</p>
-    </div>
-    <div class="timeline-event" data-aos="fade-right" data-aos-delay="300">
-      <h3>2022 - Senior Engineer</h3>
-      <p>Led multiple large-scale projects in the AI and embedded domain, mentoring junior developers.</p>
-    </div>
-  </section>
+    <!-- CV SUMMARY (In English) -->
+    <section class="cv-summary" data-aos="fade-up">
+      <h3>Professional Experience & Background</h3>
+      <p><strong>Senior Software Engineer, Cymotive Technologies (2021–Present):</strong><br/>
+        Leading an Intrusion Detection System (IDS) team, boosting vehicle cybersecurity by 30%,
+        guiding five engineers in embedded software solutions and system architecture decisions.
+        Delivered end-to-end development cycles, from requirements to deployment, collaborating
+        across cross-functional teams.</p>
 
-  <section class="video-section" data-aos="fade-up">
-    <h2>Featured Demo Video</h2>
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/VIDEO_ID" 
-        title="YouTube demo"
-        allowfullscreen
-        loading="lazy"
-      ></iframe>
-    </div>
-  </section>
+      <p><strong>Software Developer, Brodmann17 (2019–2021):</strong><br/>
+        Designed and optimized software systems embedding deep-learning models into resource-constrained edge devices,
+        improving performance efficiency by 20%. Collaborated with research teams to integrate advanced machine learning
+        algorithms into embedded platforms.</p>
 
-  <footer>
-    <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
-    <p>
-      <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
-        <i class="fab fa-github"></i> GitHub
-      </a> |
-      <a href="https://www.linkedin.com/in/ohad-alon" target="_blank">
-        <i class="fab fa-linkedin"></i> LinkedIn
-      </a>
-    </p>
-  </footer>
+      <p><strong>Real-Time Embedded Engineer, Ceragon Networks (2016–2019):</strong><br/>
+        Developed next-gen mobile backhaul platforms, achieving 15% increase in data throughput.
+        Gained expertise in RTOS and real-time optimizations (CPU/memory). Collaborated with cross-functional
+        teams to deliver end-to-end embedded solutions.</p>
+
+      <p><strong>Military Service, IDF (2002–2007):</strong><br/>
+        Served as an officer in the Combat Engineering Corps, advancing to company-level command
+        (605th Company) and honing leadership and teamwork skills.</p>
+
+      <p><strong>Education & Skills:</strong><br/>
+        B.Sc. in Electrical & Electronics Engineering (Dean's Honor), focusing on
+        real-time communication systems. Advanced software training in real-time
+        embedded development, multicore programming, and C++ design principles.
+      </p>
+    </section>
+
+    <!-- YouTube VIDEO about AI -->
+    <section class="video-section" data-aos="fade-up">
+      <h2>Check Out This AI Insights Video</h2>
+      <div class="video-wrapper">
+        <!-- REPLACE with any AI video you prefer -->
+        <iframe
+          src="https://www.youtube.com/embed/ZMUDf8exQD4"
+          title="AI Video Demo"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
+      <p>
+        <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a> |
+        <a href="https://www.linkedin.com/in/ohad-alon" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+      </p>
+    </footer>
+  </div>
 
   <script>
-    // GSAP Animation
-    gsap.from(".about-section picture img", { opacity: 0, scale: 0.5, duration: 1, ease: "bounce" });
-    gsap.from(".about-section h1", { opacity: 0, y: -50, duration: 1.5, delay: 0.5 });
-    gsap.from(".about-section p", { opacity: 0, y: 50, duration: 1, delay: 1 });
-
-    // AOS Initialization
     AOS.init();
+
+    const toggleBtn = document.getElementById("toggleBtn");
+    const sidebar = document.getElementById("sidebar");
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("show");
+    });
   </script>
 </body>
 </html>
