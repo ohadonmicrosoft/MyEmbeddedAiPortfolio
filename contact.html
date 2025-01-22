@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Contact - Advanced Embedded & AI Portfolio</title>
+  <title>Contact - MyEmbeddedAI Portfolio</title>
 
   <!-- Font Awesome -->
-  <link 
-    rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  >
-  <!-- Google Fonts -->
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" 
+  <link
     rel="stylesheet"
-  >
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- AOS Library -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-  <!-- AOS Library -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
   <style>
     :root {
@@ -28,78 +31,116 @@
       --dark-bg: #1f1f2f;
       --light-text: #fff;
       --dark-text: #000;
+      --menu-width: 230px;
     }
 
-    body {
+    * {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
       background: var(--dark-bg);
       color: var(--light-text);
       overflow-x: hidden;
-      padding-top: 70px;
+      padding: 0;
+      margin: 0;
     }
 
-    /* ===== NAVBAR / HEADER ===== */
-    header {
+    /* SIDEBAR */
+    .sidebar {
       position: fixed;
       top: 0; left: 0;
-      width: 100%;
+      width: var(--menu-width);
+      height: 100vh;
       background: linear-gradient(135deg, #2a2a3b, #3e3e5a);
+      padding: 1rem;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
       z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transform: translateX(0);
+      transition: transform 0.4s ease;
     }
     .logo {
-      font-size: 1.7rem;
-      font-weight: 700;
+      display: block;
       color: var(--primary-color);
+      font-size: 1.8rem;
+      font-weight: 700;
       text-decoration: none;
-      transition: transform 0.3s;
+      margin-bottom: 2rem;
+      text-align: center;
     }
-    .logo:hover {
-      transform: scale(1.1);
-    }
-    nav ul {
+    .sidebar ul {
       list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0; padding: 0;
+      padding: 0; margin: 0;
+      text-align: center;
     }
-    nav ul li a {
-      position: relative;
-      text-decoration: none;
+    .sidebar ul li {
+      margin-bottom: 1.5rem;
+    }
+    .sidebar ul li a {
       color: var(--light-text);
+      text-decoration: none;
       font-size: 1.1rem;
       transition: color 0.3s, transform 0.3s;
-      padding-bottom: 4px;
     }
-    nav ul li a:hover,
-    nav ul li a:focus {
+    .sidebar ul li a:hover {
       color: var(--primary-color);
       transform: scale(1.05);
-      outline: none;
+    }
+    .toggle-btn {
+      display: none;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      background: none;
+      border: none;
+      z-index: 1100;
+      cursor: pointer;
+    }
+
+    .main-content {
+      margin-left: var(--menu-width);
+      transition: margin-left 0.4s ease;
+      min-height: 100vh;
+      padding: 2rem;
+      background: url("assets/images/profile.jpg") center center / cover no-repeat;
+      background-attachment: fixed;
+      position: relative;
+    }
+    /* OVERLAY FOR CONTACT BACKGROUND */
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: -1;
     }
 
     .contact-section {
-      padding: 100px 20px;
       max-width: 600px;
       margin: 0 auto;
       text-align: center;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
     }
     .contact-section h1 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       color: var(--primary-color);
       margin-bottom: 1.2rem;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.4);
     }
     .contact-section form {
       margin-top: 2rem;
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
+      gap: 1rem;
     }
     .contact-section input,
     .contact-section textarea {
@@ -145,6 +186,7 @@
       background: linear-gradient(135deg, #1b1b2b, #1f1f2f);
       font-size: 0.95rem;
       box-shadow: 0 -4px 12px rgba(0,0,0,0.4);
+      margin-top: 2rem;
     }
     footer a {
       color: var(--primary-color);
@@ -160,8 +202,21 @@
       outline: none;
     }
 
-    /* ===== MEDIA QUERIES ===== */
+    /* MEDIA QUERIES */
     @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+      .sidebar.show {
+        transform: translateX(0);
+      }
+      .main-content {
+        margin-left: 0;
+      }
+      .toggle-btn {
+        display: block;
+      }
+
       .contact-section h1 {
         font-size: 1.8rem;
       }
@@ -169,66 +224,78 @@
   </style>
 </head>
 <body>
-  <header>
+  <button class="toggle-btn" id="toggleBtn">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <aside class="sidebar" id="sidebar">
     <a class="logo" href="index.html">MyEmbeddedAI</a>
-    <nav role="navigation" aria-label="Main navigation">
-      <ul>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="ai-bots.html">AI Bots</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <ul>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="ai-bots.html">AI Bots</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </aside>
 
-  <section class="contact-section" data-aos="fade-up">
-    <h1>Contact Me</h1>
-    <form id="contactForm" onsubmit="return handleFormSubmit(event)" aria-label="Contact form">
-      <input 
-        type="text" 
-        name="name" 
-        id="name" 
-        placeholder="Your Name" 
-        required 
-        aria-label="Your Name"
-      >
-      <input 
-        type="email" 
-        name="email" 
-        id="email" 
-        placeholder="Your Email" 
-        required 
-        aria-label="Your Email"
-      >
-      <textarea 
-        name="message" 
-        id="message" 
-        rows="5" 
-        placeholder="Your Message" 
-        required 
-        aria-label="Your Message"
-      ></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+  <div class="main-content" id="mainContent">
+    <div class="overlay"></div>
+    <section class="contact-section" data-aos="fade-up">
+      <h1>Contact Me</h1>
+      <form id="contactForm" onsubmit="return handleFormSubmit(event)" aria-label="Contact form">
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Your Name"
+          required
+          aria-label="Your Name"
+        />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Your Email"
+          required
+          aria-label="Your Email"
+        />
+        <textarea
+          name="message"
+          id="message"
+          rows="5"
+          placeholder="Your Message"
+          required
+          aria-label="Your Message"
+        ></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
 
-  <footer>
-    <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
-    <p>
-      <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
-        <i class="fab fa-github"></i> GitHub
-      </a> |
-      <a href="https://www.linkedin.com/in/ohad-alon" target="_blank">
-        <i class="fab fa-linkedin"></i> LinkedIn
-      </a>
-    </p>
-  </footer>
+    <footer>
+      <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
+      <p>
+        <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a> |
+        <a href="https://www.linkedin.com/in/ohad-alon" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+      </p>
+    </footer>
+  </div>
 
   <script>
-    // Handle Form Submission
+    AOS.init();
+
+    // Toggle for Mobile
+    const toggleBtn = document.getElementById("toggleBtn");
+    const sidebar = document.getElementById("sidebar");
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("show");
+    });
+
     function handleFormSubmit(event) {
       event.preventDefault();
-
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const message = document.getElementById("message").value.trim();
@@ -241,13 +308,6 @@
       }
       return false;
     }
-
-    // GSAP Animation
-    gsap.from(".contact-section h1", { opacity: 0, y: -50, duration: 1 });
-    gsap.from(".contact-section form", { opacity: 0, y: 50, duration: 1, delay: 0.5 });
-
-    // AOS Initialization
-    AOS.init();
   </script>
 </body>
 </html>
