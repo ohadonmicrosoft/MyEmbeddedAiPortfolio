@@ -31,6 +31,10 @@ MyEmbeddedAiPortfolio/
 │  │  ├─ iot_home_automation.jpg
 │  │  └─ embedded3.jpg
 │  └─ ...
+├─ css/
+│  └─ style.css
+├─ js/
+│  └─ main.js
 └─ .gitignore        (optional, if you want to ignore certain files)
 
 ## Pages
@@ -65,7 +69,7 @@ If you have a custom domain, you can set it up under the same **GitHub Pages** s
 ## Further Customization
 
 - **Change images**: The images are stored in the `assets/images/` directory. Feel free to replace with your own assets.
-- **Styling**: The CSS is inline in each file for simplicity. You could refactor into an external `.css` if you prefer.
+- **Styling**: The CSS is stored in the `css/style.css` file. You can add your custom styles there.
 - **Form Handling**: The contact form uses a simple JS alert (demo mode). Integrate with a serverless function or third-party service (Netlify forms, Formspree, etc.) for real submissions.
 
 ## License
