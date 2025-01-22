@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Projects - Advanced Embedded & AI Portfolio</title>
+  <title>Projects - MyEmbeddedAI Portfolio</title>
 
   <!-- Font Awesome -->
   <link
@@ -21,19 +21,18 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
   />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
 
   <style>
     :root {
-      --color-bg: linear-gradient(135deg, #29293d 0%, #1f1f2f 100%);
       --color-primary: #ffcc00;
       --color-secondary: #ff4d4d;
+      --color-bg: linear-gradient(135deg, #29293d 0%, #1f1f2f 100%);
       --color-text: #fff;
       --dark-bg: #1f1f2f;
+      --menu-width: 230px;
     }
-
     * {
       margin: 0; 
       padding: 0;
@@ -44,66 +43,85 @@
       background: var(--color-bg);
       color: var(--color-text);
       overflow-x: hidden;
-      padding-top: 70px; 
+      margin: 0;
     }
 
-    /* ===== NAVBAR / HEADER ===== */
-    header {
+    /* SIDEBAR */
+    .sidebar {
       position: fixed;
       top: 0; left: 0;
-      width: 100%;
-      padding: 1rem 2rem;
+      width: var(--menu-width);
+      height: 100vh;
       background: linear-gradient(135deg, #2a2a3b, #3e3e5a);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 999;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      padding: 1rem;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+      z-index: 1000;
+      transform: translateX(0);
+      transition: transform 0.4s ease;
     }
     .logo {
-      font-size: 1.7rem;
-      font-weight: 700;
+      display: block;
+      text-align: center;
       color: var(--color-primary);
+      font-size: 1.8rem;
+      font-weight: 700;
       text-decoration: none;
+      margin-bottom: 2rem;
       transition: transform 0.3s;
     }
     .logo:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
-    nav[role="navigation"] ul {
+    .sidebar ul {
       list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0; 
-      padding: 0;
+      padding: 0; 
+      margin: 0;
+      text-align: center;
     }
-    nav ul li a {
-      position: relative;
-      text-decoration: none;
+    .sidebar ul li {
+      margin-bottom: 1.5rem;
+    }
+    .sidebar ul li a {
       color: var(--color-text);
+      text-decoration: none;
       font-size: 1.1rem;
       transition: color 0.3s, transform 0.3s;
-      padding-bottom: 4px;
     }
-    nav ul li a:hover,
-    nav ul li a:focus {
+    .sidebar ul li a:hover {
       color: var(--color-primary);
       transform: scale(1.05);
-      outline: none;
+    }
+
+    .toggle-btn {
+      display: none;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      font-size: 1.8rem;
+      color: var(--color-primary);
+      background: none;
+      border: none;
+      z-index: 1100;
+      cursor: pointer;
+    }
+
+    .main-content {
+      margin-left: var(--menu-width);
+      transition: margin-left 0.4s ease;
+      min-height: 100vh;
     }
 
     .page-header {
       text-align: center;
       margin-bottom: 2rem;
+      margin-top: 2rem;
     }
     .page-header h2 {
       font-size: 2.4rem;
       color: var(--color-primary);
-      margin-top: 2rem;
       text-shadow: 0 2px 6px rgba(0,0,0,0.4);
     }
 
-    /* PROJECTS GRID */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -122,8 +140,7 @@
       display: flex;
       flex-direction: column;
     }
-    .project-card:hover,
-    .project-card:focus-within {
+    .project-card:hover {
       box-shadow: 0 6px 14px rgba(0,0,0,0.4);
     }
     .project-inner {
@@ -150,7 +167,7 @@
     .project-content h3 {
       color: var(--color-primary);
       margin-bottom: 0.5rem;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
     }
     .project-content p {
       margin-bottom: 1rem;
@@ -161,13 +178,11 @@
       color: var(--color-secondary);
       text-decoration: none;
       font-weight: 600;
-      transition: color 0.3s, transform 0.3s;
+      transition: transform 0.3s;
     }
-    .project-content a:hover,
-    .project-content a:focus {
+    .project-content a:hover {
       text-decoration: underline;
       transform: scale(1.05);
-      outline: none;
     }
 
     footer {
@@ -191,8 +206,19 @@
       outline: none;
     }
 
-    /* ===== MEDIA QUERIES ===== */
     @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+      .sidebar.show {
+        transform: translateX(0);
+      }
+      .main-content {
+        margin-left: 0;
+      }
+      .toggle-btn {
+        display: block;
+      }
       .page-header h2 {
         font-size: 2rem;
       }
@@ -200,144 +226,152 @@
   </style>
 </head>
 <body onload="AOS.init()">
-  <header>
+  <button class="toggle-btn" id="toggleBtn">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <aside class="sidebar" id="sidebar">
     <a class="logo" href="index.html">MyEmbeddedAI</a>
-    <nav role="navigation" aria-label="Main navigation">
-      <ul>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="ai-bots.html">AI Bots</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <ul>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="ai-bots.html">AI Bots</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </aside>
 
-  <div class="page-header" data-aos="zoom-in" data-aos-duration="1000">
-    <h2>My Projects</h2>
+  <div class="main-content" id="mainContent">
+    <div class="page-header" data-aos="zoom-in" data-aos-duration="1000">
+      <h2>My Projects</h2>
+    </div>
+
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <div class="project-card" tabindex="0" data-aos="fade-up" data-aos-duration="1000">
+        <div class="project-inner">
+          <img
+            class="project-img"
+            src="assets/images/embedded_robot.jpg"
+            alt="Embedded Robot Project"
+            loading="lazy"
+          >
+          <div class="project-content">
+            <h3>Embedded Robot Controller</h3>
+            <p>
+              A real-time C++ controller for an autonomous robot, featuring advanced motion planning.
+            </p>
+            <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
+              <i class="fab fa-github"></i> GitHub Code
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card" tabindex="0" data-aos="fade-up" data-aos-duration="1000">
+        <div class="project-inner">
+          <img
+            class="project-img"
+            src="assets/images/ai_chatbot.jpg"
+            alt="AI Chatbot"
+            loading="lazy"
+          >
+          <div class="project-content">
+            <h3>AI Chatbot</h3>
+            <p>
+              A chatbot powered by a large language model for natural language queries and dialogues.
+            </p>
+            <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
+              <i class="fab fa-github"></i> GitHub Code
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card" tabindex="0" data-aos="fade-up" data-aos-duration="1000">
+        <div class="project-inner">
+          <img
+            class="project-img"
+            src="assets/images/rtos_monitor.jpg"
+            alt="RTOS Monitoring Tool"
+            loading="lazy"
+          >
+          <div class="project-content">
+            <h3>RTOS Monitoring Tool</h3>
+            <p>
+              A real-time OS monitoring and analytics tool, displaying CPU usage, tasks, and system metrics.
+            </p>
+            <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
+              <i class="fab fa-github"></i> GitHub Code
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card" tabindex="0" data-aos="fade-up" data-aos-duration="1000">
+        <div class="project-inner">
+          <img
+            class="project-img"
+            src="assets/images/bot.jpg"
+            alt="Machine Learning Project"
+            loading="lazy"
+          >
+          <div class="project-content">
+            <h3>Machine Learning Model</h3>
+            <p>
+              A machine learning model for predictive analytics, built using Python and TensorFlow.
+            </p>
+            <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
+              <i class="fab fa-github"></i> GitHub Code
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-card" tabindex="0" data-aos="fade-up" data-aos-duration="1000">
+        <div class="project-inner">
+          <img
+            class="project-img"
+            src="assets/images/embedded1.jpg"
+            alt="IoT Project"
+            loading="lazy"
+          >
+          <div class="project-content">
+            <h3>IoT Home Automation</h3>
+            <p>
+              An IoT-based home automation system using Raspberry Pi and MQTT protocol.
+            </p>
+            <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
+              <i class="fab fa-github"></i> GitHub Code
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
+      <p>
+        <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a> |
+        <a href="https://www.linkedin.com/in/ohad-alon" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+      </p>
+    </footer>
   </div>
-
-  <div class="projects-grid">
-    <!-- Project Card 1 -->
-    <div class="project-card" tabindex="0" data-aos="fade-up" data-aos-duration="1000">
-      <div class="project-inner">
-        <img
-          class="project-img"
-          src="assets/images/embedded_robot.jpg"
-          alt="Embedded Robot Project"
-          loading="lazy"
-        >
-        <div class="project-content">
-          <h3>Embedded Robot Controller</h3>
-          <p>
-            A real-time C++ controller for an autonomous robot, featuring advanced motion planning.
-          </p>
-          <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
-            <i class="fab fa-github"></i> GitHub Code
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Project Card 2 -->
-    <div class="project-card" tabindex="0" data-aos="fade-up" data-aos-duration="1000">
-      <div class="project-inner">
-        <img
-          class="project-img"
-          src="assets/images/ai_chatbot.jpg"
-          alt="AI Chatbot"
-          loading="lazy"
-        >
-        <div class="project-content">
-          <h3>AI Chatbot</h3>
-          <p>
-            A chatbot powered by a large language model for natural language queries and dialogues.
-          </p>
-          <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
-            <i class="fab fa-github"></i> GitHub Code
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Project Card 3 -->
-    <div class="project-card" tabindex="0" data-aos="fade-up" data-aos-duration="1000">
-      <div class="project-inner">
-        <img
-          class="project-img"
-          src="assets/images/rtos_monitor.jpg"
-          alt="RTOS Monitoring Tool"
-          loading="lazy"
-        >
-        <div class="project-content">
-          <h3>RTOS Monitoring Tool</h3>
-          <p>
-            A real-time OS monitoring and analytics tool, displaying CPU usage, tasks, and system metrics.
-          </p>
-          <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
-            <i class="fab fa-github"></i> GitHub Code
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Project Card 4 -->
-    <div class="project-card" tabindex="0" data-aos="fade-up" data-aos-duration="1000">
-      <div class="project-inner">
-        <img
-          class="project-img"
-          src="assets/images/bot.jpg"
-          alt="Machine Learning Project"
-          loading="lazy"
-        >
-        <div class="project-content">
-          <h3>Machine Learning Model</h3>
-          <p>
-            A machine learning model for predictive analytics, built using Python and TensorFlow.
-          </p>
-          <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
-            <i class="fab fa-github"></i> GitHub Code
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Project Card 5 -->
-    <div class="project-card" tabindex="0" data-aos="fade-up" data-aos-duration="1000">
-      <div class="project-inner">
-        <img
-          class="project-img"
-          src="assets/images/embedded1.jpg"
-          alt="IoT Project"
-          loading="lazy"
-        >
-        <div class="project-content">
-          <h3>IoT Home Automation</h3>
-          <p>
-            An IoT-based home automation system using Raspberry Pi and MQTT protocol.
-          </p>
-          <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
-            <i class="fab fa-github"></i> GitHub Code
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
-    <p>
-      <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
-        <i class="fab fa-github"></i> GitHub
-      </a> |
-      <a href="https://www.linkedin.com/in/ohad-alon" target="_blank">
-        <i class="fab fa-linkedin"></i> LinkedIn
-      </a>
-    </p>
-  </footer>
 
   <script>
-    gsap.from(".page-header h2", { opacity: 0, y: -30, duration: 1 });
     AOS.init();
+    const toggleBtn = document.getElementById("toggleBtn");
+    const sidebar = document.getElementById("sidebar");
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("show");
+    });
   </script>
 </body>
 </html>
