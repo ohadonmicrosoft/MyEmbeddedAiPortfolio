@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>AI Bots - Advanced Embedded & AI Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>AI Bots - MyEmbeddedAI Portfolio</title>
 
   <!-- Font Awesome -->
-  <link 
-    rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  >
-  <!-- Google Fonts -->
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" 
+  <link
     rel="stylesheet"
-  >
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- AOS Library -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-  <!-- AOS Library -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
   <style>
     :root {
@@ -27,69 +30,94 @@
       --secondary-color: #ff4d4d;
       --dark-bg: #1f1f2f;
       --light-text: #fff;
+      --menu-width: 230px;
 
       --chat-window-height: 450px;
     }
 
-    body {
+    * {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
       background: var(--dark-bg);
       color: var(--light-text);
       overflow-x: hidden;
-      padding-top: 70px;
+      margin: 0;
+      padding: 0;
     }
 
-    /* ===== NAVBAR / HEADER ===== */
-    header {
+    /* SIDEBAR */
+    .sidebar {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%;
+      top: 0;
+      left: 0;
+      width: var(--menu-width);
+      height: 100vh;
       background: linear-gradient(135deg, #2a2a3b, #3e3e5a);
+      padding: 1rem;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
       z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transform: translateX(0);
+      transition: transform 0.4s ease;
     }
-    .logo {
-      font-size: 1.7rem;
-      font-weight: 700;
+    .sidebar .logo {
+      display: block;
       color: var(--primary-color);
+      font-size: 1.8rem;
+      font-weight: 700;
       text-decoration: none;
-      transition: transform 0.3s;
+      margin-bottom: 2rem;
+      text-align: center;
     }
-    .logo:hover {
-      transform: scale(1.1);
-    }
-    nav ul {
+    .sidebar ul {
       list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0; padding: 0;
+      padding: 0;
+      margin: 0;
+      text-align: center;
     }
-    nav ul li a {
-      position: relative;
-      text-decoration: none;
+    .sidebar ul li {
+      margin-bottom: 1.5rem;
+    }
+    .sidebar ul li a {
       color: var(--light-text);
+      text-decoration: none;
       font-size: 1.1rem;
       transition: color 0.3s, transform 0.3s;
-      padding-bottom: 4px;
     }
-    nav ul li a:hover,
-    nav ul li a:focus {
+    .sidebar ul li a:hover {
       color: var(--primary-color);
       transform: scale(1.05);
-      outline: none;
     }
 
-    /* ===== BOTS SECTION WITHOUT CHART ===== */
+    .toggle-btn {
+      display: none;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      background: none;
+      border: none;
+      z-index: 1100;
+      cursor: pointer;
+    }
+
+    .main-content {
+      margin-left: var(--menu-width);
+      transition: margin-left 0.4s ease;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    /* BOTS SECTION */
     .bots-section {
-      padding: 80px 20px 40px 20px;
+      text-align: center;
       max-width: 800px;
       margin: 0 auto;
-      text-align: center;
     }
     .bots-section h1 {
       font-size: 2.2rem;
@@ -104,7 +132,7 @@
       color: #f0f0f0;
     }
 
-    /* Fancy Chat Section */
+    /* CHAT SECTION */
     .chat-section {
       max-width: 700px;
       margin: 2rem auto 0 auto;
@@ -113,8 +141,6 @@
       box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
       padding: 1.5rem;
       text-align: left;
-      position: relative;
-      overflow: hidden;
     }
     .chat-section h2 {
       color: var(--primary-color);
@@ -133,7 +159,6 @@
       padding: 1rem;
       margin-bottom: 1rem;
       box-shadow: inset 0 4px 12px rgba(0,0,0,0.3);
-      scroll-behavior: smooth;
     }
     .message {
       margin-bottom: 1rem;
@@ -204,6 +229,7 @@
       background: linear-gradient(135deg, #1b1b2b, #1f1f2f);
       font-size: 0.95rem;
       box-shadow: 0 -4px 12px rgba(0,0,0,0.4);
+      margin-top: 2rem;
     }
     footer a {
       color: var(--primary-color);
@@ -219,89 +245,106 @@
       outline: none;
     }
 
-    /* ===== MEDIA QUERIES ===== */
+    /* MEDIA QUERIES */
     @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+      .sidebar.show {
+        transform: translateX(0);
+      }
+      .main-content {
+        margin-left: 0;
+      }
+      .toggle-btn {
+        display: block;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        background: none;
+        border: none;
+        z-index: 1100;
+        cursor: pointer;
+      }
       .bots-section h1 {
         font-size: 1.8rem;
-      }
-      .chat-section {
-        padding: 1rem;
       }
       .chat-window {
         height: 300px;
       }
     }
+
     @media (max-width: 480px) {
-      .bots-section h1 {
-        font-size: 1.6rem;
-      }
-      .bots-section p {
-        font-size: 0.95rem;
-      }
       .chat-window {
         height: 250px;
-      }
-      .chat-input button {
-        padding: 0.8rem;
       }
     }
   </style>
 </head>
 <body>
-  <header>
+  <button class="toggle-btn" id="toggleBtn">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <aside class="sidebar" id="sidebar">
     <a class="logo" href="index.html">MyEmbeddedAI</a>
-    <nav role="navigation" aria-label="Main navigation">
-      <ul>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="ai-bots.html">AI Bots</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <ul>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="ai-bots.html">AI Bots</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </aside>
 
-  <section class="bots-section" data-aos="fade-up">
-    <h1>AI Bots Chat Demo</h1>
-    <p>
-      Interact with a stylish chat interface that showcases how AI bot conversations 
-      might look in a modern platform. Let's keep it fun and innovative!
-    </p>
-  </section>
+  <div class="main-content" id="mainContent">
+    <section class="bots-section" data-aos="fade-up">
+      <h1>AI Bots Chat Demo</h1>
+      <p>
+        Interact with a stylish chat interface that showcases how AI bot conversations 
+        might look in a modern platform. Let's keep it fun and innovative!
+      </p>
+    </section>
 
-  <!-- Fancy Chat Section (no chart) -->
-  <section class="chat-section" data-aos="fade-up">
-    <h2>Chat with Our AI</h2>
-    <div class="chat-window" id="chatWindow" aria-live="polite"></div>
-    <div class="chat-input">
-      <input type="text" id="userInput" placeholder="Type your message..." aria-label="Chat message input">
-      <button onclick="sendMessage()">Send</button>
-    </div>
-  </section>
+    <section class="chat-section" data-aos="fade-up">
+      <h2>Chat with Our AI</h2>
+      <div class="chat-window" id="chatWindow"></div>
+      <div class="chat-input">
+        <input
+          type="text"
+          id="userInput"
+          placeholder="Type your message..."
+          aria-label="Chat message input"
+        />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </section>
 
-  <footer>
-    <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
-    <p>
-      <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
-        <i class="fab fa-github"></i> GitHub
-      </a> |
-      <a href="https://www.linkedin.com/in/ohad-alon" target="_blank">
-        <i class="fab fa-linkedin"></i> LinkedIn
-      </a>
-    </p>
-  </footer>
+    <footer>
+      <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
+      <p>
+        <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a> |
+        <a href="https://www.linkedin.com/in/ohad-alon" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+      </p>
+    </footer>
+  </div>
 
   <script>
-    // GSAP Animation
-    window.addEventListener("load", () => {
-      gsap.from(".bots-section h1", { opacity: 0, y: -50, duration: 1 });
-      gsap.from(".bots-section p", { opacity: 0, y: 50, duration: 1, delay: 0.5 });
-      gsap.from(".chat-section", { opacity: 0, scale: 0.9, duration: 1.2, delay: 1 });
-    });
-
-    // AOS Initialization
     AOS.init();
 
-    // Basic Chat Demo
+    // Mobile toggle
+    const toggleBtn = document.getElementById("toggleBtn");
+    const sidebar = document.getElementById("sidebar");
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("show");
+    });
+
+    // Basic Chat
     const chatWindow = document.getElementById("chatWindow");
     function addMessageToChat(content, sender) {
       const msgDiv = document.createElement("div");
@@ -312,18 +355,15 @@
     }
 
     function getAIResponse(userText) {
-      // Return a static response as a placeholder
       return "AI Bot: This is a fun, stylish chat! In the future, I'll connect to real AI endpoints.";
     }
 
     function sendMessage() {
       const userInput = document.getElementById("userInput");
       const text = userInput.value.trim();
-
-      if(text.length > 0) {
+      if (text.length > 0) {
         addMessageToChat(text, "user");
         userInput.value = "";
-
         setTimeout(() => {
           const aiText = getAIResponse(text);
           addMessageToChat(aiText, "ai");
