@@ -1,40 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Home - MyEmbeddedAI Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Futuristic High-End Portfolio">
+  <meta name="author" content="Your Name">
+  <title>Futuristic AI Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
-  <link 
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  />
-  <!-- Google Fonts -->
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" 
-    rel="stylesheet"
-  />
-  <!-- AOS Library -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+  <!-- AOS Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Custom CSS -->
   <style>
     :root {
-      --primary-color: #f0ff00; 
-      --secondary-color: #ff4d4d;
-      --dark-bg: #0f0f1f;
+      --primary-color: #0ff;
+      --secondary-color: #f0f;
+      --dark-bg: #0a002a;
       --light-text: #fff;
-      --menu-width: 220px;
+      --neon-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--secondary-color);
     }
 
+    /* General Reset */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      font-family: 'Orbitron', sans-serif;
     }
 
     body {
@@ -43,58 +40,35 @@
       overflow-x: hidden;
     }
 
-    /* אנימציית גרדיאנט לסיידבר */
-    @keyframes sideGradient {
-      0% {
-        background: linear-gradient(135deg, #2a2a3b, #452f79);
-      }
-      50% {
-        background: linear-gradient(135deg, #4f4cdd, #00fde4);
-      }
-      100% {
-        background: linear-gradient(135deg, #00e7e7, #6049ff);
-      }
-    }
-
-    .toggle-btn {
-      display: none;
-      position: fixed;
-      top: 15px; left: 15px;
-      font-size: 1.8rem;
-      color: var(--primary-color);
-      background: none;
-      border: none;
-      z-index: 1100;
-      cursor: pointer;
-    }
-
+    /* Sidebar */
     .sidebar {
       position: fixed;
-      top: 0; left: 0;
-      width: var(--menu-width);
+      top: 0;
+      left: 0;
+      width: 250px;
       height: 100vh;
-      animation: sideGradient 8s ease-in-out infinite alternate;
-      box-shadow: 3px 0 12px rgba(0,0,0,0.6);
+      background: linear-gradient(145deg, #2c0158, #46027b);
+      box-shadow: 4px 0 15px rgba(0, 0, 0, 0.7);
       z-index: 1000;
-      transform: translateX(0);
-      transition: transform 0.4s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding-top: 1rem;
+      animation: neonGlow 3s infinite alternate;
     }
 
-    .logo {
-      color: #fff;
-      font-size: 1.8rem;
-      font-weight: 700;
-      text-decoration: none;
-      margin-bottom: 2rem;
-      text-align: center;
-      transition: transform 0.3s;
+    @keyframes neonGlow {
+      0% { box-shadow: 0 0 15px var(--primary-color); }
+      100% { box-shadow: 0 0 25px var(--secondary-color); }
     }
-    .logo:hover {
-      transform: scale(1.1);
+
+    .sidebar .logo {
+      font-size: 2rem;
+      color: var(--light-text);
+      text-decoration: none;
+      font-weight: bold;
+      text-shadow: var(--neon-shadow);
+      margin-bottom: 2rem;
     }
 
     .nav-links {
@@ -102,113 +76,113 @@
       width: 100%;
       text-align: center;
     }
+
     .nav-links li {
       margin: 1rem 0;
     }
+
     .nav-links li a {
-      color: #fff;
+      color: var(--light-text);
       text-decoration: none;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       display: block;
-      padding: 0.8rem 0;
-      transition: 0.3s;
-      position: relative;
+      padding: 0.8rem;
+      transition: transform 0.3s, background-color 0.3s;
+      text-shadow: 0 0 10px var(--primary-color);
     }
+
     .nav-links li a:hover {
-      transform: scale(1.05);
-      background: rgba(255,255,255,0.15);
-      border-radius: 8px;
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
     }
 
+    /* Main Content */
     .main-content {
-      margin-left: var(--menu-width);
+      margin-left: 250px;
       min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
-      transition: margin-left 0.4s ease;
+      overflow: hidden;
     }
 
-    /* Hero עם וידאו COVER */
     .hero-container {
       position: relative;
       width: 100%;
       height: 100vh;
-      overflow: hidden;
-    }
-    .hero-video {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-      filter: brightness(0.5);
-    }
-    .hero-content {
-      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100%;
-      text-align: center;
       color: var(--light-text);
-      padding: 2rem;
+      text-align: center;
+      z-index: 2;
     }
 
-    @keyframes neonGlow {
-      0% {
-        text-shadow: 0 0 8px var(--primary-color), 0 0 20px var(--primary-color);
-      }
-      100% {
-        text-shadow: 0 0 8px var(--secondary-color), 0 0 20px var(--secondary-color);
-      }
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.4);
     }
 
     .hero-content h1 {
-      font-size: 3.5rem;
+      font-size: 4rem;
       margin-bottom: 1rem;
-      animation: neonGlow 2s infinite alternate;
-    }
-    .hero-content p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin-bottom: 2rem;
-    }
-    .cta-btn {
-      padding: 1rem 2rem;
-      background: var(--primary-color);
-      color: #000;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      box-shadow: 0 0 10px var(--primary-color);
-      transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
-    }
-    .cta-btn:hover {
-      transform: scale(1.08);
-      background: var(--secondary-color);
-      color: #fff;
-      box-shadow: 0 0 15px var(--secondary-color);
+      text-shadow: var(--neon-shadow);
+      animation: glow 2s infinite alternate;
     }
 
-    /* MEDIA QUERIES */
+    .hero-content p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta-btn {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      background: var(--primary-color);
+      color: #000;
+      cursor: pointer;
+      box-shadow: var(--neon-shadow);
+      transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .cta-btn:hover {
+      transform: scale(1.1);
+      background: var(--secondary-color);
+      color: #fff;
+    }
+
+    /* Lottie Animation */
+    .lottie-container {
+      width: 100%;
+      height: 250px;
+      margin-top: 20px;
+    }
+
+    /* Media Queries */
     @media (max-width: 768px) {
       .sidebar {
-        transform: translateX(-100%);
+        width: 100px;
       }
-      .sidebar.show {
-        transform: translateX(0);
-      }
+
       .main-content {
-        margin-left: 0;
+        margin-left: 100px;
       }
-      .toggle-btn {
-        display: block;
-      }
+
       .hero-content h1 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
       }
+
       .hero-content p {
         font-size: 1rem;
       }
@@ -216,35 +190,35 @@
   </style>
 </head>
 <body>
-  <!-- TOGGLE BUTTON (Mobile) -->
-  <button class="toggle-btn" id="toggleBtn">
-    <i class="fas fa-bars"></i>
-  </button>
-
-  <!-- SIDEBAR -->
-  <aside class="sidebar" id="sidebar">
-    <a href="index.html" class="logo">MyEmbeddedAI</a>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <a href="#" class="logo">Future Tech</a>
     <ul class="nav-links">
-      <li><a href="projects.html"><i class="fas fa-robot"></i> Projects</a></li>
-      <li><a href="ai-bots.html"><i class="fas fa-brain"></i> AI Bots</a></li>
-      <li><a href="about.html"><i class="fas fa-user"></i> About</a></li>
-      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#ai-bots">AI Bots</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </aside>
 
+  <!-- Main Content -->
   <div class="main-content">
     <div class="hero-container">
-      <!-- וידאו רקע Loop -->
-      <video class="hero-video" src="assets/videos/cyber_bg.mp4" autoplay muted loop playsinline></video>
+      <!-- Background Video -->
+      <video class="hero-video" autoplay muted loop>
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-neon-lights-1076-large.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
 
+      <!-- Hero Content -->
       <div class="hero-content" data-aos="fade-up">
-        <h1>Welcome to My Embedded &amp; AI Portfolio</h1>
-        <p>
-          Explore cutting-edge projects in real-time embedded systems,<br/>
-          advanced C++, and AI-powered applications.
-        </p>
-        <button class="cta-btn" onclick="window.location.href='projects.html';">Explore Projects</button>
+        <h1>Welcome to the Future</h1>
+        <p>Explore groundbreaking AI technologies and futuristic designs.</p>
+        <button class="cta-btn" onclick="window.location.href='#projects';">Discover More</button>
       </div>
+
+      <!-- Lottie Animation -->
+      <div class="lottie-container" id="lottie"></div>
     </div>
   </div>
 
@@ -254,12 +228,15 @@
     AOS.init();
   </script>
 
-  <!-- Toggle Script -->
+  <!-- Lottie Animation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
   <script>
-    const toggleBtn = document.getElementById("toggleBtn");
-    const sidebar = document.getElementById("sidebar");
-    toggleBtn.addEventListener("click", () => {
-      sidebar.classList.toggle("show");
+    const animation = lottie.loadAnimation({
+      container: document.getElementById('lottie'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'https://assets7.lottiefiles.com/packages/lf20_kxkz9ls6.json'
     });
   </script>
 </body>
