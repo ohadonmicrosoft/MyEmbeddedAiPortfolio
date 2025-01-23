@@ -1,208 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>AI Bots - MyEmbeddedAI Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive AI Bots Chat">
+  <title>AI Bots - Futuristic Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  />
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-    rel="stylesheet"
-  />
-  <!-- AOS Library -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-  />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+  <!-- AOS Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Custom CSS -->
   <style>
     :root {
-      --primary-color: #ffcc00;
-      --secondary-color: #ff4d4d;
-      --dark-bg: #1f1f2f;
+      --primary-color: #0ff;
+      --secondary-color: #f0f;
+      --dark-bg: #0a002a;
       --light-text: #fff;
-      --menu-width: 230px;
-
-      --chat-window-height: 450px;
+      --neon-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--secondary-color);
     }
 
+    /* General Reset */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      font-family: 'Orbitron', sans-serif;
     }
 
     body {
       background: var(--dark-bg);
       color: var(--light-text);
       overflow-x: hidden;
-      margin: 0;
-      padding: 0;
     }
 
-    /* SIDEBAR */
+    /* Sidebar */
     .sidebar {
       position: fixed;
       top: 0;
       left: 0;
-      width: var(--menu-width);
+      width: 250px;
       height: 100vh;
-      background: linear-gradient(135deg, #2a2a3b, #3e3e5a);
-      padding: 1rem;
-      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(145deg, #2c0158, #46027b);
+      box-shadow: 4px 0 15px rgba(0, 0, 0, 0.7);
       z-index: 1000;
-      transform: translateX(0);
-      transition: transform 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 1rem;
     }
+
     .sidebar .logo {
-      display: block;
-      color: var(--primary-color);
-      font-size: 1.8rem;
-      font-weight: 700;
-      text-decoration: none;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      text-align: center;
-    }
-    .sidebar ul li {
-      margin-bottom: 1.5rem;
-    }
-    .sidebar ul li a {
+      font-size: 2rem;
       color: var(--light-text);
       text-decoration: none;
-      font-size: 1.1rem;
-      transition: color 0.3s, transform 0.3s;
-    }
-    .sidebar ul li a:hover {
-      color: var(--primary-color);
-      transform: scale(1.05);
-    }
-
-    .toggle-btn {
-      display: none;
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      font-size: 1.8rem;
-      color: var(--primary-color);
-      background: none;
-      border: none;
-      z-index: 1100;
-      cursor: pointer;
-    }
-
-    .main-content {
-      margin-left: var(--menu-width);
-      transition: margin-left 0.4s ease;
-      min-height: 100vh;
-      padding: 2rem;
-    }
-
-    /* BOTS SECTION */
-    .bots-section {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .bots-section h1 {
-      font-size: 2.2rem;
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.4);
-    }
-    .bots-section p {
-      font-size: 1.1rem;
-      line-height: 1.8;
+      font-weight: bold;
+      text-shadow: var(--neon-shadow);
       margin-bottom: 2rem;
-      color: #f0f0f0;
     }
 
-    /* CHAT SECTION */
+    .nav-links {
+      list-style: none;
+      width: 100%;
+      text-align: center;
+    }
+
+    .nav-links li {
+      margin: 1rem 0;
+    }
+
+    .nav-links li a {
+      color: var(--light-text);
+      text-decoration: none;
+      font-size: 1.2rem;
+      display: block;
+      padding: 0.8rem;
+      transition: transform 0.3s, background-color 0.3s;
+      text-shadow: 0 0 10px var(--primary-color);
+    }
+
+    .nav-links li a:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 250px;
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .page-header {
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 3rem;
+      color: var(--primary-color);
+      text-shadow: var(--neon-shadow);
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      color: var(--light-text);
+      text-shadow: 0 0 10px var(--secondary-color);
+    }
+
+    /* Chat Section */
     .chat-section {
+      width: 100%;
       max-width: 700px;
-      margin: 2rem auto 0 auto;
-      background: linear-gradient(135deg, #2c2c4f, #29293d);
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
       border-radius: 12px;
       box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
       padding: 1.5rem;
-      text-align: left;
     }
-    .chat-section h2 {
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-      text-align: center;
-      font-size: 1.8rem;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    }
+
     .chat-window {
       width: 100%;
-      height: var(--chat-window-height);
+      height: 400px;
       overflow-y: auto;
-      background: #1f1f2f;
-      border: 2px solid #444;
+      background: #1f1f3f;
+      border: 2px solid var(--primary-color);
       border-radius: 8px;
       padding: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: inset 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.5);
     }
+
     .message {
       margin-bottom: 1rem;
-      line-height: 1.4;
       word-wrap: break-word;
-      max-width: 70%;
       padding: 0.8rem;
       border-radius: 10px;
       font-size: 0.95rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      max-width: 70%;
     }
+
     .message.user {
       background: var(--secondary-color);
       color: #fff;
       margin-left: auto;
       border-top-right-radius: 0;
-      text-align: left;
     }
+
     .message.ai {
       background: #31315a;
       color: #fff;
       margin-right: auto;
       border-top-left-radius: 0;
-      text-align: left;
     }
+
     .chat-input {
       display: flex;
       gap: 0.5rem;
+      margin-top: 1rem;
     }
+
     .chat-input input {
       flex: 1;
       padding: 0.8rem;
       border-radius: 8px;
       border: none;
-      outline: none;
-      background: #2c2c3d;
+      background: #2c2c4c;
       color: var(--light-text);
-      font-size: 1rem;
-      box-shadow: inset 0 2px 6px rgba(0,0,0,0.3);
-      transition: 0.3s;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
     }
-    .chat-input input:focus {
-      background: #3c3c5c;
-    }
+
     .chat-input button {
       padding: 0.8rem 1.5rem;
       border: none;
@@ -210,164 +185,95 @@
       background-color: var(--primary-color);
       color: #000;
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      font-weight: 600;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: var(--neon-shadow);
     }
-    .chat-input button:hover,
-    .chat-input button:focus {
+
+    .chat-input button:hover {
       background-color: var(--secondary-color);
-      color: var(--light-text);
-      transform: scale(1.05);
-      outline: none;
+      color: #fff;
     }
 
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: var(--light-text);
-      background: linear-gradient(135deg, #1b1b2b, #1f1f2f);
-      font-size: 0.95rem;
-      box-shadow: 0 -4px 12px rgba(0,0,0,0.4);
-      margin-top: 2rem;
-    }
-    footer a {
-      color: var(--primary-color);
-      text-decoration: none;
-      margin: 0 0.5rem;
-      font-weight: 600;
-      transition: transform 0.3s, color 0.3s;
-    }
-    footer a:hover,
-    footer a:focus {
-      color: var(--secondary-color);
-      transform: scale(1.1);
-      outline: none;
-    }
-
-    /* MEDIA QUERIES */
     @media (max-width: 768px) {
       .sidebar {
-        transform: translateX(-100%);
+        width: 100px;
       }
-      .sidebar.show {
-        transform: translateX(0);
-      }
+
       .main-content {
-        margin-left: 0;
+        margin-left: 100px;
+        padding: 1rem;
       }
-      .toggle-btn {
-        display: block;
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        font-size: 1.8rem;
-        color: var(--primary-color);
-        background: none;
-        border: none;
-        z-index: 1100;
-        cursor: pointer;
+
+      .page-header h1 {
+        font-size: 2rem;
       }
-      .bots-section h1 {
-        font-size: 1.8rem;
-      }
+
       .chat-window {
         height: 300px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .chat-window {
-        height: 250px;
       }
     }
   </style>
 </head>
 <body>
-  <button class="toggle-btn" id="toggleBtn">
-    <i class="fas fa-bars"></i>
-  </button>
-
-  <aside class="sidebar" id="sidebar">
-    <a class="logo" href="index.html">MyEmbeddedAI</a>
-    <ul>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="ai-bots.html">AI Bots</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <a href="#" class="logo">Future Tech</a>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#ai-bots">AI Bots</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </aside>
 
-  <div class="main-content" id="mainContent">
-    <section class="bots-section" data-aos="fade-up">
-      <h1>AI Bots Chat Demo</h1>
-      <p>
-        Interact with a stylish chat interface that showcases how AI bot conversations 
-        might look in a modern platform. Let's keep it fun and innovative!
-      </p>
-    </section>
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="page-header" data-aos="fade-up">
+      <h1>AI Chat Experience</h1>
+      <p>Engage with an AI-powered futuristic chatbot in an immersive interface.</p>
+    </div>
 
-    <section class="chat-section" data-aos="fade-up">
-      <h2>Chat with Our AI</h2>
+    <div class="chat-section" data-aos="fade-up">
       <div class="chat-window" id="chatWindow"></div>
       <div class="chat-input">
-        <input
-          type="text"
-          id="userInput"
-          placeholder="Type your message..."
-          aria-label="Chat message input"
-        />
+        <input type="text" id="userInput" placeholder="Type your message here...">
         <button onclick="sendMessage()">Send</button>
       </div>
-    </section>
-
-    <footer>
-      <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
-      <p>
-        <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
-          <i class="fab fa-github"></i> GitHub
-        </a> |
-        <a href="https://www.linkedin.com/in/ohad-alon" target="_blank">
-          <i class="fab fa-linkedin"></i> LinkedIn
-        </a>
-      </p>
-    </footer>
+    </div>
   </div>
 
+  <!-- AOS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init();
+  </script>
 
-    // Mobile toggle
-    const toggleBtn = document.getElementById("toggleBtn");
-    const sidebar = document.getElementById("sidebar");
-    toggleBtn.addEventListener("click", () => {
-      sidebar.classList.toggle("show");
-    });
-
-    // Basic Chat
+  <!-- Chat Script -->
+  <script>
     const chatWindow = document.getElementById("chatWindow");
-    function addMessageToChat(content, sender) {
-      const msgDiv = document.createElement("div");
-      msgDiv.classList.add("message", sender);
-      msgDiv.innerText = content;
-      chatWindow.appendChild(msgDiv);
+
+    function addMessage(content, sender) {
+      const message = document.createElement("div");
+      message.classList.add("message", sender);
+      message.textContent = content;
+      chatWindow.appendChild(message);
       chatWindow.scrollTop = chatWindow.scrollHeight;
     }
 
     function getAIResponse(userText) {
-      return "AI Bot: This is a fun, stylish chat! In the future, I'll connect to real AI endpoints.";
+      // Example AI Response (can be connected to a real endpoint)
+      return `AI: I received your message "${userText}". Future updates will include smarter replies!`;
     }
 
     function sendMessage() {
       const userInput = document.getElementById("userInput");
       const text = userInput.value.trim();
-      if (text.length > 0) {
-        addMessageToChat(text, "user");
+      if (text) {
+        addMessage(text, "user");
         userInput.value = "";
         setTimeout(() => {
-          const aiText = getAIResponse(text);
-          addMessageToChat(aiText, "ai");
-        }, 600);
+          const aiResponse = getAIResponse(text);
+          addMessage(aiResponse, "ai");
+        }, 1000);
       }
     }
   </script>
