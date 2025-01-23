@@ -1,289 +1,295 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Site Info -->
-    <title>MyEmbeddedAI - Creative Showcase Portfolio</title>
-    <meta name="description" content="MyEmbeddedAI - Creative AI & Embedded Portfolio">
-    <meta name="keywords" content="AI, Embedded, Portfolio, Corporate, Creative, Minimal, Modern, Tech">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Home - MyEmbeddedAI Portfolio</title>
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/ai_chatbot.jpg" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link 
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <!-- Google Fonts -->
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" 
+    rel="stylesheet"
+  />
+  <!-- AOS Library -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+  />
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #ffcc00;  /* צהוב חי */
+      --secondary-color: #ff4d4d; /* אדום לוהט */
+      --dark-bg: #1f1f2f;
+      --light-text: #fff;
+      --menu-width: 200px; /* תפריט צר יותר */
+    }
 
-    <!-- CSS Plugins (as provided by template) -->
-    <link href="assets/css/plugins.css" rel="stylesheet">
-    <!-- Main Style of template (as provided by template) -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--light-text);
+      overflow-x: hidden;
+    }
+
+    /* MOBILE TOGGLE BUTTON */
+    .toggle-btn {
+      display: none; 
+      position: fixed;
+      top: 15px; left: 15px;
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      background: none;
+      border: none;
+      z-index: 1100;
+      cursor: pointer;
+    }
+
+    /* ===== SIDEBAR עם אנימציית רקע גרדיאנט ===== */
+    @keyframes sideGradient {
+      0% {
+        background: linear-gradient(135deg, #ff0099, #493240);
+      }
+      50% {
+        background: linear-gradient(135deg, #ff4d4d, #ffcc00);
+      }
+      100% {
+        background: linear-gradient(135deg, #00c9ff, #92fe9d);
+      }
+    }
+
+    .sidebar {
+      position: fixed;
+      left: 0; top: 0;
+      width: var(--menu-width);
+      height: 100vh;
+      animation: sideGradient 8s ease-in-out infinite alternate;
+      box-shadow: 2px 0 12px rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      transform: translateX(0);
+      transition: transform 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 1rem;
+    }
+
+    .logo {
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: transform 0.3s;
+    }
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      list-style: none;
+      width: 100%;
+      text-align: center;
+      padding: 0; 
+      margin: 0;
+    }
+    .nav-links li {
+      margin-bottom: 1.5rem;
+    }
+    .nav-links li a {
+      display: block;
+      color: #fff;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: transform 0.3s, background 0.3s;
+      padding: 0.8rem 0;
+      width: 100%;
+    }
+    .nav-links li a:hover {
+      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+    }
+
+    /* MAIN CONTENT */
+    .main-content {
+      margin-left: var(--menu-width);
+      min-height: 100vh;
+      position: relative;
+      transition: margin-left 0.4s ease;
+    }
+
+    /* PARTICLES BACKGROUND */
+    #particles-js {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: -1;
+    }
+
+    /* HERO SECTION */
+    .hero-section {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      color: var(--light-text);
+      padding: 2rem;
+    }
+    .hero-section h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    }
+    .hero-section p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+    .cta-btn {
+      background: var(--primary-color);
+      color: #000;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.3s, background-color 0.3s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+    .cta-btn:hover {
+      transform: scale(1.05);
+      background-color: var(--secondary-color);
+      color: #fff;
+    }
+
+    /* MEDIA QUERIES */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+      .sidebar.show {
+        transform: translateX(0);
+      }
+      .main-content {
+        margin-left: 0;
+      }
+      .toggle-btn {
+        display: block;
+      }
+      .hero-section h1 {
+        font-size: 2rem;
+      }
+      .hero-section p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
+<body>
+  <!-- TOGGLE BUTTON (MOBILE) -->
+  <button class="toggle-btn" id="toggleBtn">
+    <i class="fas fa-bars"></i>
+  </button>
 
-<body class="hamburger-menu dsn-effect-scroll dsn-ajax dsn-mobile" data-dsn-mousemove="true">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <a href="index.html" class="logo">MyEmbeddedAI</a>
+    <ul class="nav-links">
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="ai-bots.html">AI Bots</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </aside>
 
-    <!-- PRELOADER (Template’s Preloader) -->
-    <div class="preloader hidden">
-        <div class="preloader-after"></div>
-        <div class="preloader-before"></div>
-        <div class="preloader-block">
-            <div class="title">MyEmbeddedAI</div>
-            <div class="percent">100</div>
-            <div class="loading">loading...</div>
-        </div>
-        <div class="preloader-bar">
-            <div class="preloader-progress"></div>
-        </div>
-    </div>
-    <!-- End Preloader -->
+  <!-- MAIN CONTENT -->
+  <div class="main-content" id="mainContent">
+    <!-- Particles BG -->
+    <div id="particles-js"></div>
 
-    <!-- Nav Bar -->
-    <div class="dsn-nav-bar">
-        <div class="site-header">
-            <div class="extend-container">
-                <div class="inner-header">
-                    <div class="main-logo">
-                        <!-- החלפנו את לוגו התבנית ללוגו שאתה רוצה -->
-                        <a href="index.html">
-                            <img class="dark-logo" src="assets/img/logo-dark.png" alt="MyEmbeddedAI dark logo">
-                            <img class="light-logo" src="assets/img/logo.png" alt="MyEmbeddedAI light logo">
-                        </a>
-                    </div>
-                </div>
-                <nav class="accent-menu main-navigation">
-                    <ul class="extend-container">
-                        <li class="custom-drop-down">
-                            <a href="#">Home</a>
-                            <ul>
-                                <li><a href="index.html">Main Demo</a></li>
-                                <li><a href="one-page-3.html">One Page Three</a></li>
-                                <!-- וכו'... -->
-                            </ul>
-                        </li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="ai-bots.html">AI Bots</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <!-- ... וכו' -->
-                    </ul>
-                </nav>
-            </div>
-        </div>
+    <section class="hero-section" data-aos="fade-up">
+      <h1>Welcome to My Embedded &amp; AI Portfolio</h1>
+      <p>
+        Explore cutting-edge projects in real-time embedded systems, advanced C++, and AI-powered applications.
+      </p>
+      <button class="cta-btn" onclick="window.location.href='projects.html';">Explore Projects</button>
+    </section>
+  </div>
 
-        <!-- Hamburger style nav -->
-        <div class="header-top header-top-hamburger">
-            <div class="header-container">
-                <div class="logo main-logo">
-                    <a href="index.html">
-                        <img class="dark-logo" src="assets/img/logo-dark.png" alt="dark logo">
-                        <img class="light-logo" src="assets/img/logo.png" alt="light logo">
-                    </a>
-                </div>
+  <!-- AOS init -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 
-                <!-- The animated hamburger icon, opening the “nav” below -->
-                <div class="menu-icon" data-dsn="parallax" data-dsn-move="5">
-                    <div class="icon-m">
-                        <i class="menu-icon-close fas fa-times"></i>
-                        <span class="menu-icon__line menu-icon__line-left"></span>
-                        <span class="menu-icon__line"></span>
-                        <span class="menu-icon__line menu-icon__line-right"></span>
-                    </div>
-                    <div class="text-menu">
-                        <div class="text-button"><span class="dsn-wrapper"><span class="dsn-word-wrapper">Menu</span></span></div>
-                        <div class="text-open"><span class="dsn-wrapper"><span class="dsn-word-wrapper">Open</span></span></div>
-                        <div class="text-close"><span class="dsn-wrapper"><span class="dsn-word-wrapper">Close</span></span></div>
-                    </div>
-                </div>
+  <!-- GSAP (if needed beyond AOS) -->
+  <!-- <script>
+    // Additional GSAP animations can go here
+  </script> -->
 
-                <!-- Fullscreen nav that appears after hamburger click -->
-                <div class="nav">
-                    <div class="inner">
-                        <div class="nav__content">
-                            <ul class="nav__list">
-                                <li class="nav__list-item"><a href="index.html">Home</a></li>
-                                <li class="nav__list-item"><a href="projects.html">Projects</a></li>
-                                <li class="nav__list-item"><a href="ai-bots.html">AI Bots</a></li>
-                                <li class="nav__list-item"><a href="about.html">About</a></li>
-                                <li class="nav__list-item"><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- End .nav -->
+  <!-- Toggle Sidebar Script -->
+  <script>
+    const toggleBtn = document.getElementById("toggleBtn");
+    const sidebar = document.getElementById("sidebar");
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("show");
+    });
+  </script>
 
-                <div class="nav-content">
-                    <div class="inner-content">
-                        <address class="v-middle">
-                            <span>Israel</span>
-                            <span>Herzliya, Tel-Aviv area</span>
-                            <span>+972 111 222 333</span>
-                        </address>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Nav Bar -->
-
-    <!-- MAIN WRAPPER -->
-    <main class="main-root">
-        <div id="dsn-scrollbar">
-
-            <!-- ========== Slider / Hero Section =========== -->
-            <div class="dsn-slider" data-dsn-header="project">
-                <!-- ...  אפשר לשנות את החלק הזה לסליידר פרויקטים או ל-Hero סטטי ... -->
-                <div class="dsn-root-slider" id="dsn-hero-parallax-img">
-                    <!-- כאן נכנס סליידר התבנית. למען הקיצור השארנו אותו כמוצג -->
-                    <div class="slide-inner">
-                        <div class="swiper-wrapper">
-                            <!-- Slide #1 -->
-                            <div class="slide-item" data-dsn-id="0">
-                                <div class="image-container">
-                                    <div class="image-bg cover-bg" data-image-src="assets/img/project/project9/1.jpg">
-                                        <img src="assets/img/project/project9/1.jpg" alt="Slide 1">
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Slide #2 ... -->
-                            <!-- ... וכך הלאה ... -->
-                        </div>
-                    </div>
-                </div>
-                <!-- Insert your text / overlay here or keep the template's logic -->
-            </div>
-            <!-- End Slider -->
-
-            <div class="wrapper">
-                <!-- Example sections from the template. You can keep or remove them. -->
-                <section class="intro-about section-margin">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="intro-content-text">
-                                    <h2>Welcome to My Embedded & AI World</h2>
-                                    <p>
-                                        I specialize in real-time embedded systems, advanced C++ solutions, 
-                                        and AI-driven applications. Explore some unique projects below, 
-                                        and contact me for more information.
-                                    </p>
-                                    <h6>Ohad Alon</h6>
-                                    <small>Senior Engineer, AI & Embedded Systems</small>
-                                    <div class="exper">
-                                        <div class="numb-ex">
-                                            <span>20</span>
-                                        </div>
-                                        <h4>YEARS OF <br> ENGINEERING EXPERIENCE</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- More sections according to the template ... -->
-
-                <section class="contact-up section-margin section-padding">
-                    <div class="container">
-                        <div class="c-wapp">
-                            <a href="contact.html">
-                                <span class="hiring">We are connected!</span>
-                                <span class="career">Feel free to reach out anytime.</span>
-                            </a>
-                        </div>
-                    </div>
-                </section>
-
-            </div>
-            <!-- wrapper end -->
-
-            <footer class="footer">
-                <div class="container">
-                    <div class="footer-links p-relative">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="footer-block">
-                                    <div class="footer-logo">
-                                        <a href="">
-                                            <img src="assets/img/logo.png" alt="MyEmbeddedAI footer logo">
-                                        </a>
-                                    </div>
-                                    <div class="footer-social">
-                                        <ul>
-                                            <li><a href="#"><i class="fab fa-github"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <!-- etc... -->
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="footer-block col-menu">
-                                    <h4 class="footer-title">Navigation</h4>
-                                    <nav>
-                                        <ul>
-                                            <li><a href="projects.html">Projects</a></li>
-                                            <li><a href="ai-bots.html">AI Bots</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="footer-block col-contact">
-                                    <h4 class="footer-title">Contact</h4>
-                                    <p><strong>T</strong>: +972-111-2222</p>
-                                    <p><strong>E</strong>: <a href="#">info@myembeddedai.com</a></p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="col-address">
-                                    <h4 class="footer-title">Address</h4>
-                                    <p>Israel, Herzliya,<br>Tel-Aviv area.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="copyright">
-                        <div class="text-center">
-                            <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
-                            <div>Designed with “Droow” Template. (Please ensure you have a license.)</div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </div>
-    </main>
-
-    <!-- WAIT LOADER -->
-    <div class="wait-loader">
-        <div class="loader-inner">
-            <div class="loader-circle">
-                <div class="loader-layer"></div>
-            </div>
-        </div>
-    </div>
-    <!-- End WAIT LOADER -->
-
-    <!-- CURSOR (template-specific) -->
-    <div class="cursor">
-        <div class="cursor-helper cursor-view"><span>VIEW</span></div>
-        <div class="cursor-helper cursor-close"><span>Close</span></div>
-        <div class="cursor-helper cursor-link"></div>
-    </div>
-
-    <!-- JS Dependencies (from template) -->
-    <script src="assets/js/jquery-3.1.1.min.js"></script>
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/dsn-grid.js"></script>
-    <script src="assets/js/custom.js"></script>
-
+  <!-- Particles.js Config -->
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 90 },
+        "color": { "value": ["#ffcc00", "#ff4d4d"] },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.8 },
+        "size": { "value": 3, "random": true },
+        "line_linked": { "enable": false },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "out_mode": "out"
+        }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" },
+          "onclick": { "enable": false },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": { "opacity": 1 }
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
 </body>
 </html>
