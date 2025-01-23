@@ -20,3 +20,31 @@ build/
 .vscode/
 .idea/
 Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyd
+*.pyo
+*.pyc
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# C++
+*.o
+*.obj
+*.so
+*.exe
+*.dll
+
+# Other
+*.swp
+*.swo
+*.bak
+*.tmp
