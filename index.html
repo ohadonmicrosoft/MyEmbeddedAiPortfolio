@@ -11,8 +11,8 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
   />
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" 
     rel="stylesheet"
   />
   <!-- AOS Library -->
@@ -28,15 +28,16 @@
 
   <style>
     :root {
-      --primary-color: #ffcc00;
-      --secondary-color: #ff4d4d;
+      --primary-color: #ffcc00;  /* צהוב חי */
+      --secondary-color: #ff4d4d; /* אדום לוהט */
       --dark-bg: #1f1f2f;
       --light-text: #fff;
-      --menu-width: 250px;
+      --menu-width: 200px; /* תפריט צר יותר */
     }
 
     * {
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
       font-family: "Poppins", sans-serif;
     }
@@ -45,12 +46,11 @@
       background: var(--dark-bg);
       color: var(--light-text);
       overflow-x: hidden;
-      margin: 0;
     }
 
-    /* TOGGLE (MOBILE) */
+    /* MOBILE TOGGLE BUTTON */
     .toggle-btn {
-      display: none;
+      display: none; 
       position: fixed;
       top: 15px; left: 15px;
       font-size: 1.8rem;
@@ -61,49 +61,70 @@
       cursor: pointer;
     }
 
-    /* SIDEBAR */
+    /* ===== SIDEBAR עם אנימציית רקע גרדיאנט ===== */
+    @keyframes sideGradient {
+      0% {
+        background: linear-gradient(135deg, #ff0099, #493240);
+      }
+      50% {
+        background: linear-gradient(135deg, #ff4d4d, #ffcc00);
+      }
+      100% {
+        background: linear-gradient(135deg, #00c9ff, #92fe9d);
+      }
+    }
+
     .sidebar {
       position: fixed;
-      top: 0; left: 0;
+      left: 0; top: 0;
       width: var(--menu-width);
       height: 100vh;
-      background: linear-gradient(135deg, #2a2a3b, #3e3e5a);
-      padding: 1rem;
-      box-shadow: 2px 0 12px rgba(0,0,0,0.5);
+      animation: sideGradient 8s ease-in-out infinite alternate;
+      box-shadow: 2px 0 12px rgba(0, 0, 0, 0.6);
       z-index: 1000;
       transform: translateX(0);
       transition: transform 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 1rem;
     }
-    .sidebar .logo {
-      display: block;
-      color: var(--primary-color);
+
+    .logo {
+      color: #fff;
       font-size: 1.8rem;
       font-weight: 700;
       text-decoration: none;
       margin-bottom: 2rem;
-      text-align: center;
-      transition: 0.3s;
+      transition: transform 0.3s;
     }
-    .sidebar .logo:hover {
+    .logo:hover {
       transform: scale(1.05);
     }
-    .sidebar ul {
+
+    .nav-links {
       list-style: none;
-      padding: 0; margin: 0;
+      width: 100%;
       text-align: center;
+      padding: 0; 
+      margin: 0;
     }
-    .sidebar ul li {
+    .nav-links li {
       margin-bottom: 1.5rem;
     }
-    .sidebar ul li a {
-      color: var(--light-text);
-      text-decoration: none;
+    .nav-links li a {
+      display: block;
+      color: #fff;
       font-size: 1.1rem;
-      transition: 0.3s;
+      text-decoration: none;
+      transition: transform 0.3s, background 0.3s;
+      padding: 0.8rem 0;
+      width: 100%;
     }
-    .sidebar ul li a:hover {
-      color: var(--primary-color);
+    .nav-links li a:hover {
       transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
     }
 
     /* MAIN CONTENT */
@@ -111,17 +132,19 @@
       margin-left: var(--menu-width);
       min-height: 100vh;
       position: relative;
-      transition: margin-left 0.4s;
+      transition: margin-left 0.4s ease;
     }
 
-    /* HERO + PARTICLES */
+    /* PARTICLES BACKGROUND */
     #particles-js {
       position: absolute;
+      top: 0; left: 0;
       width: 100%;
       height: 100vh;
-      top: 0; left: 0;
       z-index: -1;
     }
+
+    /* HERO SECTION */
     .hero-section {
       width: 100%;
       height: 100vh;
@@ -130,13 +153,14 @@
       justify-content: center;
       align-items: center;
       text-align: center;
+      position: relative;
       color: var(--light-text);
       padding: 2rem;
     }
     .hero-section h1 {
       font-size: 3rem;
-      margin-bottom: 1rem;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     }
     .hero-section p {
       font-size: 1.2rem;
@@ -152,11 +176,11 @@
       border-radius: 6px;
       cursor: pointer;
       transition: transform 0.3s, background-color 0.3s;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
     .cta-btn:hover {
       transform: scale(1.05);
-      background: var(--secondary-color);
+      background-color: var(--secondary-color);
       color: #fff;
     }
 
@@ -184,14 +208,15 @@
   </style>
 </head>
 <body>
-  <!-- MOBILE TOGGLE BTN -->
+  <!-- TOGGLE BUTTON (MOBILE) -->
   <button class="toggle-btn" id="toggleBtn">
     <i class="fas fa-bars"></i>
   </button>
 
+  <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
-    <a class="logo" href="index.html">MyEmbeddedAI</a>
-    <ul>
+    <a href="index.html" class="logo">MyEmbeddedAI</a>
+    <ul class="nav-links">
       <li><a href="projects.html">Projects</a></li>
       <li><a href="ai-bots.html">AI Bots</a></li>
       <li><a href="about.html">About</a></li>
@@ -199,8 +224,9 @@
     </ul>
   </aside>
 
-  <div class="main-content">
-    <!-- Particles Container -->
+  <!-- MAIN CONTENT -->
+  <div class="main-content" id="mainContent">
+    <!-- Particles BG -->
     <div id="particles-js"></div>
 
     <section class="hero-section" data-aos="fade-up">
@@ -212,13 +238,18 @@
     </section>
   </div>
 
-  <!-- AOS + GSAP Scripts -->
+  <!-- AOS init -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init();
   </script>
 
-  <!-- Toggle Sidebar (Mobile) -->
+  <!-- GSAP (if needed beyond AOS) -->
+  <!-- <script>
+    // Additional GSAP animations can go here
+  </script> -->
+
+  <!-- Toggle Sidebar Script -->
   <script>
     const toggleBtn = document.getElementById("toggleBtn");
     const sidebar = document.getElementById("sidebar");
@@ -227,60 +258,37 @@
     });
   </script>
 
-  <!-- Particles.js Configuration -->
+  <!-- Particles.js Config -->
   <script>
     particlesJS("particles-js", {
-      particles: {
-        number: {
-          value: 120
-        },
-        color: {
-          value: ["#ffcc00", "#ff4d4d"]
-        },
-        shape: {
-          type: "circle",
-        },
-        opacity: {
-          value: 0.8,
-          random: false,
-        },
-        size: {
-          value: 3,
-          random: true,
-        },
-        line_linked: {
-          enable: false
-        },
-        move: {
-          enable: true,
-          speed: 2,
-          random: false,
-          straight: false,
-          out_mode: "out",
+      "particles": {
+        "number": { "value": 90 },
+        "color": { "value": ["#ffcc00", "#ff4d4d"] },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.8 },
+        "size": { "value": 3, "random": true },
+        "line_linked": { "enable": false },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "out_mode": "out"
         }
       },
-      interactivity: {
-        detect_on: "canvas",
-        events: {
-          onhover: {
-            enable: true,
-            mode: "grab"
-          },
-          onclick: {
-            enable: false
-          },
-          resize: true
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" },
+          "onclick": { "enable": false },
+          "resize": true
         },
-        modes: {
-          grab: {
-            distance: 140,
-            line_linked: {
-              opacity: 1
-            }
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": { "opacity": 1 }
           }
         }
       },
-      retina_detect: true
+      "retina_detect": true
     });
   </script>
 </body>
