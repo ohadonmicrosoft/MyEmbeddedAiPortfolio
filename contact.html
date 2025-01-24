@@ -2,298 +2,241 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Contact - MyEmbeddedAI Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact - Futuristic AI Portfolio">
+  <title>Contact - Futuristic AI Portfolio</title>
 
-  <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  />
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-    rel="stylesheet"
-  />
-  <!-- AOS Library -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-  />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
+  <!-- AOS Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Custom CSS -->
   <style>
     :root {
-      --primary-color: #ffcc00;
-      --secondary-color: #ff4d4d;
-      --dark-bg: #1f1f2f;
+      --primary-color: #0ff;
+      --secondary-color: #f0f;
+      --dark-bg: #0a002a;
       --light-text: #fff;
-      --dark-text: #000;
-      --menu-width: 230px;
+      --neon-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--secondary-color);
     }
 
+    /* Reset */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      font-family: 'Orbitron', sans-serif;
     }
+
     body {
       background: var(--dark-bg);
       color: var(--light-text);
       overflow-x: hidden;
-      padding: 0;
-      margin: 0;
+      font-size: 16px;
     }
 
-    /* SIDEBAR */
+    /* Sidebar */
     .sidebar {
       position: fixed;
-      top: 0; left: 0;
-      width: var(--menu-width);
+      top: 0;
+      left: 0;
+      width: 250px;
       height: 100vh;
-      background: linear-gradient(135deg, #2a2a3b, #3e3e5a);
-      padding: 1rem;
-      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(145deg, #2c0158, #46027b);
+      box-shadow: 4px 0 15px rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 1rem;
       z-index: 1000;
-      transform: translateX(0);
-      transition: transform 0.4s ease;
     }
-    .logo {
-      display: block;
-      color: var(--primary-color);
-      font-size: 1.8rem;
-      font-weight: 700;
-      text-decoration: none;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-    .sidebar ul {
-      list-style: none;
-      padding: 0; margin: 0;
-      text-align: center;
-    }
-    .sidebar ul li {
-      margin-bottom: 1.5rem;
-    }
-    .sidebar ul li a {
+
+    .sidebar .logo {
+      font-size: 2rem;
       color: var(--light-text);
       text-decoration: none;
-      font-size: 1.1rem;
-      transition: color 0.3s, transform 0.3s;
-    }
-    .sidebar ul li a:hover {
-      color: var(--primary-color);
-      transform: scale(1.05);
-    }
-    .toggle-btn {
-      display: none;
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      font-size: 1.8rem;
-      color: var(--primary-color);
-      background: none;
-      border: none;
-      z-index: 1100;
-      cursor: pointer;
+      font-weight: bold;
+      text-shadow: var(--neon-shadow);
+      margin-bottom: 2rem;
     }
 
-    .main-content {
-      margin-left: var(--menu-width);
-      transition: margin-left 0.4s ease;
-      min-height: 100vh;
-      padding: 2rem;
-      background: url("assets/images/profile.jpg") center center / cover no-repeat;
-      background-attachment: fixed;
-      position: relative;
-    }
-    /* OVERLAY FOR CONTACT BACKGROUND */
-    .overlay {
-      position: absolute;
-      top: 0; left: 0;
+    .nav-links {
+      list-style: none;
       width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      z-index: -1;
+      text-align: center;
     }
 
+    .nav-links li {
+      margin: 1rem 0;
+    }
+
+    .nav-links li a {
+      color: var(--light-text);
+      text-decoration: none;
+      font-size: 1.2rem;
+      display: block;
+      padding: 0.8rem 1rem;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .nav-links li a:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 250px;
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Page Header */
+    .page-header {
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 3rem;
+      color: var(--primary-color);
+      text-shadow: var(--neon-shadow);
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      color: var(--light-text);
+      text-shadow: 0 0 10px var(--secondary-color);
+    }
+
+    /* Contact Section */
     .contact-section {
       max-width: 600px;
-      margin: 0 auto;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 2rem;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      position: relative;
-      z-index: 2;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+      padding: 2rem;
+      text-align: center;
     }
+
     .contact-section h1 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: var(--primary-color);
-      margin-bottom: 1.2rem;
+      text-shadow: var(--neon-shadow);
+      margin-bottom: 1.5rem;
     }
+
     .contact-section form {
-      margin-top: 2rem;
       display: flex;
       flex-direction: column;
       gap: 1rem;
     }
+
     .contact-section input,
     .contact-section textarea {
       width: 100%;
-      padding: 0.9rem;
+      padding: 1rem;
       font-size: 1rem;
-      border: 2px solid #444;
+      background: #2c2c4c;
+      border: 2px solid var(--primary-color);
       border-radius: 8px;
-      background: #2c2c3d;
       color: var(--light-text);
-      box-shadow: inset 0 3px 8px rgba(0,0,0,0.3);
-      transition: background-color 0.3s;
+      box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.5);
+      transition: 0.3s;
     }
+
     .contact-section input:focus,
     .contact-section textarea:focus {
-      background-color: #3c3c5c;
+      background: #3c3c5c;
       outline: none;
     }
+
     .contact-section button {
-      padding: 0.9rem;
-      font-size: 1rem;
-      background-color: var(--primary-color);
-      color: var(--dark-text);
+      padding: 1rem;
+      font-size: 1.2rem;
       border: none;
       border-radius: 8px;
+      background: var(--primary-color);
+      color: #000;
       cursor: pointer;
-      transition: transform 0.3s, background-color 0.3s;
-      font-weight: 600;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-    .contact-section button:hover,
-    .contact-section button:focus {
-      transform: scale(1.05);
-      background-color: var(--secondary-color);
-      color: var(--light-text);
-      outline: none;
+      box-shadow: var(--neon-shadow);
+      transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+      font-weight: bold;
     }
 
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: var(--light-text);
-      background: linear-gradient(135deg, #1b1b2b, #1f1f2f);
-      font-size: 0.95rem;
-      box-shadow: 0 -4px 12px rgba(0,0,0,0.4);
-      margin-top: 2rem;
-    }
-    footer a {
-      color: var(--primary-color);
-      text-decoration: none;
-      margin: 0 0.5rem;
-      font-weight: 600;
-      transition: transform 0.3s, color 0.3s;
-    }
-    footer a:hover,
-    footer a:focus {
-      color: var(--secondary-color);
+    .contact-section button:hover {
       transform: scale(1.1);
-      outline: none;
+      background: var(--secondary-color);
+      color: #fff;
     }
 
-    /* MEDIA QUERIES */
+    /* Media Queries */
     @media (max-width: 768px) {
       .sidebar {
-        transform: translateX(-100%);
+        width: 80px;
       }
-      .sidebar.show {
-        transform: translateX(0);
-      }
+
       .main-content {
-        margin-left: 0;
-      }
-      .toggle-btn {
-        display: block;
+        margin-left: 80px;
+        padding: 1rem;
       }
 
       .contact-section h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
     }
   </style>
 </head>
 <body>
-  <button class="toggle-btn" id="toggleBtn">
-    <i class="fas fa-bars"></i>
-  </button>
-
-  <aside class="sidebar" id="sidebar">
-    <a class="logo" href="index.html">MyEmbeddedAI</a>
-    <ul>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="ai-bots.html">AI Bots</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <a href="#" class="logo">Future Tech</a>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#ai-bots">AI Bots</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </aside>
 
-  <div class="main-content" id="mainContent">
-    <div class="overlay"></div>
-    <section class="contact-section" data-aos="fade-up">
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Page Header -->
+    <div class="page-header" data-aos="fade-up">
       <h1>Contact Me</h1>
-      <form id="contactForm" onsubmit="return handleFormSubmit(event)" aria-label="Contact form">
-        <input
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Your Name"
-          required
-          aria-label="Your Name"
-        />
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Your Email"
-          required
-          aria-label="Your Email"
-        />
-        <textarea
-          name="message"
-          id="message"
-          rows="5"
-          placeholder="Your Message"
-          required
-          aria-label="Your Message"
-        ></textarea>
+      <p>Feel free to reach out with any inquiries or collaborations.</p>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-section" data-aos="fade-up">
+      <h1>Get in Touch</h1>
+      <form id="contactForm" onsubmit="return handleFormSubmit(event)">
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message</button>
       </form>
-    </section>
-
-    <footer>
-      <p>© 2025 MyEmbeddedAI - All rights reserved.</p>
-      <p>
-        <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
-          <i class="fab fa-github"></i> GitHub
-        </a> |
-        <a href="https://www.linkedin.com/in/ohad-alon" target="_blank">
-          <i class="fab fa-linkedin"></i> LinkedIn
-        </a>
-      </p>
-    </footer>
+    </div>
   </div>
 
+  <!-- AOS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init();
+  </script>
 
-    // Toggle for Mobile
-    const toggleBtn = document.getElementById("toggleBtn");
-    const sidebar = document.getElementById("sidebar");
-    toggleBtn.addEventListener("click", () => {
-      sidebar.classList.toggle("show");
-    });
-
+  <!-- Contact Form Script -->
+  <script>
     function handleFormSubmit(event) {
       event.preventDefault();
       const name = document.getElementById("name").value.trim();
@@ -301,12 +244,11 @@
       const message = document.getElementById("message").value.trim();
 
       if (name && email && message) {
-        alert(`Thank you, ${name}!\nYour message has been sent.`);
+        alert(`Thank you, ${name}! Your message has been sent.`);
         document.getElementById("contactForm").reset();
       } else {
         alert("Please fill out all fields.");
       }
-      return false;
     }
   </script>
 </body>

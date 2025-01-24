@@ -1,358 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Projects - MyEmbeddedAI Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projects - Futuristic AI Portfolio">
+  <title>Projects - Futuristic AI Portfolio</title>
 
-  <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  />
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-    rel="stylesheet"
-  >
-  <!-- AOS Library -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-  />
-  <!-- Tilt.js (VanillaTilt) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
+  <!-- AOS Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Custom CSS -->
   <style>
     :root {
-      --primary-color: #f0ff00; 
-      --secondary-color: #ff4d4d;
-      --dark-bg: #0f0f1f;
+      --primary-color: #0ff;
+      --secondary-color: #f0f;
+      --dark-bg: #0a002a;
       --light-text: #fff;
-      --menu-width: 220px;
+      --neon-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--secondary-color);
     }
+
+    /* Reset */
     * {
-      margin: 0; 
+      margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      font-family: 'Orbitron', sans-serif;
     }
+
     body {
       background: var(--dark-bg);
       color: var(--light-text);
       overflow-x: hidden;
+      font-size: 16px;
     }
 
-    /* SIDEBAR */
-    @keyframes sideGradient {
-      0% {
-        background: linear-gradient(135deg, #2a2a3b, #452f79);
-      }
-      50% {
-        background: linear-gradient(135deg, #4f4cdd, #00fde4);
-      }
-      100% {
-        background: linear-gradient(135deg, #00e7e7, #6049ff);
-      }
-    }
-    .toggle-btn {
-      display: none;
-      position: fixed;
-      top: 15px; left: 15px;
-      font-size: 1.8rem;
-      color: var(--primary-color);
-      background: none;
-      border: none;
-      z-index: 1100;
-      cursor: pointer;
-    }
+    /* Sidebar */
     .sidebar {
       position: fixed;
-      top: 0; left: 0;
-      width: var(--menu-width);
+      top: 0;
+      left: 0;
+      width: 250px;
       height: 100vh;
-      animation: sideGradient 8s ease-in-out infinite alternate;
-      box-shadow: 3px 0 12px rgba(0,0,0,0.6);
-      z-index: 1000;
-      transform: translateX(0);
-      transition: transform 0.4s ease;
+      background: linear-gradient(145deg, #2c0158, #46027b);
+      box-shadow: 4px 0 15px rgba(0, 0, 0, 0.7);
       display: flex;
       flex-direction: column;
       align-items: center;
       padding-top: 1rem;
+      z-index: 1000;
     }
-    .logo {
-      color: #fff;
-      font-size: 1.8rem;
-      font-weight: 700;
+
+    .sidebar .logo {
+      font-size: 2rem;
+      color: var(--light-text);
       text-decoration: none;
+      font-weight: bold;
+      text-shadow: var(--neon-shadow);
       margin-bottom: 2rem;
-      text-align: center;
     }
-    .logo:hover {
-      transform: scale(1.1);
-    }
+
     .nav-links {
       list-style: none;
       width: 100%;
       text-align: center;
     }
+
     .nav-links li {
       margin: 1rem 0;
     }
+
     .nav-links li a {
-      color: #fff;
+      color: var(--light-text);
       text-decoration: none;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       display: block;
-      padding: 0.8rem 0;
-      transition: 0.3s;
-      position: relative;
+      padding: 0.8rem 1rem;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      overflow: hidden;
+      white-space: nowrap;
     }
+
     .nav-links li a:hover {
-      transform: scale(1.05);
-      background: rgba(255,255,255,0.15);
-      border-radius: 8px;
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
     }
 
+    /* Main Content */
     .main-content {
-      margin-left: var(--menu-width);
-      min-height: 100vh;
-      position: relative;
-      transition: margin-left 0.4s ease;
+      margin-left: 250px;
       padding: 2rem;
-    }
-
-    .page-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .page-header h2 {
-      font-size: 2.4rem;
-      color: var(--primary-color);
-      text-shadow: 0 0 8px var(--primary-color);
-      animation: neonGlow 2s infinite alternate;
-    }
-
-    @keyframes neonGlow {
-      0% {
-        text-shadow: 0 0 8px var(--primary-color), 0 0 15px var(--primary-color);
-      }
-      100% {
-        text-shadow: 0 0 8px var(--secondary-color), 0 0 15px var(--secondary-color);
-      }
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding-bottom: 2rem;
-    }
-    .project-card {
-      background-color: rgba(255,255,255,0.05);
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      transition: transform 0.4s, box-shadow 0.4s;
-      perspective: 1000px;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
+      gap: 2rem;
     }
-    .project-card:hover {
-      box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+
+    /* Page Header */
+    .page-header {
+      text-align: center;
     }
-    .project-img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      background-color: #444;
-      flex-shrink: 0;
-    }
-    .project-content {
-      padding: 1rem;
-      color: #ccc;
-      flex-grow: 1;
-    }
-    .project-content h3 {
+
+    .page-header h1 {
+      font-size: 3rem;
       color: var(--primary-color);
+      text-shadow: var(--neon-shadow);
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      color: var(--light-text);
+      text-shadow: 0 0 10px var(--secondary-color);
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 1.5rem;
+      color: var(--light-text);
+    }
+
+    .project-content h3 {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      text-shadow: var(--neon-shadow);
       margin-bottom: 0.5rem;
-      font-size: 1.3rem;
     }
+
     .project-content p {
+      font-size: 1rem;
+      line-height: 1.5;
       margin-bottom: 1rem;
-      line-height: 1.4;
-      font-size: 0.95rem;
     }
+
     .project-content a {
       color: var(--secondary-color);
       text-decoration: none;
-      font-weight: 600;
-      transition: transform 0.3s;
+      font-weight: bold;
+      text-shadow: 0 0 10px var(--secondary-color);
+      transition: transform 0.3s ease;
     }
+
     .project-content a:hover {
-      text-decoration: underline;
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
 
-    /* data-tilt for tilt effect */
-    .tilt {
-      cursor: pointer;
-      transform-style: preserve-3d;
-      will-change: transform;
-    }
-
-    /* MEDIA QUERIES */
+    /* Media Queries */
     @media (max-width: 768px) {
       .sidebar {
-        transform: translateX(-100%);
+        width: 80px;
       }
-      .sidebar.show {
-        transform: translateX(0);
-      }
+
       .main-content {
-        margin-left: 0;
+        margin-left: 80px;
+        padding: 1rem;
       }
-      .toggle-btn {
-        display: block;
-      }
-      .page-header h2 {
-        font-size: 2rem;
+
+      .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       }
     }
   </style>
 </head>
-<body onload="AOS.init()">
-  <button class="toggle-btn" id="toggleBtn">
-    <i class="fas fa-bars"></i>
-  </button>
-
-  <aside class="sidebar" id="sidebar">
-    <a class="logo" href="index.html">MyEmbeddedAI</a>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <a href="#" class="logo">Future Tech</a>
     <ul class="nav-links">
-      <li><a href="projects.html"><i class="fas fa-robot"></i> Projects</a></li>
-      <li><a href="ai-bots.html"><i class="fas fa-brain"></i> AI Bots</a></li>
-      <li><a href="about.html"><i class="fas fa-user"></i> About</a></li>
-      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#ai-bots">AI Bots</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </aside>
 
+  <!-- Main Content -->
   <div class="main-content">
-    <div class="page-header" data-aos="zoom-in">
-      <h2>My Projects</h2>
+    <!-- Page Header -->
+    <div class="page-header" data-aos="fade-up">
+      <h1>My Projects</h1>
+      <p>Explore some of my most innovative and groundbreaking works.</p>
     </div>
 
-    <div class="projects-grid">
-      <!-- Card 1 -->
-      <div class="project-card tilt" data-tilt data-tilt-max="8" data-aos="fade-up">
-        <img
-          class="project-img"
-          src="assets/images/embedded_robot.jpg"
-          alt="Embedded Robot Project"
-        >
+    <!-- Projects Grid -->
+    <div class="projects-grid" data-aos="fade-up">
+      <!-- Project Card 1 -->
+      <div class="project-card">
+        <img src="https://via.placeholder.com/600x400" alt="AI Dashboard">
         <div class="project-content">
-          <h3>Embedded Robot Controller</h3>
-          <p>
-            A real-time C++ controller for an autonomous robot, featuring advanced motion planning.
-          </p>
-          <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
-            <i class="fab fa-github"></i> GitHub Code
-          </a>
+          <h3>AI Dashboard</h3>
+          <p>A dashboard for monitoring AI performance with real-time metrics.</p>
+          <a href="https://github.com/username/ai-dashboard" target="_blank">View on GitHub</a>
         </div>
       </div>
-      <!-- Card 2 -->
-      <div class="project-card tilt" data-tilt data-tilt-max="8" data-aos="fade-up" data-aos-delay="100">
-        <img
-          class="project-img"
-          src="assets/images/ai_chatbot.jpg"
-          alt="AI Chatbot"
-        >
+
+      <!-- Project Card 2 -->
+      <div class="project-card">
+        <img src="https://via.placeholder.com/600x400" alt="Neural Network">
+        <div class="project-content">
+          <h3>Neural Network Simulator</h3>
+          <p>A simulator to visualize and train neural networks efficiently.</p>
+          <a href="https://github.com/username/neural-simulator" target="_blank">View on GitHub</a>
+        </div>
+      </div>
+
+      <!-- Project Card 3 -->
+      <div class="project-card">
+        <img src="https://via.placeholder.com/600x400" alt="AI Chatbot">
         <div class="project-content">
           <h3>AI Chatbot</h3>
-          <p>
-            A chatbot powered by a large language model for natural language queries and dialogues.
-          </p>
-          <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
-            <i class="fab fa-github"></i> GitHub Code
-          </a>
-        </div>
-      </div>
-      <!-- Card 3 -->
-      <div class="project-card tilt" data-tilt data-tilt-max="8" data-aos="fade-up" data-aos-delay="200">
-        <img
-          class="project-img"
-          src="assets/images/rtos_monitor.jpg"
-          alt="RTOS Monitoring Tool"
-        >
-        <div class="project-content">
-          <h3>RTOS Monitoring Tool</h3>
-          <p>
-            A real-time OS monitoring and analytics tool, displaying CPU usage, tasks, and system metrics.
-          </p>
-          <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
-            <i class="fab fa-github"></i> GitHub Code
-          </a>
-        </div>
-      </div>
-      <!-- Card 4 -->
-      <div class="project-card tilt" data-tilt data-tilt-max="8" data-aos="fade-up" data-aos-delay="300">
-        <img
-          class="project-img"
-          src="assets/images/WeCode.png"
-          alt="Machine Learning"
-        >
-        <div class="project-content">
-          <h3>Machine Learning Model</h3>
-          <p>
-            A machine learning model for predictive analytics, built using Python and TensorFlow.
-          </p>
-          <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
-            <i class="fab fa-github"></i> GitHub Code
-          </a>
-        </div>
-      </div>
-      <!-- Card 5 -->
-      <div class="project-card tilt" data-tilt data-tilt-max="8" data-aos="fade-up" data-aos-delay="400">
-        <img
-          class="project-img"
-          src="assets/images/bot.jpg"
-          alt="IoT Project"
-        >
-        <div class="project-content">
-          <h3>IoT Home Automation</h3>
-          <p>
-            An IoT-based home automation system using Raspberry Pi and MQTT protocol.
-          </p>
-          <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio.git" target="_blank">
-            <i class="fab fa-github"></i> GitHub Code
-          </a>
+          <p>A conversational AI bot capable of answering user queries intelligently.</p>
+          <a href="https://github.com/username/ai-chatbot" target="_blank">View on GitHub</a>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- AOS init -->
+  <!-- AOS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init();
-  </script>
-
-  <!-- Toggle Sidebar + Tilt init -->
-  <script>
-    const toggleBtn = document.getElementById("toggleBtn");
-    const sidebar = document.getElementById("sidebar");
-    toggleBtn.addEventListener("click", () => {
-      sidebar.classList.toggle("show");
-    });
-
-    // Tilt
-    VanillaTilt.init(document.querySelectorAll(".tilt"), {
-      max: 8,
-      speed: 400,
-      glare: false,
-    });
   </script>
 </body>
 </html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Interactive AI Bots Chat">
-  <title>AI Bots - Futuristic Portfolio</title>
+  <meta name="description" content="Advanced AI Chat - Futuristic Experience">
+  <title>AI Chat - High-End Bot</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
       --neon-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--secondary-color);
     }
 
-    /* General Reset */
+    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -34,9 +34,10 @@
     }
 
     body {
-      background: var(--dark-bg);
+      background: linear-gradient(135deg, #0a002a, #1c013f);
       color: var(--light-text);
       overflow-x: hidden;
+      font-size: 16px;
     }
 
     /* Sidebar */
@@ -48,11 +49,11 @@
       height: 100vh;
       background: linear-gradient(145deg, #2c0158, #46027b);
       box-shadow: 4px 0 15px rgba(0, 0, 0, 0.7);
-      z-index: 1000;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding-top: 1rem;
+      z-index: 1000;
     }
 
     .sidebar .logo {
@@ -79,9 +80,10 @@
       text-decoration: none;
       font-size: 1.2rem;
       display: block;
-      padding: 0.8rem;
-      transition: transform 0.3s, background-color 0.3s;
-      text-shadow: 0 0 10px var(--primary-color);
+      padding: 0.8rem 1rem;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     .nav-links li a:hover {
@@ -100,6 +102,7 @@
       gap: 2rem;
     }
 
+    /* Page Header */
     .page-header {
       text-align: center;
     }
@@ -119,19 +122,20 @@
     /* Chat Section */
     .chat-section {
       width: 100%;
-      max-width: 700px;
+      max-width: 800px;
       margin: 0 auto;
       background: rgba(255, 255, 255, 0.05);
       border-radius: 12px;
       box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
       padding: 1.5rem;
+      position: relative;
     }
 
     .chat-window {
       width: 100%;
       height: 400px;
       overflow-y: auto;
-      background: #1f1f3f;
+      background: linear-gradient(145deg, #1a012a, #2a013f);
       border: 2px solid var(--primary-color);
       border-radius: 8px;
       padding: 1rem;
@@ -146,6 +150,7 @@
       font-size: 0.95rem;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       max-width: 70%;
+      animation: fadeIn 0.5s ease;
     }
 
     .message.user {
@@ -155,11 +160,22 @@
       border-top-right-radius: 0;
     }
 
-    .message.ai {
+    .message.bot {
       background: #31315a;
       color: #fff;
       margin-right: auto;
       border-top-left-radius: 0;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .chat-input {
@@ -193,18 +209,38 @@
       color: #fff;
     }
 
+    .chat-options {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .chat-option-btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--light-text);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .chat-option-btn:hover {
+      background: var(--primary-color);
+      color: #000;
+      box-shadow: var(--neon-shadow);
+    }
+
     @media (max-width: 768px) {
       .sidebar {
-        width: 100px;
+        width: 80px;
       }
 
       .main-content {
-        margin-left: 100px;
+        margin-left: 80px;
         padding: 1rem;
-      }
-
-      .page-header h1 {
-        font-size: 2rem;
       }
 
       .chat-window {
@@ -228,12 +264,19 @@
   <!-- Main Content -->
   <div class="main-content">
     <div class="page-header" data-aos="fade-up">
-      <h1>AI Chat Experience</h1>
-      <p>Engage with an AI-powered futuristic chatbot in an immersive interface.</p>
+      <h1>AI Chat</h1>
+      <p>Explore a high-end futuristic AI chatbot interface.</p>
+    </div>
+
+    <div class="chat-options" data-aos="fade-up">
+      <button class="chat-option-btn" onclick="changeMode('friendly')">Friendly Mode</button>
+      <button class="chat-option-btn" onclick="changeMode('professional')">Professional Mode</button>
+      <button class="chat-option-btn" onclick="changeMode('funny')">Funny Mode</button>
     </div>
 
     <div class="chat-section" data-aos="fade-up">
       <div class="chat-window" id="chatWindow"></div>
+
       <div class="chat-input">
         <input type="text" id="userInput" placeholder="Type your message here...">
         <button onclick="sendMessage()">Send</button>
@@ -241,14 +284,8 @@
     </div>
   </div>
 
-  <!-- AOS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
-    AOS.init();
-  </script>
-
-  <!-- Chat Script -->
-  <script>
+    let mode = "friendly";
     const chatWindow = document.getElementById("chatWindow");
 
     function addMessage(content, sender) {
@@ -259,9 +296,32 @@
       chatWindow.scrollTop = chatWindow.scrollHeight;
     }
 
-    function getAIResponse(userText) {
-      // Example AI Response (can be connected to a real endpoint)
-      return `AI: I received your message "${userText}". Future updates will include smarter replies!`;
+    function getBotResponse(userText) {
+      const responses = {
+        friendly: [
+          "Hey there! How can I help you today?",
+          "I'm here to assist you with a smile!",
+          "Feel free to ask me anything, friend!"
+        ],
+        professional: [
+          "Greetings. How may I assist you?",
+          "I'm here to provide accurate and reliable information.",
+          "Feel free to inquire about any topic."
+        ],
+        funny: [
+          "What's up? Need some giggles?",
+          "I don't know why the chicken crossed the road either.",
+          "Ask me something! I'll try to be funny."
+        ]
+      };
+
+      const selectedResponses = responses[mode] || [];
+      return selectedResponses[Math.floor(Math.random() * selectedResponses.length)];
+    }
+
+    function changeMode(newMode) {
+      mode = newMode;
+      addMessage(`Bot mode changed to ${newMode}`, "bot");
     }
 
     function sendMessage() {
@@ -271,8 +331,8 @@
         addMessage(text, "user");
         userInput.value = "";
         setTimeout(() => {
-          const aiResponse = getAIResponse(text);
-          addMessage(aiResponse, "ai");
+          const botResponse = getBotResponse(text);
+          addMessage(botResponse, "bot");
         }, 1000);
       }
     }
