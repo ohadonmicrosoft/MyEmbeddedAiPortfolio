@@ -1,217 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contact - Futuristic AI Portfolio">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Contact - Futuristic AI Portfolio"/>
   <title>Contact - Futuristic AI Portfolio</title>
-
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"/>
   <!-- AOS Library -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
   <!-- Custom CSS -->
-  <style>
-    :root {
-      --primary-color: #0ff;
-      --secondary-color: #f0f;
-      --dark-bg: #0a002a;
-      --light-text: #fff;
-      --neon-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--secondary-color);
-    }
-
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Orbitron', sans-serif;
-    }
-
-    body {
-      background: var(--dark-bg);
-      color: var(--light-text);
-      overflow-x: hidden;
-      font-size: 16px;
-    }
-
-    /* Sidebar */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 250px;
-      height: 100vh;
-      background: linear-gradient(145deg, #2c0158, #46027b);
-      box-shadow: 4px 0 15px rgba(0, 0, 0, 0.7);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 1rem;
-      z-index: 1000;
-    }
-
-    .sidebar .logo {
-      font-size: 2rem;
-      color: var(--light-text);
-      text-decoration: none;
-      font-weight: bold;
-      text-shadow: var(--neon-shadow);
-      margin-bottom: 2rem;
-    }
-
-    .nav-links {
-      list-style: none;
-      width: 100%;
-      text-align: center;
-    }
-
-    .nav-links li {
-      margin: 1rem 0;
-    }
-
-    .nav-links li a {
-      color: var(--light-text);
-      text-decoration: none;
-      font-size: 1.2rem;
-      display: block;
-      padding: 0.8rem 1rem;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .nav-links li a:hover {
-      transform: scale(1.1);
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 5px;
-    }
-
-    /* Main Content */
-    .main-content {
-      margin-left: 250px;
-      padding: 2rem;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Page Header */
-    .page-header {
-      text-align: center;
-    }
-
-    .page-header h1 {
-      font-size: 3rem;
-      color: var(--primary-color);
-      text-shadow: var(--neon-shadow);
-    }
-
-    .page-header p {
-      font-size: 1.2rem;
-      color: var(--light-text);
-      text-shadow: 0 0 10px var(--secondary-color);
-    }
-
-    /* Contact Section */
-    .contact-section {
-      max-width: 600px;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .contact-section h1 {
-      font-size: 2.5rem;
-      color: var(--primary-color);
-      text-shadow: var(--neon-shadow);
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-section form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .contact-section input,
-    .contact-section textarea {
-      width: 100%;
-      padding: 1rem;
-      font-size: 1rem;
-      background: #2c2c4c;
-      border: 2px solid var(--primary-color);
-      border-radius: 8px;
-      color: var(--light-text);
-      box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.5);
-      transition: 0.3s;
-    }
-
-    .contact-section input:focus,
-    .contact-section textarea:focus {
-      background: #3c3c5c;
-      outline: none;
-    }
-
-    .contact-section button {
-      padding: 1rem;
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 8px;
-      background: var(--primary-color);
-      color: #000;
-      cursor: pointer;
-      box-shadow: var(--neon-shadow);
-      transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
-      font-weight: bold;
-    }
-
-    .contact-section button:hover {
-      transform: scale(1.1);
-      background: var(--secondary-color);
-      color: #fff;
-    }
-
-    /* Media Queries */
-    @media (max-width: 768px) {
-      .sidebar {
-        width: 80px;
-      }
-
-      .main-content {
-        margin-left: 80px;
-        padding: 1rem;
-      }
-
-      .contact-section h1 {
-        font-size: 2rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
+  <div id="sidebarOverlay" onclick="closeSidebarOnOverlay()"></div>
+
+  <!-- Header -->
+  <header>
+    <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
+    <a href="index.html" class="header-logo">Future Tech</a>
+  </header>
+
   <!-- Sidebar -->
   <aside class="sidebar">
-    <a href="#" class="logo">Future Tech</a>
+    <a href="index.html" class="logo">Future Tech</a>
     <ul class="nav-links">
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#ai-bots">AI Bots</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="ai-bots.html">AI Bots</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </aside>
 
   <!-- Main Content -->
   <div class="main-content">
-    <!-- Page Header -->
     <div class="page-header" data-aos="fade-up">
       <h1>Contact Me</h1>
       <p>Feel free to reach out with any inquiries or collaborations.</p>
@@ -220,36 +45,19 @@
     <!-- Contact Section -->
     <div class="contact-section" data-aos="fade-up">
       <h1>Get in Touch</h1>
-      <form id="contactForm" onsubmit="return handleFormSubmit(event)">
-        <input type="text" id="name" name="name" placeholder="Your Name" required>
-        <input type="email" id="email" name="email" placeholder="Your Email" required>
+      <form id="contactForm" onsubmit="handleFormSubmit(event)">
+        <input type="text" id="name" name="name" placeholder="Your Name" required />
+        <input type="email" id="email" name="email" placeholder="Your Email" required />
         <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message</button>
       </form>
     </div>
   </div>
 
-  <!-- AOS -->
+  <!-- AOS Script -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
-
-  <!-- Contact Form Script -->
-  <script>
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const message = document.getElementById("message").value.trim();
-
-      if (name && email && message) {
-        alert(`Thank you, ${name}! Your message has been sent.`);
-        document.getElementById("contactForm").reset();
-      } else {
-        alert("Please fill out all fields.");
-      }
-    }
-  </script>
+  <script>AOS.init();</script>
+  <!-- Custom JS -->
+  <script src="js/script.js"></script>
 </body>
 </html>

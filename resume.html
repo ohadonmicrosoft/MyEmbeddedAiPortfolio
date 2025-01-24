@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Resume - Futuristic AI Portfolio"/>
+  <title>Resume - Futuristic AI Portfolio</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- AOS Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="sidebarOverlay" onclick="closeSidebarOnOverlay()"></div>
+
+  <!-- Header -->
+  <header>
+    <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
+    <a href="index.html" class="header-logo">Future Tech</a>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <a href="index.html" class="logo">Future Tech</a>
+    <ul class="nav-links">
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="ai-bots.html">AI Bots</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="page-header" data-aos="fade-up">
+      <h1>My Resume</h1>
+      <p>A brief overview of my professional experience, education, and skills.</p>
+    </div>
+
+    <div class="resume-container" data-aos="fade-up">
+      <!-- HEADER: NAME, LOCATION, CONTACT DETAILS -->
+      <div class="resume-header">
+        <h2>Ohad Alon</h2>
+        <p>Senior Embedded Software Developer</p>
+      </div>
+
+      <div class="contact-details">
+        <div class="contact-detail">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Herzliya, Israel</span>
+        </div>
+        <div class="contact-detail">
+          <i class="fas fa-phone"></i>
+          <span>+972-53-2428862</span>
+        </div>
+        <div class="contact-detail">
+          <i class="fas fa-envelope"></i>
+          <span>alonohad100@gmail.com</span>
+        </div>
+      </div>
+
+      <!-- Social Links (GitHub, LinkedIn) -->
+      <div class="social-links">
+        <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/ohad-alon" target="_blank">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+
+      <!-- Professional Summary -->
+      <p style="margin-top: 2rem;">
+        Accomplished Senior Embedded Software Developer with extensive experience designing real-time systems,
+        optimizing embedded software architectures, and delivering reliable, innovative solutions for complex
+        projects. Demonstrates expertise in developing cybersecurity protocols, integrating AI technologies,
+        and mentoring diverse teams to achieve organizational goals.
+      </p>
+
+      <!-- WORK EXPERIENCE -->
+      <h2 class="section-title">Work Experience</h2>
+
+      <div class="experience-item">
+        <h3>Senior Software Developer – CYMOTIVE Technologies</h3>
+        <h4>Feb 2022 – Present | Tel Aviv, Israel</h4>
+        <p>
+          • Designed secure communication protocols and enhanced system reliability by implementing robust cryptographic solutions.<br>
+          • Overhauled existing software architecture to improve data flow efficiency, enabling seamless integration of additional features.<br>
+          • Created advanced support tools that simplified diagnostic workflows, drastically shortening operational delays.<br>
+          • Actively collaborated with stakeholders to translate technical requirements into functional designs.
+        </p>
+      </div>
+
+      <div class="experience-item">
+        <h3>Software Developer – Brodmann17</h3>
+        <h4>Jan 2021 – Feb 2022 | Tel Aviv, Israel</h4>
+        <p>
+          • Led the development of innovative AI solutions, significantly improving object detection accuracy and real-time performance in automotive applications.<br>
+          • Successfully integrated AI capabilities into client platforms, resolving deployment challenges and enhancing software reliability.<br>
+          • Played a pivotal role in aligning team efforts to meet stringent deadlines, achieving consistent project success.
+        </p>
+      </div>
+
+      <div class="experience-item">
+        <h3>Senior Embedded Software Developer – Ceragon Networks</h3>
+        <h4>Nov 2016 – Jan 2021 | Tel Aviv, Israel</h4>
+        <p>
+          • Architected and implemented embedded software solutions for advanced telecommunications systems.<br>
+          • Developed task-scheduling mechanisms that significantly improved resource utilization and minimized processing delays.<br>
+          • Resolved complex interoperability issues, ensuring system stability and functionality.<br>
+          • Provided mentorship to junior developers, fostering a culture of learning and collaboration.
+        </p>
+      </div>
+
+      <div class="experience-item">
+        <h3>Software Developer – Experis Israel</h3>
+        <h4>Apr 2016 – Oct 2016 | Tel Aviv-Yafo, Israel</h4>
+        <p>
+          • Developed efficient embedded software solutions for multiple projects within strict deadlines.<br>
+          • Specialized in low-level programming and utilized debugging tools such as GDB and Logic Analyzers.
+        </p>
+      </div>
+
+      <!-- EDUCATION -->
+      <h2 class="section-title">Education</h2>
+      <div class="education-item">
+        <h3>Bachelor’s Degree in Electrical and Electronics Engineering – Ruppin Academic Center</h3>
+        <h4>Oct 2010 – Oct 2014 | Emek Hefer, Israel</h4>
+        <p>
+          • Designed an embedded system for data acquisition, demonstrating energy-efficient techniques.<br>
+          • Excelled in embedded systems design, signal processing, and low-level software engineering.
+        </p>
+      </div>
+
+      <!-- TECHNICAL EXPERTISE -->
+      <h2 class="section-title">Technical Expertise</h2>
+      <ul class="skill-list">
+        <li><span class="skill-level">Embedded Systems:</span> RTOS, Hardware-Software Integration, AI Systems</li>
+        <li><span class="skill-level">Programming Languages:</span> C, C++</li>
+        <li><span class="skill-level">Cybersecurity:</span> Cryptographic Protocols (TLS), Secure System Design</li>
+        <li><span class="skill-level">AI Development:</span> TensorFlow, AI-Based Object Detection Optimization</li>
+        <li><span class="skill-level">Debugging Tools:</span> GDB, Logic Analyzers, Real-Time Debugging</li>
+        <li><span class="skill-level">Soft Skills:</span> Problem-Solving, Team Collaboration, Technical Leadership</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- AOS Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>AOS.init();</script>
+  <!-- Custom JS -->
+  <script src="js/script.js"></script>
+</body>
+</html>

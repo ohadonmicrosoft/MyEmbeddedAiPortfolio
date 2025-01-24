@@ -1,1 +1,642 @@
-
+/* ===========================
+   1. Global Variables & Reset
+   =========================== */
+   :root {
+    --primary-color: #0ff;
+    --secondary-color: #f0f;
+    --dark-bg: #0a002a;
+    --light-text: #ffffff;
+    --neon-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--secondary-color);
+    --font-main: 'Orbitron', sans-serif;
+    --font-size-base: 16px;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-main);
+  }
+  
+  body {
+    background: linear-gradient(135deg, #0a002a, #1c013f);
+    color: var(--light-text);
+    font-size: var(--font-size-base);
+    overflow-x: hidden;
+    transition: all 0.3s ease; /* for potential animations */
+  }
+  
+  /* Overlay for when sidebar is open */
+  #sidebarOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    display: none; /* only active if sidebar is open */
+    z-index: 998;
+  }
+  
+  /* ===========================
+     2. Header + Hamburger
+     =========================== */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 1rem;
+    z-index: 999;
+  }
+  
+  .hamburger {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--light-text);
+    background: none;
+    border: none;
+    outline: none;
+    margin-right: 1rem;
+    transition: transform 0.3s;
+  }
+  
+  .hamburger:hover {
+    transform: scale(1.2);
+  }
+  
+  .header-logo {
+    color: var(--light-text);
+    font-size: 1.2rem;
+    text-shadow: var(--neon-shadow);
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  /* ===========================
+     3. Sidebar (Slide-Out)
+     =========================== */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* hidden by default */
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(145deg, #2c0158, #46027b);
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+    z-index: 1000;
+    transition: left 0.3s ease;
+  }
+  
+  .sidebar.open {
+    left: 0;
+  }
+  
+  .sidebar .logo {
+    font-size: 1.8rem;
+    color: var(--light-text);
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: var(--neon-shadow);
+    margin-bottom: 1rem;
+  }
+  
+  .nav-links {
+    list-style: none;
+    width: 100%;
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  .nav-links li {
+    margin: 1rem 0;
+  }
+  
+  .nav-links li a {
+    color: var(--light-text);
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: block;
+    padding: 0.8rem 1rem;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  .nav-links li a:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+  }
+  
+  /* ===========================
+     4. Main Content Wrapper
+     =========================== */
+  .main-content {
+    margin-top: 60px; /* to accommodate the fixed header */
+    padding: 2rem;
+    min-height: 100vh;
+  }
+  
+  .page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .page-header h1 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    text-shadow: var(--neon-shadow);
+    margin-bottom: 0.5rem;
+  }
+  
+  .page-header p {
+    font-size: 1.2rem;
+    color: var(--light-text);
+    text-shadow: 0 0 10px var(--secondary-color);
+  }
+  
+  /* ===========================
+     5. Hero Section (index.html)
+     =========================== */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--light-text);
+    overflow: hidden;
+  }
+  
+  .hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.5);
+  }
+  
+  .hero-content {
+    z-index: 1;
+    max-width: 800px;
+    padding: 1rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 4rem;
+    text-shadow: var(--neon-shadow);
+    margin-bottom: 1rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-btn {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary-color);
+    color: #000;
+    cursor: pointer;
+    box-shadow: var(--neon-shadow);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .cta-btn:hover {
+    transform: scale(1.1);
+    background: var(--secondary-color);
+    color: #fff;
+  }
+  
+  /* ===========================
+     6. About Page
+     =========================== */
+  .about-section {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .about-section img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 0 15px var(--primary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .about-section h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    text-shadow: var(--neon-shadow);
+    margin-bottom: 1rem;
+  }
+  
+  .about-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--light-text);
+    margin-bottom: 1rem;
+  }
+  
+  .stats-section {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  
+  .stat-card {
+    width: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .stat-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  .stat-card h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    text-shadow: var(--neon-shadow);
+  }
+  
+  .stat-card p {
+    font-size: 1rem;
+    color: var(--light-text);
+  }
+  
+  /* ===========================
+     7. Projects Page
+     =========================== */
+  /* Basic cards, see projects.html for extra styling if needed */
+  
+  /* ===========================
+     8. Contact Page
+     =========================== */
+  .contact-section {
+    max-width: 600px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    text-align: center;
+    margin: 0 auto;
+  }
+  
+  .contact-section h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-shadow: var(--neon-shadow);
+    margin-bottom: 1.5rem;
+  }
+  
+  .contact-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .contact-section input,
+  .contact-section textarea {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    background: #2c2c4c;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    color: var(--light-text);
+    box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+  }
+  
+  .contact-section input:focus,
+  .contact-section textarea:focus {
+    background: #3c3c5c;
+    outline: none;
+  }
+  
+  .contact-section button {
+    padding: 1rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary-color);
+    color: #000;
+    cursor: pointer;
+    box-shadow: var(--neon-shadow);
+    transition: transform 0.3s, background-color 0.3s;
+    font-weight: bold;
+  }
+  
+  .contact-section button:hover {
+    transform: scale(1.1);
+    background: var(--secondary-color);
+    color: #fff;
+  }
+  
+  /* ===========================
+     9. AI Bots Page
+     =========================== */
+  .chat-options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .chat-option-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--light-text);
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .chat-option-btn:hover {
+    background: var(--primary-color);
+    color: #000;
+    box-shadow: var(--neon-shadow);
+  }
+  
+  .chat-section {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    padding: 1.5rem;
+    position: relative;
+  }
+  
+  .chat-window {
+    width: 100%;
+    height: 400px;
+    overflow-y: auto;
+    background: linear-gradient(145deg, #1a012a, #2a013f);
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+  
+  .message {
+    margin-bottom: 1rem;
+    word-wrap: break-word;
+    padding: 0.8rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    max-width: 70%;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  .message.user {
+    background: var(--secondary-color);
+    color: #fff;
+    margin-left: auto;
+    border-top-right-radius: 0;
+  }
+  
+  .message.bot {
+    background: #31315a;
+    color: #fff;
+    margin-right: auto;
+    border-top-left-radius: 0;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .chat-input {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .chat-input input {
+    flex: 1;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: none;
+    background: #2c2c4c;
+    color: var(--light-text);
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
+  }
+  
+  .chat-input button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: #000;
+    cursor: pointer;
+    box-shadow: var(--neon-shadow);
+  }
+  
+  .chat-input button:hover {
+    background-color: var(--secondary-color);
+    color: #fff;
+  }
+  
+  /* ===========================
+     10. Resume Page
+     =========================== */
+  .resume-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+  }
+  
+  .resume-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .resume-header h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-shadow: var(--neon-shadow);
+    margin-bottom: 0.5rem;
+  }
+  
+  .resume-header p {
+    font-size: 1rem;
+    color: var(--light-text);
+    margin-bottom: 1rem;
+  }
+  
+  .contact-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .contact-detail {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .contact-detail i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+  }
+  
+  /* Work Experience & Education */
+  .section-title {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    text-shadow: var(--neon-shadow);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .experience-item,
+  .education-item {
+    margin-bottom: 1.5rem;
+  }
+  
+  .experience-item h3,
+  .education-item h3 {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.3rem;
+  }
+  
+  .experience-item h4,
+  .education-item h4 {
+    font-size: 1rem;
+    color: var(--light-text);
+    margin-bottom: 0.2rem;
+    font-weight: normal;
+  }
+  
+  .experience-item p,
+  .education-item p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-left: 1rem;
+  }
+  
+  /* Technical Skills */
+  .skill-list {
+    list-style: none;
+    margin-left: 0.5rem;
+  }
+  
+  .skill-list li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  
+  .skill-level {
+    font-weight: bold;
+    color: var(--secondary-color);
+  }
+  
+  /* Links row for GitHub / LinkedIn (icons) */
+  .social-links {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  .social-links a {
+    display: inline-block;
+    color: var(--light-text);
+    margin: 0 1rem;
+    font-size: 1.8rem;
+    transition: 0.3s;
+  }
+  
+  .social-links a:hover {
+    color: var(--primary-color);
+    transform: scale(1.2);
+  }
+  
+  
+  /* ===========================
+     11. Responsiveness
+     =========================== */
+  @media (max-width: 768px) {
+    .page-header h1 {
+      font-size: 2rem;
+    }
+  
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+  
+    .hero-content p {
+      font-size: 1.1rem;
+    }
+  
+    .cta-btn {
+      font-size: 1rem;
+      padding: 0.8rem 1.2rem;
+    }
+  
+    .sidebar {
+      width: 200px;
+    }
+  
+    .resume-header h2 {
+      font-size: 1.8rem;
+    }
+  }
+  

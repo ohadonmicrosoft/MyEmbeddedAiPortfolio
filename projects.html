@@ -1,253 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Projects - Futuristic AI Portfolio">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Projects - Futuristic AI Portfolio"/>
   <title>Projects - Futuristic AI Portfolio</title>
-
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
   <!-- AOS Library -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
   <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
   <style>
-    :root {
-      --primary-color: #0ff;
-      --secondary-color: #f0f;
-      --dark-bg: #0a002a;
-      --light-text: #fff;
-      --neon-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--secondary-color);
-    }
-
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Orbitron', sans-serif;
-    }
-
-    body {
-      background: var(--dark-bg);
-      color: var(--light-text);
-      overflow-x: hidden;
-      font-size: 16px;
-    }
-
-    /* Sidebar */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 250px;
-      height: 100vh;
-      background: linear-gradient(145deg, #2c0158, #46027b);
-      box-shadow: 4px 0 15px rgba(0, 0, 0, 0.7);
+    .projects-container {
+      max-width: 1100px;
+      margin: 0 auto;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 1rem;
-      z-index: 1000;
-    }
-
-    .sidebar .logo {
-      font-size: 2rem;
-      color: var(--light-text);
-      text-decoration: none;
-      font-weight: bold;
-      text-shadow: var(--neon-shadow);
-      margin-bottom: 2rem;
-    }
-
-    .nav-links {
-      list-style: none;
-      width: 100%;
-      text-align: center;
-    }
-
-    .nav-links li {
-      margin: 1rem 0;
-    }
-
-    .nav-links li a {
-      color: var(--light-text);
-      text-decoration: none;
-      font-size: 1.2rem;
-      display: block;
-      padding: 0.8rem 1rem;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .nav-links li a:hover {
-      transform: scale(1.1);
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 5px;
-    }
-
-    /* Main Content */
-    .main-content {
-      margin-left: 250px;
-      padding: 2rem;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       gap: 2rem;
-    }
-
-    /* Page Header */
-    .page-header {
-      text-align: center;
-    }
-
-    .page-header h1 {
-      font-size: 3rem;
-      color: var(--primary-color);
-      text-shadow: var(--neon-shadow);
-    }
-
-    .page-header p {
-      font-size: 1.2rem;
-      color: var(--light-text);
-      text-shadow: 0 0 10px var(--secondary-color);
-    }
-
-    /* Projects Grid */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+      justify-content: center;
     }
 
     .project-card {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 12px;
       box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+      width: 300px;
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
     }
 
     .project-card:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     }
 
     .project-card img {
       width: 100%;
-      height: 200px;
+      height: 180px;
       object-fit: cover;
     }
 
-    .project-content {
-      padding: 1.5rem;
-      color: var(--light-text);
-    }
-
-    .project-content h3 {
-      font-size: 1.5rem;
+    .project-card h3 {
+      font-size: 1.4rem;
       color: var(--primary-color);
+      margin: 1rem;
       text-shadow: var(--neon-shadow);
-      margin-bottom: 0.5rem;
     }
 
-    .project-content p {
-      font-size: 1rem;
-      line-height: 1.5;
+    .project-card p {
+      font-size: 0.95rem;
+      margin: 0 1rem 1rem 1rem;
+      color: var(--light-text);
+      line-height: 1.4;
+    }
+
+    .project-links {
+      display: flex;
+      justify-content: space-around;
       margin-bottom: 1rem;
     }
 
-    .project-content a {
-      color: var(--secondary-color);
+    .project-links a {
+      color: var(--primary-color);
       text-decoration: none;
-      font-weight: bold;
-      text-shadow: 0 0 10px var(--secondary-color);
-      transition: transform 0.3s ease;
+      border: 1px solid var(--primary-color);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: 0.3s;
     }
 
-    .project-content a:hover {
-      transform: scale(1.1);
-    }
-
-    /* Media Queries */
-    @media (max-width: 768px) {
-      .sidebar {
-        width: 80px;
-      }
-
-      .main-content {
-        margin-left: 80px;
-        padding: 1rem;
-      }
-
-      .projects-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      }
+    .project-links a:hover {
+      background: var(--primary-color);
+      color: #000;
     }
   </style>
 </head>
 <body>
+  <div id="sidebarOverlay" onclick="closeSidebarOnOverlay()"></div>
+
+  <!-- Header -->
+  <header>
+    <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
+    <a href="index.html" class="header-logo">Future Tech</a>
+  </header>
+
   <!-- Sidebar -->
   <aside class="sidebar">
-    <a href="#" class="logo">Future Tech</a>
+    <a href="index.html" class="logo">Future Tech</a>
     <ul class="nav-links">
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#ai-bots">AI Bots</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="ai-bots.html">AI Bots</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </aside>
 
   <!-- Main Content -->
   <div class="main-content">
-    <!-- Page Header -->
     <div class="page-header" data-aos="fade-up">
       <h1>My Projects</h1>
-      <p>Explore some of my most innovative and groundbreaking works.</p>
+      <p>Explore some of my embedded, AI, and innovative solutions.</p>
     </div>
 
-    <!-- Projects Grid -->
-    <div class="projects-grid" data-aos="fade-up">
+    <div class="projects-container" data-aos="fade-up">
       <!-- Project Card 1 -->
       <div class="project-card">
-        <img src="https://via.placeholder.com/600x400" alt="AI Dashboard">
-        <div class="project-content">
-          <h3>AI Dashboard</h3>
-          <p>A dashboard for monitoring AI performance with real-time metrics.</p>
-          <a href="https://github.com/username/ai-dashboard" target="_blank">View on GitHub</a>
+        <img src="https://via.placeholder.com/500x300" alt="Project 1" />
+        <h3>Embedded RTOS Monitor</h3>
+        <p>
+          A real-time operating system (RTOS) monitoring tool ensuring optimized
+          resource utilization and stable system performance for critical applications.
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio" target="_blank">GitHub</a>
+          <a href="#">Live Demo</a>
         </div>
       </div>
 
       <!-- Project Card 2 -->
       <div class="project-card">
-        <img src="https://via.placeholder.com/600x400" alt="Neural Network">
-        <div class="project-content">
-          <h3>Neural Network Simulator</h3>
-          <p>A simulator to visualize and train neural networks efficiently.</p>
-          <a href="https://github.com/username/neural-simulator" target="_blank">View on GitHub</a>
+        <img src="https://via.placeholder.com/500x300" alt="Project 2" />
+        <h3>AI Chatbot Integration</h3>
+        <p>
+          A custom AI chatbot framework integrated with automotive detection
+          systems, improving real-time performance and reliability.
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio" target="_blank">GitHub</a>
+          <a href="#">Live Demo</a>
         </div>
       </div>
 
       <!-- Project Card 3 -->
       <div class="project-card">
-        <img src="https://via.placeholder.com/600x400" alt="AI Chatbot">
-        <div class="project-content">
-          <h3>AI Chatbot</h3>
-          <p>A conversational AI bot capable of answering user queries intelligently.</p>
-          <a href="https://github.com/username/ai-chatbot" target="_blank">View on GitHub</a>
+        <img src="https://via.placeholder.com/500x300" alt="Project 3" />
+        <h3>IoT Home Automation</h3>
+        <p>
+          Intelligent home automation solution featuring secure device
+          communication, enabling real-time monitoring and management.
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio" target="_blank">GitHub</a>
+          <a href="#">Live Demo</a>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- AOS -->
+  <!-- AOS Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
+  <script>AOS.init();</script>
+  <!-- Custom JS -->
+  <script src="js/script.js"></script>
 </body>
 </html>
