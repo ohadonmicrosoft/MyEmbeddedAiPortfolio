@@ -9,6 +9,9 @@
     --neon-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--secondary-color);
     --font-main: 'Orbitron', sans-serif;
     --font-size-base: 16px;
+  
+    /* For advanced responsiveness */
+    --content-max-width: 1200px;
   }
   
   * {
@@ -19,33 +22,42 @@
   }
   
   body {
-    background: linear-gradient(135deg, #0a002a, #1c013f);
+    background: var(--dark-bg);
     color: var(--light-text);
     font-size: var(--font-size-base);
     overflow-x: hidden;
-    transition: all 0.3s ease; /* for potential animations */
+    transition: all 0.3s ease;
   }
   
   /* ===========================
-     2. Video Background
+     2. Background Container
      =========================== */
-  .video-bg-container {
-    position: fixed; /* so it stays in the background */
+  /* 
+     .background-container
+     - Generic wrapper for background (video or image).
+     - If you want image instead of video, simply place <img class="bg-image" ...>
+  */
+  
+  .background-container {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* behind everything else */
-    overflow: hidden;
+    z-index: -1;
+    overflow: hidden; /* Cut off anything overflowing */
   }
   
-  .video-bg {
+  .bg-video, .bg-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
   }
   
-  /* Overlay for when sidebar is open */
+  /* ===========================
+     3. Overlay for sidebar
+     =========================== */
   #sidebarOverlay {
     position: fixed;
     top: 0;
@@ -58,7 +70,7 @@
   }
   
   /* ===========================
-     3. Header + Hamburger
+     4. Header + Hamburger
      =========================== */
   header {
     position: fixed;
@@ -66,7 +78,8 @@
     left: 0;
     width: 100%;
     height: 60px;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -91,14 +104,14 @@
   
   .header-logo {
     color: var(--light-text);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     text-shadow: var(--neon-shadow);
     text-decoration: none;
     font-weight: bold;
   }
   
   /* ===========================
-     4. Sidebar (Slide-Out)
+     5. Sidebar (Slide-Out)
      =========================== */
   .sidebar {
     position: fixed;
@@ -158,12 +171,15 @@
   }
   
   /* ===========================
-     5. Main Content Wrapper
+     6. Main Content
      =========================== */
   .main-content {
-    margin-top: 60px; /* to accommodate the fixed header */
+    margin-top: 60px;
     padding: 2rem;
     min-height: 100vh;
+    max-width: var(--content-max-width);
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .page-header {
@@ -185,27 +201,24 @@
   }
   
   /* ===========================
-     6. Hero Section (index.html)
+     7. Hero Section (index.html)
      =========================== */
   .hero {
     position: relative;
     width: 100%;
-    height: 100vh;
-    margin: 0 auto;
+    height: calc(100vh - 60px);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: var(--light-text);
-    /* Note: We already have the .video-bg-container behind everything.
-       If we want a special video for index, we can either put it below or
-       continue using the same .video-bg approach. */
   }
   
   .hero-content {
     z-index: 1;
     max-width: 800px;
     padding: 1rem;
+    margin-top: -60px; /* to offset the header height if wanted */
   }
   
   .hero-content h1 {
@@ -238,7 +251,7 @@
   }
   
   /* ===========================
-     7. About Page
+     8. About Section
      =========================== */
   .about-section {
     max-width: 900px;
@@ -309,7 +322,64 @@
   }
   
   /* ===========================
-     8. Contact Page
+     9. Projects Page (cards)
+     =========================== */
+  .project-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .project-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  .project-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  
+  .project-card h3 {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin: 1rem;
+    text-shadow: var(--neon-shadow);
+  }
+  
+  .project-card p {
+    font-size: 0.95rem;
+    margin: 0 1rem 1rem 1rem;
+    color: var(--light-text);
+    line-height: 1.4;
+  }
+  
+  .project-links {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+  }
+  
+  .project-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    border: 1px solid var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  
+  .project-links a:hover {
+    background: var(--primary-color);
+    color: #000;
+  }
+  
+  /* ===========================
+     10. Contact Page
      =========================== */
   .contact-section {
     max-width: 600px;
@@ -374,7 +444,7 @@
   }
   
   /* ===========================
-     9. AI Bots Page
+     11. AI Bots Page
      =========================== */
   .chat-options {
     display: flex;
@@ -393,7 +463,6 @@
     cursor: pointer;
     transition: 0.3s;
   }
-  
   .chat-option-btn:hover {
     background: var(--primary-color);
     color: #000;
@@ -490,7 +559,7 @@
   }
   
   /* ===========================
-     10. Resume Page
+     12. Resume Page
      =========================== */
   .resume-container {
     max-width: 900px;
@@ -615,32 +684,46 @@
   }
   
   /* ===========================
-     11. Responsiveness
+     13. Media Queries
      =========================== */
+  @media (max-width: 1024px) {
+    .hero-content h1 {
+      font-size: 3rem;
+    }
+  }
+  
   @media (max-width: 768px) {
     .page-header h1 {
       font-size: 2rem;
     }
-  
     .hero-content h1 {
       font-size: 2.5rem;
     }
-  
     .hero-content p {
       font-size: 1.1rem;
     }
-  
     .cta-btn {
       font-size: 1rem;
       padding: 0.8rem 1.2rem;
     }
-  
     .sidebar {
       width: 200px;
     }
-  
     .resume-header h2 {
       font-size: 1.8rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-content h1 {
+      font-size: 1.8rem;
+    }
+    .hero-content p {
+      font-size: 0.9rem;
+    }
+    .cta-btn {
+      font-size: 0.9rem;
+      padding: 0.7rem 1rem;
     }
   }
   

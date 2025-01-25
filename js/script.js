@@ -68,7 +68,8 @@ function getBotResponse(userText) {
   };
 
   const selectedResponses = responses[mode] || [];
-  return selectedResponses[Math.floor(Math.random() * selectedResponses.length)];
+  const randomIndex = Math.floor(Math.random() * selectedResponses.length);
+  return selectedResponses[randomIndex];
 }
 
 function changeMode(newMode) {
