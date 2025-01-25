@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Projects - Futuristic AI Portfolio"/>
   <title>Projects - Futuristic AI Portfolio</title>
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
   <!-- AOS Library -->
@@ -80,6 +81,13 @@
   </style>
 </head>
 <body>
+  <!-- Video Background -->
+  <div class="video-bg-container">
+    <video class="video-bg" autoplay muted loop playsinline>
+      <source src="assets/video/default_background.mp4" type="video/mp4" />
+    </video>
+  </div>
+
   <div id="sidebarOverlay" onclick="closeSidebarOnOverlay()"></div>
 
   <!-- Header -->
@@ -110,7 +118,7 @@
     <div class="projects-container" data-aos="fade-up">
       <!-- Project Card 1 -->
       <div class="project-card">
-        <img src="assets/images/rtos_monitor.jpg" alt="Project 1" />
+        <img src="assets/images/AiEmbedded.jpg" alt="Project 1" />
         <h3>Embedded RTOS Monitor</h3>
         <p>
           A real-time operating system (RTOS) monitoring tool ensuring optimized
@@ -124,11 +132,11 @@
 
       <!-- Project Card 2 -->
       <div class="project-card">
-        <img src="assets/images/ai_chatbot.jpg" alt="Project 2" />
+        <img src="assets/images/AIChipeImg.png" alt="Project 2" />
         <h3>AI Chatbot Integration</h3>
         <p>
-          A custom AI chatbot framework integrated with automotive detection
-          systems, improving real-time performance and reliability.
+          A custom AI chatbot framework integrated with automotive detection systems,
+          improving real-time performance and reliability.
         </p>
         <div class="project-links">
           <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio" target="_blank">GitHub</a>
