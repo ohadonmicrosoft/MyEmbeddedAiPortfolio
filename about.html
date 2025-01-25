@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="About Me - Futuristic AI Portfolio"/>
   <title>About - Futuristic AI Portfolio</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"/>
   <!-- AOS Library -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-  <!-- Video Background -->
-  <div class="video-bg-container">
-    <video class="video-bg" autoplay muted loop playsinline>
-      <source src="assets/video/default_background.mp4" type="video/mp4" />
-    </video>
+  <!-- Background (e.g. image instead of video) -->
+  <div class="background-container">
+    <img class="bg-media" src="assets/images/background.jpg" alt="Background"/>
   </div>
 
   <div id="sidebarOverlay" onclick="closeSidebarOnOverlay()"></div>
@@ -44,23 +42,22 @@
   </aside>
 
   <!-- Main Content -->
-  <div class="main-content">
-    <div class="page-header" data-aos="fade-up">
+  <div class="main-content" data-aos="fade-up">
+    <div class="page-header">
       <h1>About Me</h1>
       <p>Learn more about my background and journey in technology.</p>
     </div>
 
-    <div class="about-section" data-aos="fade-up">
-      <img src="assets/images/BinaryCodePoster.jpg" alt="Profile Picture" />
+    <div class="about-section">
+      <img src="assets/images/Gnu.jpg" alt="Profile Picture"/>
       <h2>Ohad Alon</h2>
       <p>
-        I am a dedicated Senior Embedded Software Developer with a passion for real-time systems,
-        secure architectures, and AI-driven solutions. My mission is to push boundaries and
-        deliver exceptional results, from low-level optimizations to high-level innovation.
+        I am a dedicated Senior Embedded Software Developer with a passion
+        for real-time systems, secure architectures, and AI-driven solutions.
       </p>
     </div>
 
-    <div class="stats-section" data-aos="fade-up">
+    <div class="stats-section">
       <div class="stat-card">
         <h3>10+</h3>
         <p>Years in Embedded</p>
@@ -76,10 +73,10 @@
     </div>
   </div>
 
-  <!-- AOS Scripts -->
+  <!-- AOS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>AOS.init();</script>
-  <!-- Custom JS -->
+  <!-- JS -->
   <script src="js/script.js"></script>
 </body>
 </html>

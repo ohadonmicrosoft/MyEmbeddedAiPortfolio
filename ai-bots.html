@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Advanced AI Chat - Futuristic Experience"/>
   <title>AI Chat - High-End Bot</title>
@@ -16,10 +16,11 @@
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-  <!-- Video Background -->
-  <div class="video-bg-container">
-    <video class="video-bg" autoplay muted loop playsinline>
-      <source src="assets/video/AIChip.mp4" type="video/mp4">
+  <!-- Background -->
+  <div class="background-container">
+    <video class="bg-media" autoplay muted loop playsinline>
+      <source src="assets/video/AIChip.mp4" type="video/mp4"/>
+      Your browser does not support the video tag.
     </video>
   </div>
 
@@ -44,20 +45,21 @@
   </aside>
 
   <!-- Main Content -->
-  <div class="main-content">
-    <div class="page-header" data-aos="fade-up">
+  <div class="main-content" data-aos="fade-up">
+    <div class="page-header">
       <h1>AI Chat</h1>
       <p>Explore a high-end futuristic AI chatbot interface.</p>
     </div>
 
-    <div class="chat-options" data-aos="fade-up">
-      <button class="chat-option-btn" onclick="changeMode('friendly')">Friendly Mode</button>
-      <button class="chat-option-btn" onclick="changeMode('professional')">Professional Mode</button>
-      <button class="chat-option-btn" onclick="changeMode('funny')">Funny Mode</button>
-    </div>
+    <div class="chat-section">
+      <div class="chat-options">
+        <button class="chat-option-btn" onclick="changeMode('friendly')">Friendly Mode</button>
+        <button class="chat-option-btn" onclick="changeMode('professional')">Professional Mode</button>
+        <button class="chat-option-btn" onclick="changeMode('funny')">Funny Mode</button>
+      </div>
 
-    <div class="chat-section" data-aos="fade-up">
       <div class="chat-window" id="chatWindow"></div>
+
       <div class="chat-input">
         <input type="text" id="userInput" placeholder="Type your message here..."/>
         <button onclick="sendMessage()">Send</button>
@@ -65,10 +67,10 @@
     </div>
   </div>
 
-  <!-- AOS Script -->
+  <!-- AOS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>AOS.init();</script>
-  <!-- Custom JS -->
+  <!-- JS -->
   <script src="js/script.js"></script>
 </body>
 </html>

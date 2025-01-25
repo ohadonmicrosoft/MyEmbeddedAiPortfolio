@@ -1,90 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Projects - Futuristic AI Portfolio"/>
   <title>Projects - Futuristic AI Portfolio</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"/>
   <!-- AOS Library -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/style.css" />
-
-  <style>
-    .projects-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
-
-    .project-card {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-      width: 300px;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .project-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-    }
-
-    .project-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .project-card h3 {
-      font-size: 1.4rem;
-      color: var(--primary-color);
-      margin: 1rem;
-      text-shadow: var(--neon-shadow);
-    }
-
-    .project-card p {
-      font-size: 0.95rem;
-      margin: 0 1rem 1rem 1rem;
-      color: var(--light-text);
-      line-height: 1.4;
-    }
-
-    .project-links {
-      display: flex;
-      justify-content: space-around;
-      margin-bottom: 1rem;
-    }
-
-    .project-links a {
-      color: var(--primary-color);
-      text-decoration: none;
-      border: 1px solid var(--primary-color);
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      transition: 0.3s;
-    }
-
-    .project-links a:hover {
-      background: var(--primary-color);
-      color: #000;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-  <!-- Video Background -->
-  <div class="video-bg-container">
-    <video class="video-bg" autoplay muted loop playsinline>
-      <source src="assets/video/default_background.mp4" type="video/mp4" />
+  <!-- Background video example -->
+  <div class="background-container">
+    <video class="bg-media" autoplay muted loop playsinline>
+      <source src="assets/video/matrix.mp4" type="video/mp4"/>
+      Your browser does not support the video tag.
     </video>
   </div>
 
@@ -109,20 +45,20 @@
   </aside>
 
   <!-- Main Content -->
-  <div class="main-content">
-    <div class="page-header" data-aos="fade-up">
+  <div class="main-content" data-aos="fade-up">
+    <div class="page-header">
       <h1>My Projects</h1>
       <p>Explore some of my embedded, AI, and innovative solutions.</p>
     </div>
 
-    <div class="projects-container" data-aos="fade-up">
+    <div class="projects-container">
       <!-- Project Card 1 -->
       <div class="project-card">
-        <img src="assets/images/AiEmbedded.jpg" alt="Project 1" />
+        <img src="assets/images/AiEmbedded.jpg" alt="Project 1"/>
         <h3>Embedded RTOS Monitor</h3>
         <p>
-          A real-time operating system (RTOS) monitoring tool ensuring optimized
-          resource utilization and stable system performance for critical applications.
+          A real-time operating system (RTOS) monitoring tool ensuring
+          optimized resource utilization and stable system performance.
         </p>
         <div class="project-links">
           <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio" target="_blank">GitHub</a>
@@ -132,11 +68,11 @@
 
       <!-- Project Card 2 -->
       <div class="project-card">
-        <img src="assets/images/AIChipeImg.png" alt="Project 2" />
+        <img src="assets/images/AIChipeImg.png" alt="Project 2"/>
         <h3>AI Chatbot Integration</h3>
         <p>
-          A custom AI chatbot framework integrated with automotive detection systems,
-          improving real-time performance and reliability.
+          A custom AI chatbot framework integrated with automotive detection
+          systems, improving real-time performance and reliability.
         </p>
         <div class="project-links">
           <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio" target="_blank">GitHub</a>
@@ -146,7 +82,7 @@
 
       <!-- Project Card 3 -->
       <div class="project-card">
-        <img src="assets/images/iot.jpg" alt="Project 3" />
+        <img src="assets/images/iot.jpg" alt="Project 3"/>
         <h3>IoT Home Automation</h3>
         <p>
           Intelligent home automation solution featuring secure device
@@ -160,10 +96,10 @@
     </div>
   </div>
 
-  <!-- AOS Scripts -->
+  <!-- AOS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>AOS.init();</script>
-  <!-- Custom JS -->
+  <!-- JS -->
   <script src="js/script.js"></script>
 </body>
 </html>

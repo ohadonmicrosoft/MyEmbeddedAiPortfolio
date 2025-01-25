@@ -1,4 +1,4 @@
-/* Toggle Sidebar open/close */
+/* Sidebar toggle */
 function toggleSidebar() {
   const sidebar = document.querySelector('.sidebar');
   const overlay = document.getElementById('sidebarOverlay');
@@ -18,7 +18,7 @@ function closeSidebarOnOverlay() {
   overlay.style.display = 'none';
 }
 
-/* Handle Contact Form Submission */
+/* Contact Form Submission */
 function handleFormSubmit(event) {
   event.preventDefault();
   const name = document.getElementById("name").value.trim();
@@ -33,8 +33,7 @@ function handleFormSubmit(event) {
   }
 }
 
-/* AI Chat – basic placeholder (friendly/professional/funny) 
-   You can replace with real LLM calls per the guide below. */
+/* AI Chat – basic placeholder */
 let mode = "friendly";
 
 function addMessage(content, sender) {
@@ -66,10 +65,8 @@ function getBotResponse(userText) {
       "Ask me something! I'll try to be funny."
     ]
   };
-
-  const selectedResponses = responses[mode] || [];
-  const randomIndex = Math.floor(Math.random() * selectedResponses.length);
-  return selectedResponses[randomIndex];
+  const resArray = responses[mode] || [];
+  return resArray[Math.floor(Math.random() * resArray.length)];
 }
 
 function changeMode(newMode) {
@@ -86,7 +83,6 @@ function sendMessage() {
     addMessage(text, "user");
     userInput.value = "";
     setTimeout(() => {
-      // Instead of getBotResponse, you can call a real LLM API
       const botResponse = getBotResponse(text);
       addMessage(botResponse, "bot");
     }, 600);

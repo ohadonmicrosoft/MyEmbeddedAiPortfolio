@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Resume - Futuristic AI Portfolio"/>
   <title>Resume - Futuristic AI Portfolio</title>
@@ -16,11 +16,9 @@
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-  <!-- Video Background -->
-  <div class="video-bg-container">
-    <video class="video-bg" autoplay muted loop playsinline>
-      <source src="assets/video/default_background.mp4" type="video/mp4" />
-    </video>
+  <!-- Background -->
+  <div class="background-container">
+    <img class="bg-media" src="assets/images/ai-generated.jpg" alt="Background"/>
   </div>
 
   <div id="sidebarOverlay" onclick="closeSidebarOnOverlay()"></div>
@@ -44,13 +42,13 @@
   </aside>
 
   <!-- Main Content -->
-  <div class="main-content">
-    <div class="page-header" data-aos="fade-up">
+  <div class="main-content" data-aos="fade-up">
+    <div class="page-header">
       <h1>My Resume</h1>
       <p>A brief overview of my professional experience, education, and skills.</p>
     </div>
 
-    <div class="resume-container" data-aos="fade-up">
+    <div class="resume-container">
       <!-- HEADER: NAME, LOCATION, CONTACT DETAILS -->
       <div class="resume-header">
         <h2>Ohad Alon</h2>
@@ -74,12 +72,8 @@
 
       <!-- Social Links -->
       <div class="social-links">
-        <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio" target="_blank">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/ohad-alon" target="_blank">
-          <i class="fab fa-linkedin"></i>
-        </a>
+        <a href="https://github.com/ohadonmicrosoft/MyEmbeddedAiPortfolio" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/ohad-alon" target="_blank"><i class="fab fa-linkedin"></i></a>
       </div>
 
       <!-- Professional Summary -->
@@ -90,17 +84,14 @@
         and mentoring diverse teams to achieve organizational goals.
       </p>
 
-      <!-- WORK EXPERIENCE -->
+      <!-- Work Experience -->
       <h2 class="section-title">Work Experience</h2>
-
       <div class="experience-item">
         <h3>Senior Software Developer – CYMOTIVE Technologies</h3>
         <h4>Feb 2022 – Present | Tel Aviv, Israel</h4>
         <p>
-          • Designed secure communication protocols and enhanced system reliability by implementing robust cryptographic solutions.<br>
-          • Overhauled existing software architecture to improve data flow efficiency.<br>
-          • Created advanced support tools that simplified diagnostic workflows.<br>
-          • Collaborated with stakeholders to translate technical requirements into functional designs.
+          • Designed secure communication protocols...<br/>
+          • Overhauled existing software architecture...<br/>
         </p>
       </div>
 
@@ -108,60 +99,39 @@
         <h3>Software Developer – Brodmann17</h3>
         <h4>Jan 2021 – Feb 2022 | Tel Aviv, Israel</h4>
         <p>
-          • Led AI solutions development, improving object detection accuracy in automotive applications.<br>
-          • Successfully integrated AI capabilities into client platforms.<br>
-          • Played a pivotal role in meeting strict deadlines, achieving consistent project success.
+          • Led AI solutions development...<br/>
+          • Successfully integrated AI capabilities...
         </p>
       </div>
 
-      <div class="experience-item">
-        <h3>Senior Embedded Software Developer – Ceragon Networks</h3>
-        <h4>Nov 2016 – Jan 2021 | Tel Aviv, Israel</h4>
-        <p>
-          • Architected and implemented embedded software solutions for advanced telecommunications systems.<br>
-          • Developed task-scheduling mechanisms for improved resource utilization.<br>
-          • Resolved complex interoperability issues, ensuring system stability.<br>
-          • Mentored junior developers, fostering a culture of learning.
-        </p>
-      </div>
-
-      <div class="experience-item">
-        <h3>Software Developer – Experis Israel</h3>
-        <h4>Apr 2016 – Oct 2016 | Tel Aviv-Yafo, Israel</h4>
-        <p>
-          • Developed efficient embedded software solutions under strict deadlines.<br>
-          • Specialized in low-level programming and real-time debugging.
-        </p>
-      </div>
-
-      <!-- EDUCATION -->
+      <!-- Education -->
       <h2 class="section-title">Education</h2>
       <div class="education-item">
-        <h3>Bachelor’s Degree in Electrical & Electronics Engineering – Ruppin Academic Center</h3>
+        <h3>Bachelor’s in Electrical & Electronics Engineering – Ruppin Academic Center</h3>
         <h4>Oct 2010 – Oct 2014 | Emek Hefer, Israel</h4>
         <p>
-          • Designed an embedded system for data acquisition showcasing energy-efficient techniques.<br>
-          • Excelled in embedded systems design and signal processing.
+          • Designed an embedded system for data acquisition...<br/>
+          • Excelled in embedded systems design...
         </p>
       </div>
 
-      <!-- TECHNICAL EXPERTISE -->
+      <!-- Technical Expertise -->
       <h2 class="section-title">Technical Expertise</h2>
       <ul class="skill-list">
         <li><span class="skill-level">Embedded Systems:</span> RTOS, HW-SW Integration, AI Systems</li>
         <li><span class="skill-level">Programming Languages:</span> C, C++</li>
-        <li><span class="skill-level">Cybersecurity:</span> Cryptographic Protocols (TLS), Secure System Design</li>
-        <li><span class="skill-level">AI Development:</span> TensorFlow, AI-Based Object Detection Optimization</li>
-        <li><span class="skill-level">Debugging Tools:</span> GDB, Logic Analyzers, Real-Time Debugging</li>
-        <li><span class="skill-level">Soft Skills:</span> Problem-Solving, Technical Leadership</li>
+        <li><span class="skill-level">Cybersecurity:</span> Cryptographic Protocols (TLS)</li>
+        <li><span class="skill-level">AI Development:</span> TensorFlow, Object Detection</li>
+        <li><span class="skill-level">Debugging Tools:</span> GDB, Logic Analyzers</li>
+        <li><span class="skill-level">Soft Skills:</span> Problem-Solving, Leadership</li>
       </ul>
     </div>
   </div>
 
-  <!-- AOS Script -->
+  <!-- AOS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>AOS.init();</script>
-  <!-- Custom JS -->
+  <!-- JS -->
   <script src="js/script.js"></script>
 </body>
 </html>
