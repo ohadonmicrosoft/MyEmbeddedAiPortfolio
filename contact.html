@@ -16,12 +16,16 @@
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-  <!-- Background video or image -->
-  <div class="background-container">
-    <img class="bg-media" src="assets/images/internet.jpg" alt="Background"/>
-  </div>
-
-  <div id="sidebarOverlay" onclick="closeSidebarOnOverlay()"></div>
+  <!-- Background: You can switch between <video> or <img> -->
+    <div class="background-container">
+      <video class="bg-media" autoplay muted loop playsinline>
+        <source src="assets/video/207688_small.mp4" type="video/mp4"/>
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  
+    <!-- Overlay for closing sidebar -->
+    <div id="sidebarOverlay" onclick="closeSidebarOnOverlay()"></div>
 
   <!-- Header -->
   <header>
